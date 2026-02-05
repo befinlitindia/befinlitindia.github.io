@@ -74,12 +74,12 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
     });
   };
 
-  const formatINR = (val: number) => 
+  const formatINR = (val: number) =>
     new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
 
   return (
     <div className="animate-fade-in pt-40 pb-20 px-6 max-w-4xl mx-auto">
-      <button 
+      <button
         onClick={() => onNavigate('tools')}
         className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-8 font-bold text-xs uppercase tracking-widest"
       >
@@ -89,11 +89,11 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
       <div className="bg-white border border-befinlit-navy/10 rounded-sm shadow-xl overflow-hidden mb-12">
         <div className="bg-befinlit-navy p-8 text-white">
           <div className="flex items-center gap-3 mb-4">
-             <TrendingUp className="text-befinlit-gold" size={24} />
-             <h2 className="text-2xl font-bold font-serif italic">The Success Penalty Estimator</h2>
+            <TrendingUp className="text-befinlit-gold" size={24} />
+            <h2 className="text-2xl font-bold font-serif italic">The "Success Penalty" Calculator</h2>
           </div>
           <p className="text-white/60 text-sm max-w-2xl leading-relaxed">
-            Side-hustles are taxed at your highest marginal rate because they sit "on top" of your salary. This tool calculates the exact tax impact of adding freelance revenue to your existing salary under Budget 2025/2026 rules.
+            Side-hustles are taxed at your highest marginal rate because they sit "on top" of your salary. This tool calculates the exact tax impact of adding freelance revenue to your existing salary under latest Income Tax Act.
           </p>
         </div>
 
@@ -101,27 +101,27 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-[0.2em] font-bold text-befinlit-navy/40">Annual Gross Salary (₹)</label>
-              <input 
-                type="number" 
-                value={salary} 
+              <input
+                type="number"
+                value={salary}
                 onChange={e => setSalary(e.target.value)}
                 className="w-full bg-gray-50 border border-gray-200 p-4 rounded-sm outline-none focus:border-befinlit-gold transition-colors text-lg"
-                placeholder="e.g. 1500000"
+                placeholder="e.g. 4200000"
               />
             </div>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-[0.2em] font-bold text-befinlit-navy/40">Freelance Revenue (₹)</label>
-              <input 
-                type="number" 
-                value={freelance} 
+              <input
+                type="number"
+                value={freelance}
                 onChange={e => setFreelance(e.target.value)}
                 className="w-full bg-gray-50 border border-gray-200 p-4 rounded-sm outline-none focus:border-befinlit-gold transition-colors text-lg"
-                placeholder="e.g. 1000000"
+                placeholder="e.g. 2500000"
               />
             </div>
           </div>
 
-          <button 
+          <button
             onClick={performCalculation}
             className="w-full bg-befinlit-gold text-befinlit-navy font-bold py-4 rounded-sm hover:bg-befinlit-navy hover:text-white transition-all text-sm uppercase tracking-widest shadow-lg"
           >
@@ -167,29 +167,66 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
                   </p>
                 </div>
               </div>
+            </div>
+          )}
 
-              <div className="bg-befinlit-navy/5 border border-befinlit-navy/10 p-6 rounded-sm flex flex-col md:flex-row items-center justify-between gap-6">
-                 <div className="flex items-center gap-4">
-                    <BookOpen size={32} className="text-befinlit-gold shrink-0" />
-                    <div>
-                       <p className="text-sm font-bold text-befinlit-navy">Deep Dive Required?</p>
-                       <p className="text-xs text-befinlit-navy/60">Learn how to structure your entity to reduce this penalty.</p>
-                    </div>
-                 </div>
-                 <button 
+          {result && (
+            <div className="mt-8">
+              {(result.fRaw >= 2000000 || result.fRaw >= 5000000 || result.fRaw >= 7500000) && (
+                <div className="bg-[#1e1e2e] border border-red-500/30 p-8 rounded-sm mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
+                  <h3 className="text-red-400 font-bold mb-4 flex items-center gap-2 uppercase tracking-widest text-xs">
+                    <AlertCircle size={16} /> Critical Implications
+                  </h3>
+                  <ul className="space-y-3 text-sm text-gray-300 leading-relaxed list-disc pl-5 marker:text-red-500">
+                    {result.fRaw >= 2000000 && (
+                      <li>You have crossed the ₹20 Lakhs GST threshold. Obtaining a GST registration and filing returns is now mandatory.</li>
+                    )}
+                    {result.fRaw >= 5000000 && (
+                      <li>With revenue above ₹50 Lakhs, if any part of your freelance income is received in cash (exceeding 5% threshold), a Tax Audit becomes mandatory.</li>
+                    )}
+                    {result.fRaw >= 7500000 && (
+                      <li>Revenue has crossed ₹75 Lakhs: You can no longer opt for Section 44ADA. You must undergo a mandatory Tax Audit, and your taxable base is now calculated at 80% of revenue by default for this estimation.</li>
+                    )}
+                  </ul>
+                </div>
+              )}
+
+              <div className="bg-befinlit-navy/5 border border-befinlit-navy/10 p-6 rounded-sm flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+                <div className="flex items-center gap-4">
+                  <BookOpen size={32} className="text-befinlit-gold shrink-0" />
+                  <div>
+                    <p className="text-sm font-bold text-befinlit-navy">Deep Dive Required?</p>
+                    <p className="text-xs text-befinlit-navy/60">Learn how to structure your entity to reduce this penalty.</p>
+                  </div>
+                </div>
+                <button
                   onClick={() => onNavigate('playbook')}
                   className="bg-befinlit-navy text-white text-xs font-bold px-6 py-3 rounded-sm hover:bg-befinlit-gold transition-colors uppercase tracking-widest"
-                 >
+                >
                   Read Moonlighter's Playbook
-                 </button>
+                </button>
+              </div>
+
+              <div className="flex justify-center">
+                <button
+                  onClick={() => {
+                    setSalary('');
+                    setFreelance('');
+                    setResult(null);
+                  }}
+                  className="text-befinlit-navy/40 font-bold uppercase text-xs tracking-widest hover:text-befinlit-navy transition-colors border-b border-transparent hover:border-befinlit-navy pb-1"
+                >
+                  Start Over
+                </button>
               </div>
             </div>
           )}
         </div>
       </div>
-      
+
       <div className="text-center">
-         <p className="text-xs text-befinlit-navy/40 font-bold uppercase tracking-[0.2em]">Crafted by BeFinLit India Specialists</p>
+        <p className="text-xs text-befinlit-navy/40 font-bold uppercase tracking-[0.2em]">Crafted by BeFinLit India Specialists</p>
       </div>
     </div>
   );

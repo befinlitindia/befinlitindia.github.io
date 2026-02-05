@@ -128,8 +128,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#C5A059 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
                   <BookOpen size={80} className="text-befinlit-gold opacity-20 absolute -bottom-4 -right-4 rotate-12" />
                   <div className="text-white text-center z-10">
-                    <p className="text-[10px] uppercase tracking-widest text-befinlit-gold mb-2">The Playbook</p>
-                    <h3 className="text-2xl font-bold leading-tight">The Moonlighter's<br />Playbook</h3>
+                    <h3 className="text-3xl font-bold leading-tight">The Moonlighter's<br />Playbook</h3>
                   </div>
                 </div>
               </div>
@@ -147,7 +146,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </section>
 
         {/* Featured Toolkit Section */}
-        <section className="py-24 bg-transparent relative">
+        <section className="pt-12 pb-20 bg-transparent relative">
           <div className="max-w-screen-xl mx-auto px-6 relative z-10">
             <h2 className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-befinlit-gold mb-10 text-center shadow-sm">Featured Toolkit</h2>
             <div
@@ -159,8 +158,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#0F172A 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
                   <Calculator size={80} className="text-befinlit-navy opacity-20 absolute -bottom-4 -left-4 -rotate-12" />
                   <div className="text-befinlit-navy text-center z-10">
-                    <p className="text-[10px] uppercase tracking-widest text-befinlit-navy/60 mb-2">Calculators</p>
-                    <h3 className="text-2xl font-bold leading-tight">The Toolkit for<br />Salaried Individuals</h3>
+                    <h3 className="text-3xl font-bold leading-tight">The Toolkit for<br />Salaried Individuals</h3>
                   </div>
                 </div>
               </div>

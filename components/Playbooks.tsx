@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, BookOpen, Clock, Tag } from 'lucide-react';
+import { MOONLIGHTER_PLAYBOOK_DESCRIPTION } from './content';
 
 interface PlaybooksProps {
   onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook') => void;
@@ -11,14 +12,14 @@ const Playbooks: React.FC<PlaybooksProps> = ({ onNavigate }) => {
       id: 'playbook',
       title: "The Moonlighter's Playbook",
       subtitle: "How to Side-Hustle Without Getting into Trouble",
-      description: "A comprehensive CA-led guide to navigating tax laws, presumptive income benefits, and corporate compliance for Indian freelancers.",
+      description: MOONLIGHTER_PLAYBOOK_DESCRIPTION,
       tag: "Tax Strategy",
       readTime: "12 min read"
     }
   ];
 
   return (
-    <div className="animate-fade-in pt-40 pb-20 px-6 max-w-4xl mx-auto">
+    <div className="animate-fade-in pt-40 pb-20 px-6 max-w-7xl mx-auto">
       <header className="mb-16 border-b border-befinlit-navy/10 pb-12">
         <div className="flex items-center gap-3 mb-4">
           <BookOpen className="text-befinlit-gold" size={20} />

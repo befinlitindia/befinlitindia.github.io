@@ -12,7 +12,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid md:grid-cols-2 gap-12 mb-12">
           <div>
             <h2
-              className="text-2xl font-bold font-serif italic mb-4 cursor-pointer"
+              className="text-2xl font-black tracking-tighter mb-4 cursor-pointer"
               onClick={() => onNavigate('home')}
             >
               BeFinLit India
@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </a>
               <a href="https://www.reddit.com/r/IndiaTaxation/s/fQQ7hYsCOQ" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-befinlit-gold transition-colors">
                 {/* Reddit Icon */}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.67 15.39c.1.33.16.68.16 1.04 0 2.45-3.05 4.43-6.83 4.43s-6.83-1.98-6.83-4.43c0-.36.06-.71.16-1.04-.63-.33-1.07-1-1.07-1.78 0-1.13.91-2.04 2.04-2.04.53 0 1.02.2 1.39.54 1.15-.81 2.7-1.34 4.43-1.42l.94-4.41 3.08.66c.03.88.75 1.58 1.62 1.58 1.13 0 2.04-.91 2.04-2.04s-.91-2.04-2.04-2.04c-.87 0-1.59.7-1.62 1.58l-3.39-.73c-.11-.02-.22.04-.26.14l-1.04 4.86c-1.73.08-3.28.61-4.43 1.42.37-.34.86-.54 1.39-.54 1.13 0 2.04.91 2.04 2.04 0 .78-.44 1.45-1.07 1.78zm-1.84-2.03c-.58 0-1.04.47-1.04 1.04s.47 1.04 1.04 1.04 1.04-.47 1.04-1.04-.47-1.04-1.04-1.04zm-5.66 1.04c0-.58-.47-1.04-1.04-1.04s-1.04.47-1.04 1.04.47 1.04 1.04 1.04 1.04-.47 1.04-1.04zm5.54 2.9c-.14.14-.35.14-.49 0-.96-.96-2.52-.96-3.48 0-.14.14-.35.14-.49 0-.14-.14-.14-.35 0-.49 1.23-1.23 3.23-1.23 4.46 0 .14.14.14.35 0 .49z" /></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" /></svg>
               </a>
             </div>
           </div>
@@ -51,7 +51,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Connect with Us</h4>
               <ul className="space-y-2 text-sm text-white/60">
                 <li><a href="mailto:befinlitindia@gmail.com" className="hover:text-white transition-colors">Email Us</a></li>
-                <li><button className="hover:text-white transition-colors text-left font-normal">Schedule a Paid Consultation</button></li>
+                <li><button className="hover:text-white transition-colors text-left font-normal">Schedule a Consultation</button></li>
               </ul>
             </div>
           </div>

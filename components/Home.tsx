@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, TrendingUp, BookOpen, Wrench, Calculator, Calendar } from 'lucide-react';
+import { MOONLIGHTER_PLAYBOOK_DESCRIPTION, SALARY_TAX_CALCULATOR_DESCRIPTION } from './content';
 
 interface HomeProps {
   onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
@@ -64,7 +65,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               Use our Toolkits <Wrench size={18} />
             </button>
             <button className="border border-befinlit-navy text-befinlit-navy px-6 py-4 rounded-sm font-bold flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-0.5 transition-all w-full sm:w-80 bg-white/30 backdrop-blur-sm">
-              Schedule a Paid Consultation <Calendar size={18} />
+              Schedule a Consultation <Calendar size={18} />
             </button>
           </div>
         </section>
@@ -135,7 +136,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="w-full md:w-1/2">
                 <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">How to Side-Hustle Without Getting into Trouble</h3>
                 <p className="text-sm text-befinlit-navy/60 mb-6 leading-relaxed">
-                  The side-hustle is the new startup. Learn the playbook to navigating Indian tax laws, 44ADA benefits, and legal structures.
+                  {MOONLIGHTER_PLAYBOOK_DESCRIPTION}
                 </p>
                 <div className="flex items-center gap-2 text-befinlit-navy font-bold text-sm group/btn">
                   Read Playbook <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
@@ -165,7 +166,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="w-full md:w-1/2">
                 <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">Compare New vs Old Tax Regimes</h3>
                 <p className="text-sm text-befinlit-navy/60 mb-6 leading-relaxed">
-                  Stop the manual math. Our comprehensive calculator uses AY 2026-27 rules to help you decide which tax regime fits your investments best.
+                  {SALARY_TAX_CALCULATOR_DESCRIPTION}
                 </p>
                 <div className="flex items-center gap-2 text-befinlit-navy font-bold text-sm group/btn">
                   Launch Toolkit <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />

@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Section, InputField, ToggleField, DynamicRow } from './salary-calculator/FormSections';
 import ResultsView from './salary-calculator/ResultsView';
 import Compliances from './salary-calculator/Compliances';
@@ -30,7 +31,11 @@ const initialInput: UserInput = {
     customDeductions: []
 };
 
-const SalaryTaxCalculator: React.FC = () => {
+interface Props {
+    onNavigate: (page: any) => void;
+}
+
+const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
     const [inputs, setInputs] = useState<UserInput>(initialInput);
     const [showTips, setShowTips] = useState(false);
     const [tips, setTips] = useState<string | null>(null);
@@ -69,25 +74,27 @@ const SalaryTaxCalculator: React.FC = () => {
     return (
         <div className="min-h-screen bg-[#fdfbf7] font-sans selection:bg-[#000a2e]/10">
 
-            <main className="max-w-7xl mx-auto px-6 pt-10 pb-24">
+            <main className="max-w-[1600px] mx-auto px-6 pt-10 pb-24">
+
+                {/* Back Button */}
+                <button
+                    onClick={() => onNavigate('tools')}
+                    className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-6 font-bold text-xs uppercase tracking-widest"
+                >
+                    <ArrowLeft size={16} /> Back to Toolkits
+                </button>
 
                 {/* Blog-style Intro Section */}
                 <div className="mb-20 text-center max-w-4xl mx-auto">
-                    <div className="flex flex-col items-center justify-center mb-8">
-                        <div className="bg-[#000a2e] text-white w-16 h-16 rounded-sm flex items-center justify-center mb-6 shadow-xl text-3xl font-black">
-                            B
-                        </div>
-                        <div className="space-y-1">
-                            <p className="text-xl font-bold text-[#000a2e]">BeFinLit India</p>
-                            <p className="text-xs font-semibold text-slate-500">#BecomeFinanciallyLiterate</p>
-                        </div>
+                    <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em] mb-4">
+                        Tax Efficiency Engine
                     </div>
 
-                    <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em] mb-8">
-                        Tax strategy
+                    <div className="flex flex-col items-center justify-center mb-4">
+                        <img src="/logo_full.png" alt="BeFinLit India" className="w-56 h-auto mb-4 object-contain" />
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl font-black text-[#000a2e] mb-8 leading-[1.1] tracking-tight">
+                    <h1 className="text-3xl md:text-5xl font-black text-[#000a2e] mb-6 leading-[1.1] tracking-tight">
                         Income Tax Optimizer for Salaried Individuals: AY 2026-27 Version
                     </h1>
 

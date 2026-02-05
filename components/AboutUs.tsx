@@ -103,7 +103,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate }) => {
               Use our Toolkits <Wrench size={18} />
             </button>
             <button className="bg-befinlit-gold text-befinlit-navy px-6 py-4 rounded-sm font-bold hover:bg-white transition-all flex items-center justify-center gap-2 w-full sm:w-80">
-              Schedule a Paid Consultation <Calendar size={18} />
+              Schedule a Consultation <Calendar size={18} />
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TrendingUp, AlertCircle, Info, ArrowLeft, BookOpen, Calculator, Landmark } from 'lucide-react';
 
 interface Props {
@@ -8,7 +8,41 @@ interface Props {
 const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
   const [salary, setSalary] = useState('');
   const [freelance, setFreelance] = useState('');
+
+  // New State for Contact Details & Validation
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [usageCount, setUsageCount] = useState(0);
+
   const [result, setResult] = useState<null | any>(null);
+
+  useEffect(() => {
+    // Load usage count from local storage on mount
+    const savedCount = localStorage.getItem('moonlighter_calculator_usage');
+    if (savedCount) {
+      setUsageCount(parseInt(savedCount, 10));
+    }
+  }, []);
+
+  const validateEmail = (email: string) => {
+    const allowedDomains = [
+      'gmail.com', 'yahoo.com', 'yahoo.co.in', 'rediffmail.com',
+      'hotmail.com', 'outlook.com', 'icloud.com'
+    ];
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) return false;
+
+    const domain = email.split('@')[1];
+    return allowedDomains.includes(domain.toLowerCase());
+  };
+
+  const validatePhone = (phone: string) => {
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+  };
 
   const calculateTax = (grossIncome: number, isSalaried: boolean) => {
     let netIncome = grossIncome;
@@ -57,6 +91,32 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
   };
 
   const performCalculation = () => {
+    // Reset Errors
+    setEmailError('');
+    setPhoneError('');
+
+    let isValid = true;
+
+    // Validate Email
+    if (!email) {
+      setEmailError('Email is required');
+      isValid = false;
+    } else if (!validateEmail(email)) {
+      setEmailError('Please use a valid personal email (Gmail, Yahoo, Rediff, etc.)');
+      isValid = false;
+    }
+
+    // Validate Phone
+    if (!phone) {
+      setPhoneError('Phone number is required');
+      isValid = false;
+    } else if (!validatePhone(phone)) {
+      setPhoneError('Please enter a valid 10-digit mobile number');
+      isValid = false;
+    }
+
+    if (!isValid) return;
+
     const s = parseFloat(salary) || 0;
     const f = parseFloat(freelance) || 0;
     const freelanceTaxable = f >= 7500000 ? f * 0.8 : f * 0.5;
@@ -64,13 +124,31 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
     const sTax = calculateTax(s, true);
     const combinedTax = calculateTax(s + freelanceTaxable, true);
 
-    setResult({
+    const calcResult = {
       sTax,
       combinedTax,
       diff: combinedTax - sTax,
       fRaw: f,
       fTaxable: freelanceTaxable,
       totalIncome: s + freelanceTaxable
+    };
+
+    setResult(calcResult);
+
+    // Track Usage
+    const newCount = usageCount + 1;
+    setUsageCount(newCount);
+    localStorage.setItem('moonlighter_calculator_usage', newCount.toString());
+
+    // Log Data for "Collection"
+    console.log("Moonlighter Calculator Submission:", {
+      contact: { email, phone },
+      inputs: { salary: s, freelance: f },
+      results: calcResult,
+      meta: {
+        usageCount: newCount,
+        timestamp: new Date().toISOString()
+      }
     });
   };
 
@@ -78,13 +156,23 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
     new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
 
   return (
-    <div className="animate-fade-in pt-40 pb-20 px-6 max-w-4xl mx-auto">
+    <div className="animate-fade-in pt-40 pb-20 px-6 max-w-7xl mx-auto">
       <button
         onClick={() => onNavigate('tools')}
-        className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-8 font-bold text-xs uppercase tracking-widest"
+        className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-6 font-bold text-xs uppercase tracking-widest"
       >
-        <ArrowLeft size={16} /> Back to Toolkit
+        <ArrowLeft size={16} /> Back to Toolkits
       </button>
+
+      {/* Intro Header */}
+      <div className="mb-12 text-center max-w-4xl mx-auto">
+        <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em] mb-4">
+          Surcharge Reality Check
+        </div>
+        <div className="flex flex-col items-center justify-center mb-4">
+          <img src="/logo_full.png" alt="BeFinLit India" className="w-56 h-auto mb-4 object-contain" />
+        </div>
+      </div>
 
       <div className="bg-white border border-befinlit-navy/10 rounded-sm shadow-xl overflow-hidden mb-12">
         <div className="bg-befinlit-navy p-8 text-white">
@@ -118,6 +206,52 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
                 className="w-full bg-gray-50 border border-gray-200 p-4 rounded-sm outline-none focus:border-befinlit-gold transition-colors text-lg"
                 placeholder="e.g. 2500000"
               />
+            </div>
+          </div>
+
+          {/* Contact Details Section for Validation */}
+          <div className="border-t border-dashed border-gray-200 pt-8 mb-8">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="h-px bg-gray-200 flex-1"></div>
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Required for Analysis</span>
+              <div className="h-px bg-gray-200 flex-1"></div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-xs uppercase tracking-[0.2em] font-bold text-befinlit-navy/40">
+                  Email Address
+                  {emailError && <span className="text-red-500 ml-2 normal-case tracking-normal">({emailError})</span>}
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={e => {
+                    setEmail(e.target.value);
+                    if (emailError) setEmailError('');
+                  }}
+                  className={`w-full bg-gray-50 border p-4 rounded-sm outline-none transition-colors text-lg ${emailError ? 'border-red-500 focus:border-red-500' : 'border-gray-200 focus:border-befinlit-gold'}`}
+                  placeholder="yourname@gmail.com"
+                />
+                <p className="text-[10px] text-gray-400">Accepted: Gmail, Yahoo, Rediff, Outlook, etc.</p>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs uppercase tracking-[0.2em] font-bold text-befinlit-navy/40">
+                  Phone Number
+                  {phoneError && <span className="text-red-500 ml-2 normal-case tracking-normal">({phoneError})</span>}
+                </label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={e => {
+                    const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    setPhone(val);
+                    if (phoneError) setPhoneError('');
+                  }}
+                  className={`w-full bg-gray-50 border p-4 rounded-sm outline-none transition-colors text-lg ${phoneError ? 'border-red-500 focus:border-red-500' : 'border-gray-200 focus:border-befinlit-gold'}`}
+                  placeholder="9876543210"
+                />
+              </div>
             </div>
           </div>
 
@@ -213,6 +347,8 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
                   onClick={() => {
                     setSalary('');
                     setFreelance('');
+                    setEmail('');
+                    setPhone('');
                     setResult(null);
                   }}
                   className="text-befinlit-navy/40 font-bold uppercase text-xs tracking-widest hover:text-befinlit-navy transition-colors border-b border-transparent hover:border-befinlit-navy pb-1"
@@ -226,7 +362,8 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
       </div>
 
       <div className="text-center">
-        <p className="text-xs text-befinlit-navy/40 font-bold uppercase tracking-[0.2em]">Crafted by BeFinLit India Specialists</p>
+        <p className="text-xs text-befinlit-navy/40 font-bold uppercase tracking-[0.2em] mb-2">Crafted by BeFinLit India Specialists</p>
+        <p className="text-[10px] text-befinlit-navy/30">Usage Count: {usageCount}</p>
       </div>
     </div>
   );

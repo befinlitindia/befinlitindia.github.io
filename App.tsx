@@ -28,11 +28,11 @@ const App: React.FC = () => {
       case 'playbooks':
         return <Playbooks onNavigate={navigateTo} />;
       case 'playbook':
-        return <ArticleContent />;
+        return <ArticleContent onNavigate={navigateTo} />;
       case 'tools':
         return <Tools onNavigate={navigateTo} />;
       case 'salary-calculator':
-        return <SalaryTaxCalculator />;
+        return <SalaryTaxCalculator onNavigate={navigateTo} />;
       case 'side-hustle-estimator':
         return <SideHustleSurchargeEstimator onNavigate={navigateTo} />;
       default:

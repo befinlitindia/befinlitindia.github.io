@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileSearch, TrendingUp, ShieldAlert, BookOpen, User, Mail, Phone, ChevronRight, X, Check, XCircle, AlertCircle } from 'lucide-react';
+import { FileSearch, TrendingUp, ShieldAlert, BookOpen, User, Mail, Phone, ChevronRight, X, Check, XCircle, AlertCircle, ArrowLeft } from 'lucide-react';
 
 // --- Sub-components for better organization ---
 
@@ -610,18 +610,34 @@ const EntityTaxEstimator = () => {
 
 // --- Main Article Content ---
 
-const ArticleContent: React.FC = () => {
+interface Props {
+  onNavigate?: (page: any) => void;
+}
+
+const ArticleContent: React.FC<Props> = ({ onNavigate }) => {
   const [showHelpModal, setShowHelpModal] = useState(false);
 
   return (
-    <article className="max-w-4xl mx-auto px-6 pt-48 pb-12">
+    <article className="max-w-6xl mx-auto px-6 pt-48 pb-12">
+      {onNavigate && (
+        <button
+          onClick={() => onNavigate('playbooks')}
+          className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-6 font-bold text-xs uppercase tracking-widest"
+        >
+          <ArrowLeft size={16} /> Back to Playbooks
+        </button>
+      )}
+
       {/* Header */}
       <header className="text-center mb-16 border-b border-befinlit-navy/10 pb-12">
 
-
-        <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy mb-6">
-          Tax Strategy
+        <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy mb-4">
+          Tax knowledge
         </span>
+
+        <div className="flex flex-col items-center justify-center mb-4">
+          <img src="/logo_full.png" alt="BeFinLit India" className="w-56 h-auto mb-4 object-contain" />
+        </div>
         <h1 className="text-3xl md:text-5xl font-bold font-serif text-befinlit-navy leading-tight mb-6">
           The Moonlighter’s Playbook: How to Side-Hustle Without Getting into Trouble
         </h1>

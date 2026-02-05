@@ -26,27 +26,25 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b ${isScrolled
-          ? 'bg-befinlit-cream/95 backdrop-blur-sm py-3 border-befinlit-navy/10 shadow-sm'
-          : 'bg-transparent py-6 border-transparent'
+        ? 'bg-befinlit-cream/95 backdrop-blur-sm py-3 border-befinlit-navy/10 shadow-sm'
+        : 'bg-transparent py-6 border-transparent'
         }`}
     >
       <div className="max-w-screen-2xl mx-auto px-6 flex justify-between items-center">
         <div
-          className="flex flex-col cursor-pointer group"
+          className="flex flex-row items-center gap-4 cursor-pointer group"
           onClick={() => handleLinkClick('home')}
         >
-          {/* Brand Logo - Stacked like the image */}
-          <div className="flex flex-col leading-none">
-            <span className="text-2xl font-black text-befinlit-navy tracking-tighter">
-              BeFinLit
-            </span>
-            <span className="text-2xl font-black text-befinlit-navy tracking-tighter -mt-1">
-              India
-            </span>
-            <p className="text-[0.55rem] tracking-[0.15em] text-befinlit-lightNavy font-bold opacity-60 mt-1 uppercase">
-              #BecomeFinanciallyLiterate
-            </p>
-          </div>
+          {/* Brand Logo - Image */}
+          <img src="/logo.png" alt="BeFinLit India" className="h-28 w-auto object-contain" />
+
+          {/* Divider */}
+          <div className="h-8 w-px bg-befinlit-navy/20"></div>
+
+          {/* Tagline - Beside logo */}
+          <p className="text-sm font-medium text-befinlit-gold tracking-wide">
+            #BecomeFinanciallyLiterate
+          </p>
         </div>
 
         {/* Desktop Nav */}
@@ -76,7 +74,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
             The Toolkits
           </button>
           <button className="bg-befinlit-navy text-befinlit-cream px-5 py-2.5 rounded-sm hover:bg-befinlit-lightNavy transition-colors text-xs font-bold tracking-tight shadow-sm">
-            Schedule a Paid Consultation
+            Schedule a Consultation
           </button>
         </nav>
 
@@ -96,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
           <button onClick={() => handleLinkClick('about')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">About</button>
           <button onClick={() => handleLinkClick('playbooks')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Playbooks</button>
           <button onClick={() => handleLinkClick('tools')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Toolkits</button>
-          <button className="bg-befinlit-navy text-befinlit-cream text-center py-4 rounded-sm font-bold tracking-wider text-xs">Schedule a Paid Consultation</button>
+          <button className="bg-befinlit-navy text-befinlit-cream text-center py-4 rounded-sm font-bold tracking-wider text-xs">Schedule a Consultation</button>
         </div>
       )}
     </header>

@@ -3,9 +3,10 @@ import { Instagram, Linkedin, Mail } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
+  onOpenConsultation?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }) => {
   return (
     <footer className="bg-befinlit-navy text-befinlit-cream py-16 mt-20 border-t-4 border-befinlit-gold">
       <div className="max-w-screen-2xl mx-auto px-6">
@@ -51,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Connect with Us</h4>
               <ul className="space-y-2 text-sm text-white/60">
                 <li><a href="mailto:befinlitindia@gmail.com" className="hover:text-white transition-colors">Email Us</a></li>
-                <li><button className="hover:text-white transition-colors text-left font-normal">Schedule a Consultation</button></li>
+                <li><button onClick={onOpenConsultation} className="hover:text-white transition-colors text-left font-normal">Schedule a Consultation</button></li>
               </ul>
             </div>
           </div>

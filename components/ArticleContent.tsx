@@ -126,10 +126,94 @@ const IncomeImpactCalculator = () => {
     }
   }
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  // Lead Gen State
+  const [leadName, setLeadName] = useState('');
+  const [leadEmail, setLeadEmail] = useState('');
+  const [leadPhone, setLeadPhone] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone: string) => {
+    // Strictly 10 digits
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+  };
+
+  // --- CONFIGURATION ---
+  // PASTE YOUR GOOGLE APPS SCRIPT WEB URL INSIDE THE QUOTES BELOW
+  const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwNoxsLR-NxlNO1CHLsBUfvatKrUPiqLT4GkvsOxTb7T8uqaD10Qfmj5EGPenaLg3kv1Q/exec";
+  // ---------------------
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Helper to send data
+  const sendDataToSheet = async (eventType: 'LEAD_GEN' | 'CALCULATION' | 'RESET', additionalData = {}) => {
+    if (!GOOGLE_SHEET_URL) {
+      console.warn("Google Sheet URL not set. Data not sent.");
+      return;
+    }
+
+    const payload = {
+      timestamp: new Date().toISOString(),
+      eventType: eventType,
+      name: leadName || 'N/A',
+      email: leadEmail || 'N/A',
+      phone: leadPhone || 'N/A',
+      salaryInput: salary,
+      freelanceInput: freelance,
+      source: "Moonlighter's Playbook",
+      ...additionalData
+    };
+
+    try {
+      // mode: 'no-cors' is essential for Google Scripts to work without error in browser
+      await fetch(GOOGLE_SHEET_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+      });
+      console.log(`Sent ${eventType} data to sheet`);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setEmailError('');
+    setPhoneError('');
+
+    let isValid = true;
+
+    if (!validateEmail(leadEmail)) {
+      setEmailError('Please enter a valid email address');
+      isValid = false;
+    }
+
+    if (!validatePhone(leadPhone)) {
+      setPhoneError('Please enter a valid 10-digit phone number');
+      isValid = false;
+    }
+
+    if (!isValid) return;
+
+    setIsSubmitting(true);
+
+    // 1. Send Lead Gen Data
+    await sendDataToSheet('LEAD_GEN');
+
+    // 2. Unlock
+    setIsSubmitting(false);
     setHasUnlocked(true);
-    performCalculation();
+    performCalculation(); // This will trigger the first calculation
     setShowPopup(false);
   };
 
@@ -153,6 +237,11 @@ const IncomeImpactCalculator = () => {
   };
 
   const implications = getImplications();
+
+  const handleStartOver = () => {
+    sendDataToSheet('RESET');
+    setResult(null);
+  };
 
   return (
     <div className="bg-befinlit-navy text-befinlit-cream p-8 rounded-sm shadow-xl my-10 relative overflow-hidden">
@@ -247,7 +336,7 @@ const IncomeImpactCalculator = () => {
               </div>
             )}
 
-            <button onClick={() => setResult(null)} className="text-xs text-white/40 hover:text-white underline block mx-auto">Start Over</button>
+            <button onClick={handleStartOver} className="text-xs text-white/40 hover:text-white underline block mx-auto">Start Over</button>
           </div>
         )}
       </div>
@@ -262,18 +351,53 @@ const IncomeImpactCalculator = () => {
             <form onSubmit={handleFormSubmit} className="space-y-4">
               <div className="relative">
                 <User size={16} className="absolute left-3 top-3.5 text-gray-400" />
-                <input required type="text" placeholder="Full Name" className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-sm focus:border-befinlit-navy outline-none" />
+                <input
+                  required
+                  type="text"
+                  placeholder="Full Name"
+                  value={leadName}
+                  onChange={e => setLeadName(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-sm focus:border-befinlit-navy outline-none"
+                />
               </div>
               <div className="relative">
                 <Mail size={16} className="absolute left-3 top-3.5 text-gray-400" />
-                <input required type="email" placeholder="Email Address" className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-sm focus:border-befinlit-navy outline-none" />
+                <input
+                  required
+                  type="email"
+                  placeholder="Email Address"
+                  value={leadEmail}
+                  onChange={e => {
+                    setLeadEmail(e.target.value);
+                    if (emailError) setEmailError('');
+                  }}
+                  className={`w-full pl-10 pr-4 py-3 border rounded-sm outline-none focus:border-befinlit-navy ${emailError ? 'border-red-500' : 'border-gray-300'}`}
+                />
+                {emailError && <p className="text-xs text-red-500 mt-1">{emailError}</p>}
               </div>
               <div className="relative">
                 <Phone size={16} className="absolute left-3 top-3.5 text-gray-400" />
-                <input required type="tel" placeholder="Phone Number" className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-sm focus:border-befinlit-navy outline-none" />
+                <input
+                  required
+                  type="tel"
+                  placeholder="Phone Number (10 digits)"
+                  value={leadPhone}
+                  onChange={e => {
+                    // Allow only numbers
+                    const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    setLeadPhone(val);
+                    if (phoneError) setPhoneError('');
+                  }}
+                  className={`w-full pl-10 pr-4 py-3 border rounded-sm outline-none focus:border-befinlit-navy ${phoneError ? 'border-red-500' : 'border-gray-300'}`}
+                />
+                {phoneError && <p className="text-xs text-red-500 mt-1">{phoneError}</p>}
               </div>
-              <button type="submit" className="w-full bg-befinlit-navy text-white font-bold py-3 rounded-sm hover:bg-befinlit-lightNavy">
-                Reveal Comparison
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-befinlit-navy text-white font-bold py-3 rounded-sm hover:bg-befinlit-lightNavy disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Unlocking..." : "Reveal Comparison"}
               </button>
             </form>
           </div>
@@ -619,25 +743,24 @@ const ArticleContent: React.FC<Props> = ({ onNavigate }) => {
 
   return (
     <article className="max-w-6xl mx-auto px-6 pt-48 pb-12">
-      {onNavigate && (
-        <button
-          onClick={() => onNavigate('playbooks')}
-          className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-6 font-bold text-xs uppercase tracking-widest"
-        >
-          <ArrowLeft size={16} /> Back to Playbooks
-        </button>
-      )}
+      <div className="relative flex items-center justify-center mb-6">
+        {onNavigate && (
+          <button
+            onClick={() => onNavigate('playbooks')}
+            className="absolute left-0 flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
+          >
+            <ArrowLeft size={16} /> Back to Playbooks
+          </button>
+        )}
+        <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
+          Tax knowledge
+        </span>
+      </div>
 
       {/* Header */}
       <header className="text-center mb-16 border-b border-befinlit-navy/10 pb-12">
 
-        <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy mb-4">
-          Tax knowledge
-        </span>
 
-        <div className="flex flex-col items-center justify-center mb-4">
-          <img src="/logo_full.png" alt="BeFinLit India" className="w-56 h-auto mb-4 object-contain" />
-        </div>
         <h1 className="text-3xl md:text-5xl font-bold font-serif text-befinlit-navy leading-tight mb-6">
           The Moonlighter’s Playbook: How to Side-Hustle Without Getting into Trouble
         </h1>

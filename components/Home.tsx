@@ -4,9 +4,10 @@ import { MOONLIGHTER_PLAYBOOK_DESCRIPTION, SALARY_TAX_CALCULATOR_DESCRIPTION } f
 
 interface HomeProps {
   onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
+  onOpenConsultation?: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
   return (
     <div className="relative overflow-hidden w-full">
       {/* Background Decor */}
@@ -64,7 +65,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             >
               Use our Toolkits <Wrench size={18} />
             </button>
-            <button className="border border-befinlit-navy text-befinlit-navy px-6 py-4 rounded-sm font-bold flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-0.5 transition-all w-full sm:w-80 bg-white/30 backdrop-blur-sm">
+            <button
+              onClick={onOpenConsultation}
+              className="border border-befinlit-navy text-befinlit-navy px-6 py-4 rounded-sm font-bold flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-0.5 transition-all w-full sm:w-80 bg-white/30 backdrop-blur-sm"
+            >
               Schedule a Consultation <Calendar size={18} />
             </button>
           </div>

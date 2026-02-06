@@ -3,9 +3,10 @@ import { Mail, ShieldCheck, Award, BookOpen, Wrench, Calendar } from 'lucide-rea
 
 interface AboutUsProps {
   onNavigate?: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
+  onOpenConsultation?: () => void;
 }
 
-const AboutUs: React.FC<AboutUsProps> = ({ onNavigate }) => {
+const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onOpenConsultation }) => {
   return (
     <div className="animate-fade-in">
       <section className="pt-48 pb-20 px-6 max-w-screen-xl mx-auto">
@@ -102,7 +103,10 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate }) => {
             >
               Use our Toolkits <Wrench size={18} />
             </button>
-            <button className="bg-befinlit-gold text-befinlit-navy px-6 py-4 rounded-sm font-bold hover:bg-white transition-all flex items-center justify-center gap-2 w-full sm:w-80">
+            <button
+              onClick={onOpenConsultation}
+              className="bg-befinlit-gold text-befinlit-navy px-6 py-4 rounded-sm font-bold hover:bg-white transition-all flex items-center justify-center gap-2 w-full sm:w-80"
+            >
               Schedule a Consultation <Calendar size={18} />
             </button>
           </div>

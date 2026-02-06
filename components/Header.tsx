@@ -4,9 +4,10 @@ import { Menu, X } from 'lucide-react';
 interface HeaderProps {
   onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
   currentPage: string;
+  onOpenConsultation: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
+const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, onOpenConsultation }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -73,7 +74,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
           >
             The Toolkits
           </button>
-          <button className="bg-befinlit-navy text-befinlit-cream px-5 py-2.5 rounded-sm hover:bg-befinlit-lightNavy transition-colors text-xs font-bold tracking-tight shadow-sm">
+          <button
+            onClick={onOpenConsultation}
+            className="bg-befinlit-navy text-befinlit-cream px-5 py-2.5 rounded-sm hover:bg-befinlit-lightNavy transition-colors text-xs font-bold tracking-tight shadow-sm"
+          >
             Schedule a Consultation
           </button>
         </nav>
@@ -94,7 +98,15 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
           <button onClick={() => handleLinkClick('about')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">About</button>
           <button onClick={() => handleLinkClick('playbooks')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Playbooks</button>
           <button onClick={() => handleLinkClick('tools')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Toolkits</button>
-          <button className="bg-befinlit-navy text-befinlit-cream text-center py-4 rounded-sm font-bold tracking-wider text-xs">Schedule a Consultation</button>
+          <button
+            onClick={() => {
+              onOpenConsultation();
+              setIsMenuOpen(false);
+            }}
+            className="bg-befinlit-navy text-befinlit-cream text-center py-4 rounded-sm font-bold tracking-wider text-xs"
+          >
+            Schedule a Consultation
+          </button>
         </div>
       )}
     </header>

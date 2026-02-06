@@ -8,23 +8,28 @@ import ArticleContent from './components/ArticleContent';
 import Tools from './components/Tools';
 import SalaryTaxCalculator from './components/SalaryTaxCalculator';
 import SideHustleSurchargeEstimator from './components/SideHustleSurchargeEstimator';
+import ConsultationModal from './components/ConsultationModal';
 
 type Page = 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
   const navigateTo = (page: Page) => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
 
+  const openConsultation = () => setIsConsultationOpen(true);
+  const closeConsultation = () => setIsConsultationOpen(false);
+
   const renderContent = () => {
     switch (currentPage) {
       case 'home':
-        return <Home onNavigate={navigateTo} />;
+        return <Home onNavigate={navigateTo} onOpenConsultation={openConsultation} />;
       case 'about':
-        return <AboutUs onNavigate={navigateTo} />;
+        return <AboutUs onNavigate={navigateTo} onOpenConsultation={openConsultation} />;
       case 'playbooks':
         return <Playbooks onNavigate={navigateTo} />;
       case 'playbook':
@@ -36,17 +41,19 @@ const App: React.FC = () => {
       case 'side-hustle-estimator':
         return <SideHustleSurchargeEstimator onNavigate={navigateTo} />;
       default:
-        return <Home onNavigate={navigateTo} />;
+        return <Home onNavigate={navigateTo} onOpenConsultation={openConsultation} />;
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col font-serif selection:bg-befinlit-navy selection:text-befinlit-gold bg-befinlit-cream">
-      <Header onNavigate={navigateTo} currentPage={currentPage} />
+      <Header onNavigate={navigateTo} currentPage={currentPage} onOpenConsultation={openConsultation} />
       <main className="flex-grow">
         {renderContent()}
       </main>
-      <Footer onNavigate={navigateTo} />
+      <Footer onNavigate={navigateTo} onOpenConsultation={openConsultation} />
+
+      <ConsultationModal isOpen={isConsultationOpen} onClose={closeConsultation} />
 
       {/* Floating Action Button */}
       <button

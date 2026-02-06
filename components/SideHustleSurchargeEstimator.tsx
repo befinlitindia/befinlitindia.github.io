@@ -157,21 +157,21 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
 
   return (
     <div className="animate-fade-in pt-40 pb-20 px-6 max-w-7xl mx-auto">
-      <button
-        onClick={() => onNavigate('tools')}
-        className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-6 font-bold text-xs uppercase tracking-widest"
-      >
-        <ArrowLeft size={16} /> Back to Toolkits
-      </button>
+      <div className="relative flex items-center justify-center mb-6">
+        <button
+          onClick={() => onNavigate('tools')}
+          className="absolute left-0 flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
+        >
+          <ArrowLeft size={16} /> Back to Toolkits
+        </button>
+        <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em]">
+          Surcharge Reality Check
+        </div>
+      </div>
 
       {/* Intro Header */}
       <div className="mb-12 text-center max-w-4xl mx-auto">
-        <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em] mb-4">
-          Surcharge Reality Check
-        </div>
-        <div className="flex flex-col items-center justify-center mb-4">
-          <img src="/logo_full.png" alt="BeFinLit India" className="w-56 h-auto mb-4 object-contain" />
-        </div>
+
       </div>
 
       <div className="bg-white border border-befinlit-navy/10 rounded-sm shadow-xl overflow-hidden mb-12">

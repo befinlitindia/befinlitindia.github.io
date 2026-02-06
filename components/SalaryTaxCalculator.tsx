@@ -77,22 +77,23 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
             <main className="max-w-[1600px] mx-auto px-6 pt-10 pb-24">
 
                 {/* Back Button */}
-                <button
-                    onClick={() => onNavigate('tools')}
-                    className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors mb-6 font-bold text-xs uppercase tracking-widest"
-                >
-                    <ArrowLeft size={16} /> Back to Toolkits
-                </button>
+                {/* Back Button & Pill Container */}
+                <div className="relative flex items-center justify-center mb-6">
+                    <button
+                        onClick={() => onNavigate('tools')}
+                        className="absolute left-0 flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
+                    >
+                        <ArrowLeft size={16} /> Back to Toolkits
+                    </button>
+                    <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em]">
+                        Tax Efficiency Engine
+                    </div>
+                </div>
 
                 {/* Blog-style Intro Section */}
                 <div className="mb-20 text-center max-w-4xl mx-auto">
-                    <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em] mb-4">
-                        Tax Efficiency Engine
-                    </div>
 
-                    <div className="flex flex-col items-center justify-center mb-4">
-                        <img src="/logo_full.png" alt="BeFinLit India" className="w-56 h-auto mb-4 object-contain" />
-                    </div>
+
 
                     <h1 className="text-3xl md:text-5xl font-black text-[#000a2e] mb-6 leading-[1.1] tracking-tight">
                         Income Tax Optimizer for Salaried Individuals: AY 2026-27 Version

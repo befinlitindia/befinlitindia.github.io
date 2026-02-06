@@ -33,7 +33,7 @@ const App: React.FC = () => {
       case 'playbooks':
         return <Playbooks onNavigate={navigateTo} />;
       case 'playbook':
-        return <ArticleContent onNavigate={navigateTo} />;
+        return <ArticleContent onNavigate={navigateTo} onOpenConsultation={openConsultation} />;
       case 'tools':
         return <Tools onNavigate={navigateTo} />;
       case 'salary-calculator':

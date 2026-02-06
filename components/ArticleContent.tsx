@@ -714,7 +714,11 @@ const StructureExplorer = () => {
   );
 };
 
-const EntityTaxEstimator = () => {
+interface EntityTaxEstimatorProps {
+  onOpenConsultation?: () => void;
+}
+
+const EntityTaxEstimator: React.FC<EntityTaxEstimatorProps> = ({ onOpenConsultation }) => {
   return (
     <div className="bg-befinlit-cream border border-befinlit-gold/30 p-8 rounded-sm">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -722,7 +726,9 @@ const EntityTaxEstimator = () => {
           <h4 className="text-lg font-bold text-befinlit-navy mb-2">Compare Entity Tax Liabilities</h4>
           <p className="text-sm text-befinlit-navy/70 max-w-4xl">
             Want to see exactly how much tax you save in an individually owned business vs other business organisations for your specific income? We have a comprehensive model. Reach out to us over email. <br /><br />
-            <button className="mt-4 inline-block bg-befinlit-navy text-befinlit-cream px-6 py-3 rounded-sm font-bold hover:bg-befinlit-gold hover:text-befinlit-navy transition-all shadow-md">
+            <button
+              onClick={onOpenConsultation}
+              className="mt-4 inline-block bg-befinlit-navy text-befinlit-cream px-6 py-3 rounded-sm font-bold hover:bg-befinlit-gold hover:text-befinlit-navy transition-all shadow-md">
               Schedule a paid Consultation
             </button>
           </p>
@@ -736,9 +742,10 @@ const EntityTaxEstimator = () => {
 
 interface Props {
   onNavigate?: (page: any) => void;
+  onOpenConsultation?: () => void;
 }
 
-const ArticleContent: React.FC<Props> = ({ onNavigate }) => {
+const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => {
   const [showHelpModal, setShowHelpModal] = useState(false);
 
   return (
@@ -887,7 +894,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate }) => {
 
       {/* Final Lead Gen / Entity Estimator */}
       <section className="mb-12">
-        <EntityTaxEstimator />
+        <EntityTaxEstimator onOpenConsultation={onOpenConsultation} />
       </section>
 
       {/* Contact Modal */}

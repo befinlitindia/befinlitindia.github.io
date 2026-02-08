@@ -29,6 +29,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
     });
     const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     if (!isOpen) return null;
 
     const validateStep1 = () => {
@@ -58,23 +60,53 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
         setFormData(prev => ({ ...prev, payLater: false }));
     };
 
-    const handleSubmit = (payLater: boolean) => {
-        // In a real app, this would submit the data to a backend
-        console.log('Submitting form:', { ...formData, payLater });
-        alert('Thank you! Your request has been received. We will contact you shortly.');
-        onClose();
-        // Reset form after closing
-        setTimeout(() => {
-            setStep(1);
-            setFormData({
-                name: '',
-                email: '',
-                whatsapp: '',
-                query: '',
-                consultationType: null,
-                payLater: false
+    const handleSubmit = async (payLater: boolean) => {
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/befinlitindia@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    whatsapp: formData.whatsapp,
+                    query: formData.query,
+                    consultation_type: formData.consultationType === 'email' ? 'Email Reply' : 'Audio/Video Call',
+                    payment_preference: payLater ? 'Pay Later' : 'Pay Now',
+                    _subject: `New Consultation Request: ${formData.name}`,
+                    _template: 'table',
+                    _captcha: 'false'
+                })
             });
-        }, 500);
+
+            if (response.ok) {
+                alert('Thank you! Your request has been received. Please check your email inbox (and spam) for a confirmation if this is your first time.');
+                onClose();
+                // Reset form
+                setTimeout(() => {
+                    setStep(1);
+                    setFormData({
+                        name: '',
+                        email: '',
+                        whatsapp: '',
+                        query: '',
+                        consultationType: null,
+                        payLater: false
+                    });
+                }, 500);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Something went wrong. Please try again later or contact us directly at befinlitindia@gmail.com');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const renderStep1 = () => (
@@ -133,8 +165,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                         type="button"
                         onClick={() => setFormData({ ...formData, consultationType: 'email' })}
                         className={`p-4 border rounded-sm flex flex-col items-center gap-2 transition-all ${formData.consultationType === 'email'
-                                ? 'bg-befinlit-navy text-befinlit-cream border-befinlit-navy ring-1 ring-befinlit-navy'
-                                : 'bg-white text-befinlit-navy border-befinlit-navy/20 hover:border-befinlit-gold'
+                            ? 'bg-befinlit-navy text-befinlit-cream border-befinlit-navy ring-1 ring-befinlit-navy'
+                            : 'bg-white text-befinlit-navy border-befinlit-navy/20 hover:border-befinlit-gold'
                             }`}
                     >
                         <Mail size={24} />
@@ -144,8 +176,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                         type="button"
                         onClick={() => setFormData({ ...formData, consultationType: 'call' })}
                         className={`p-4 border rounded-sm flex flex-col items-center gap-2 transition-all ${formData.consultationType === 'call'
-                                ? 'bg-befinlit-navy text-befinlit-cream border-befinlit-navy ring-1 ring-befinlit-navy'
-                                : 'bg-white text-befinlit-navy border-befinlit-navy/20 hover:border-befinlit-gold'
+                            ? 'bg-befinlit-navy text-befinlit-cream border-befinlit-navy ring-1 ring-befinlit-navy'
+                            : 'bg-white text-befinlit-navy border-befinlit-navy/20 hover:border-befinlit-gold'
                             }`}
                     >
                         <Phone size={24} />
@@ -193,10 +225,11 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
                 <button
                     onClick={() => handleSubmit(false)}
-                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all"
+                    disabled={isSubmitting}
+                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     <div className="text-left">
-                        <span className="block font-bold text-befinlit-navy">Pay Now</span>
+                        <span className="block font-bold text-befinlit-navy">{isSubmitting ? 'Sending...' : 'Pay Now'}</span>
                         <span className="text-xs text-befinlit-navy/60">Pay at time of proforma invoice</span>
                     </div>
                     <span className="text-befinlit-navy font-bold group-hover:text-befinlit-gold">₹1,999+</span>
@@ -204,10 +237,11 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
                 <button
                     onClick={() => handleSubmit(true)}
-                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all"
+                    disabled={isSubmitting}
+                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     <div className="text-left">
-                        <span className="block font-bold text-befinlit-navy">Pay Later</span>
+                        <span className="block font-bold text-befinlit-navy">{isSubmitting ? 'Sending...' : 'Pay Later'}</span>
                         <span className="text-xs text-befinlit-navy/60">Pay before final draft (Includes ₹299 fee)</span>
                     </div>
                     <span className="text-befinlit-navy font-bold group-hover:text-befinlit-gold">₹2,298+</span>
@@ -225,24 +259,90 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
     const renderCallStep = () => (
         <div className="space-y-6 animate-fade-in">
-            <div className="bg-blue-50 p-4 border border-blue-100 rounded-sm">
-                <h4 className="font-bold text-befinlit-navy flex items-center gap-2 mb-2">
-                    <Calendar size={16} /> Scheduling
-                </h4>
-                <p className="text-sm text-befinlit-navy/80 mb-2">
-                    Please check available slots in our calendar.
+            <div className="bg-white border border-befinlit-navy/20 rounded-sm p-4 text-center">
+                <h5 className="font-bold text-befinlit-navy mb-1 flex items-center justify-center gap-2">
+                    <Calendar size={16} /> Available Dates
+                </h5>
+                <p className="text-xs text-befinlit-navy/60 font-medium mb-3">
+                    {(() => {
+                        const today = new Date();
+                        const end = new Date(today);
+                        end.setDate(today.getDate() + 29);
+
+                        const startMonth = today.toLocaleString('default', { month: 'long' });
+                        const startYear = today.getFullYear();
+                        const endMonth = end.toLocaleString('default', { month: 'long' });
+                        const endYear = end.getFullYear();
+
+                        if (startMonth === endMonth && startYear === endYear) {
+                            return `${startMonth} ${startYear}`;
+                        } else if (startYear === endYear) {
+                            return `${startMonth} - ${endMonth} ${startYear}`;
+                        } else {
+                            return `${startMonth} ${startYear} - ${endMonth} ${endYear}`;
+                        }
+                    })()}
                 </p>
-                <ul className="text-xs text-befinlit-navy/70 space-y-1 list-disc pl-4">
-                    <li><strong>Days:</strong> Monday to Friday (Sat/Sun closed)</li>
-                    <li><strong>Timings:</strong> 1:00 PM - 3:00 PM & 5:00 PM - 7:00 PM IST</li>
-                </ul>
+
+                {/* Calendar Grid */}
+                <div className="grid grid-cols-7 gap-1 mb-2 text-xs font-bold text-befinlit-navy/60">
+                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                </div>
+                <div className="grid grid-cols-7 gap-1">
+                    {(() => {
+                        const today = new Date();
+                        const days = [];
+                        const PUBLIC_HOLIDAYS_2026 = [
+                            "2026-01-26", "2026-03-04", "2026-03-21", "2026-03-26", "2026-03-31",
+                            "2026-04-03", "2026-05-01", "2026-05-27", "2026-06-26", "2026-08-15",
+                            "2026-08-26", "2026-09-04", "2026-10-02", "2026-10-20", "2026-11-08",
+                            "2026-11-24", "2026-12-25"
+                        ];
+
+                        // Generate 30 days
+                        for (let i = 0; i < 30; i++) {
+                            const date = new Date(today);
+                            date.setDate(today.getDate() + i);
+
+                            const dateString = date.toISOString().split('T')[0];
+                            const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+                            const isHoliday = PUBLIC_HOLIDAYS_2026.includes(dateString);
+                            const isUnavailable = isWeekend || isHoliday;
+
+                            days.push(
+                                <div
+                                    key={i}
+                                    className={`
+                                            aspect-square flex items-center justify-center text-xs rounded-sm relative group
+                                            ${isUnavailable
+                                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                                            : 'bg-befinlit-cream text-befinlit-navy font-bold border border-befinlit-gold/30 hover:bg-befinlit-gold hover:text-white cursor-default'
+                                        }
+                                        `}
+                                    title={isHoliday ? "Public Holiday" : isWeekend ? "Weekend (Closed)" : "Available"}
+                                >
+                                    {date.getDate()}
+                                    {isUnavailable && (
+                                        <div className="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 bg-befinlit-navy text-white text-[10px] p-1 rounded whitespace-nowrap z-10 mb-1">
+                                            {isHoliday ? "Holiday" : "Closed"}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        }
+                        return days;
+                    })()}
+                </div>
+                <p className="text-[10px] text-befinlit-navy/40 mt-2 text-center">
+                    *Grey dates are unavailable. Showing next 30 days.
+                </p>
+
                 <a
-                    href="https://calendar.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:underline"
+                    href="#"
+                    onClick={(e) => { e.preventDefault(); alert("Redirecting to BeFinLit India Calendar..."); }}
+                    className="mt-4 block w-full py-2 bg-befinlit-navy text-befinlit-cream text-xs font-bold rounded-sm hover:bg-befinlit-lightNavy transition-colors"
                 >
-                    Open Calendar Availability <ArrowRight size={12} />
+                    View Full Calendar
                 </a>
             </div>
 
@@ -260,10 +360,11 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
                 <button
                     onClick={() => handleSubmit(false)}
-                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all"
+                    disabled={isSubmitting}
+                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     <div className="text-left">
-                        <span className="block font-bold text-befinlit-navy">Pay Now</span>
+                        <span className="block font-bold text-befinlit-navy">{isSubmitting ? 'Sending...' : 'Pay Now'}</span>
                         <span className="text-xs text-befinlit-navy/60">Standard Rate</span>
                     </div>
                     <span className="text-befinlit-navy font-bold group-hover:text-befinlit-gold">₹2,999</span>
@@ -271,10 +372,11 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
                 <button
                     onClick={() => handleSubmit(true)}
-                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all"
+                    disabled={isSubmitting}
+                    className="w-full p-4 border border-befinlit-navy/20 rounded-sm flex items-center justify-between hover:border-befinlit-gold group bg-white hover:bg-befinlit-cream transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     <div className="text-left">
-                        <span className="block font-bold text-befinlit-navy">Pay Later</span>
+                        <span className="block font-bold text-befinlit-navy">{isSubmitting ? 'Sending...' : 'Pay Later'}</span>
                         <span className="text-xs text-befinlit-navy/60">Pay before call (Includes ₹399 fee)</span>
                     </div>
                     <span className="text-befinlit-navy font-bold group-hover:text-befinlit-gold">₹3,398</span>

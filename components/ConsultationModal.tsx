@@ -63,12 +63,15 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
     const handleSubmit = async (payLater: boolean) => {
         setIsSubmitting(true);
 
+        // Use the environment variable or fallback to the provided URL directly
+        const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbwx--cduqiqfNzyCqLmueajGibCsHr6EASzEdur4yy9jsLo7RavSJ9IgliX5gWm9LeHJw/exec";
+
         try {
-            const response = await fetch("https://formsubmit.co/ajax/befinlitindia@gmail.com", {
+            await fetch(GOOGLE_SCRIPT_URL, {
                 method: "POST",
+                mode: "no-cors", // Important: 'no-cors' prevents CORS errors but returns an opaque response
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Content-Type': 'text/plain;charset=utf-8', // Avoids CORS preflight options
                 },
                 body: JSON.stringify({
                     name: formData.name,
@@ -77,30 +80,26 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                     query: formData.query,
                     consultation_type: formData.consultationType === 'email' ? 'Email Reply' : 'Audio/Video Call',
                     payment_preference: payLater ? 'Pay Later' : 'Pay Now',
-                    _subject: `New Consultation Request: ${formData.name}`,
-                    _template: 'table',
-                    _captcha: 'false'
+                    created_at: new Date().toISOString()
                 })
             });
 
-            if (response.ok) {
-                alert('Thank you! Your request has been received. Please check your email inbox (and spam) for a confirmation if this is your first time.');
-                onClose();
-                // Reset form
-                setTimeout(() => {
-                    setStep(1);
-                    setFormData({
-                        name: '',
-                        email: '',
-                        whatsapp: '',
-                        query: '',
-                        consultationType: null,
-                        payLater: false
-                    });
-                }, 500);
-            } else {
-                throw new Error('Form submission failed');
-            }
+            // With 'no-cors', we can't check response.ok, so we assume success if no error was thrown.
+            alert('Thank you! Your request has been received. We will contact you shortly.');
+            onClose();
+            // Reset form
+            setTimeout(() => {
+                setStep(1);
+                setFormData({
+                    name: '',
+                    email: '',
+                    whatsapp: '',
+                    query: '',
+                    consultationType: null,
+                    payLater: false
+                });
+            }, 500);
+
         } catch (error) {
             console.error(error);
             alert('Something went wrong. Please try again later or contact us directly at befinlitindia@gmail.com');

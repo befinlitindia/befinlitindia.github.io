@@ -8,15 +8,19 @@ import ArticleContent from './components/ArticleContent';
 import Tools from './components/Tools';
 import SalaryTaxCalculator from './components/SalaryTaxCalculator';
 import SideHustleSurchargeEstimator from './components/SideHustleSurchargeEstimator';
+import FinancialGuide from './components/FinancialGuide';
+import TopicView from './components/TopicView';
 import ConsultationModal from './components/ConsultationModal';
 
-type Page = 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator';
+type Page = 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator' | 'financial-guide' | 'topic';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [selectedTopic, setSelectedTopic] = useState<string>('');
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
-  const navigateTo = (page: Page) => {
+  const navigateTo = (page: Page, topic?: string) => {
+    if (topic) setSelectedTopic(topic);
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
@@ -40,6 +44,10 @@ const App: React.FC = () => {
         return <SalaryTaxCalculator onNavigate={navigateTo} />;
       case 'side-hustle-estimator':
         return <SideHustleSurchargeEstimator onNavigate={navigateTo} />;
+      case 'financial-guide':
+        return <FinancialGuide onNavigate={navigateTo} onOpenConsultation={openConsultation} />;
+      case 'topic':
+        return <TopicView topic={selectedTopic} onNavigate={navigateTo} />;
       default:
         return <Home onNavigate={navigateTo} onOpenConsultation={openConsultation} />;
     }

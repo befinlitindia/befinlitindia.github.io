@@ -2,7 +2,7 @@ import React from 'react';
 import { Instagram, Linkedin, Mail } from 'lucide-react';
 
 interface FooterProps {
-  onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
+  onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator' | 'financial-guide' | 'topic', topic?: string) => void;
   onOpenConsultation?: () => void;
 }
 
@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }) => {
               </a>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div>
               <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Explore</h4>
               <ul className="space-y-2 text-sm text-white/60">
@@ -46,6 +46,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }) => {
                 <li><button onClick={() => onNavigate('playbooks')} className="hover:text-white transition-colors text-left">The Playbooks</button></li>
                 <li><button onClick={() => onNavigate('tools')} className="hover:text-white transition-colors text-left">The Toolkit</button></li>
                 <li><button onClick={() => onNavigate('about')} className="hover:text-white transition-colors">About Us</button></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Broswse by Topic</h4>
+              <ul className="space-y-2 text-sm text-white/60">
+                <li><button onClick={() => onNavigate('topic', 'Finance 101')} className="hover:text-white transition-colors text-left">Finance 101</button></li>
+                <li><button onClick={() => onNavigate('topic', 'Calculator')} className="hover:text-white transition-colors text-left">Calculators</button></li>
+                <li><button onClick={() => onNavigate('topic', 'Risk Analysis')} className="hover:text-white transition-colors text-left">Risk Analysis</button></li>
               </ul>
             </div>
             <div>

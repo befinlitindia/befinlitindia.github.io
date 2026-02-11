@@ -1,30 +1,14 @@
 import React from 'react';
 import { ArrowRight, Calculator, Wrench, Landmark } from 'lucide-react';
 import { SALARY_TAX_CALCULATOR_DESCRIPTION, SUCCESS_PENALTY_CALCULATOR_DESCRIPTION } from './content';
+import { toolsList } from './data';
 
 interface ToolsProps {
   onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
 }
 
 const Tools: React.FC<ToolsProps> = ({ onNavigate }) => {
-  const toolsList = [
-    {
-      id: 'salary-calculator',
-      title: "The Salary Tax Calculator",
-      subtitle: "New Regime vs Old Regime Showdown",
-      description: SALARY_TAX_CALCULATOR_DESCRIPTION,
-      tag: "Calculator",
-      status: "Ready"
-    },
-    {
-      id: 'side-hustle-estimator',
-      title: "The Side-Hustle Surcharge Estimator",
-      subtitle: "The Success Penalty Calculator",
-      description: SUCCESS_PENALTY_CALCULATOR_DESCRIPTION,
-      tag: "Risk Analysis",
-      status: "Ready"
-    }
-  ];
+
 
   return (
     <div className="animate-fade-in pt-40 pb-20 px-6 max-w-7xl mx-auto">

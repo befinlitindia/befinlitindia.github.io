@@ -138,7 +138,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">How to Side-Hustle Without Getting into Trouble</h3>
+                <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">
+                  <span className="block text-lg font-medium opacity-80 mb-1">The Moonlighter's Playbook</span>
+                  How to Side-Hustle Without Getting into Trouble
+                </h3>
                 <p className="text-sm text-befinlit-navy/60 mb-6 leading-relaxed">
                   {MOONLIGHTER_PLAYBOOK_DESCRIPTION}
                 </p>

@@ -74,7 +74,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
     return (
         <div className="min-h-screen bg-[#fdfbf7] font-sans selection:bg-[#000a2e]/10">
 
-            <main className="max-w-[1600px] mx-auto px-6 pt-10 pb-24">
+            <main className="max-w-6xl mx-auto px-6 pt-48 pb-24">
 
                 {/* Back Button */}
                 {/* Back Button & Pill Container */}
@@ -85,7 +85,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                     >
                         <ArrowLeft size={16} /> Back to Toolkits
                     </button>
-                    <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em]">
+                    <div className="inline-block px-3 py-1 rounded-full border border-befinlit-navy/20 text-[10px] uppercase tracking-widest font-bold text-befinlit-navy bg-white/50 backdrop-blur-sm">
                         Tax Efficiency Engine
                     </div>
                 </div>

@@ -74,7 +74,7 @@ const AIAdvisor: React.FC<AIAdvisorProps> = ({ taxDetails, taxResult }) => {
             {!isOpen && (
                 <button
                     onClick={() => setIsOpen(true)}
-                    className="fixed bottom-6 right-6 bg-[#000a2e] text-white p-4 rounded-sm shadow-xl hover:bg-[#1e293b] transition-all duration-300 z-50 flex items-center gap-2 group border border-white/10"
+                    className="fixed bottom-24 right-6 bg-[#000a2e] text-white p-4 rounded-sm shadow-xl hover:bg-[#1e293b] transition-all duration-300 z-50 flex items-center gap-2 group border border-white/10"
                 >
                     <Sparkles className="w-5 h-5 text-yellow-400" />
                     <span className="font-bold text-sm pr-2 group-hover:block hidden">Ask AI Advisor</span>
@@ -82,7 +82,7 @@ const AIAdvisor: React.FC<AIAdvisorProps> = ({ taxDetails, taxResult }) => {
             )}
 
             {isOpen && (
-                <div className="fixed bottom-6 right-6 w-96 h-[600px] max-h-[80vh] bg-white rounded-sm shadow-2xl flex flex-col z-50 border border-slate-200 overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300">
+                <div className="fixed bottom-24 right-6 w-96 h-[600px] max-h-[80vh] bg-white rounded-sm shadow-2xl flex flex-col z-50 border border-slate-200 overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300">
                     <div className="bg-[#000a2e] p-4 flex justify-between items-center text-white">
                         <div className="flex items-center gap-3">
                             <div className="bg-white/10 p-2 rounded-sm">
@@ -108,8 +108,8 @@ const AIAdvisor: React.FC<AIAdvisorProps> = ({ taxDetails, taxResult }) => {
                             >
                                 <div
                                     className={`max-w-[85%] p-3 rounded-sm text-sm leading-relaxed shadow-sm border ${msg.role === 'user'
-                                            ? 'bg-[#000a2e] text-white border-[#000a2e]'
-                                            : 'bg-white text-gray-800 border-gray-100'
+                                        ? 'bg-[#000a2e] text-white border-[#000a2e]'
+                                        : 'bg-white text-gray-800 border-gray-100'
                                         }`}
                                 >
                                     <div dangerouslySetInnerHTML={{

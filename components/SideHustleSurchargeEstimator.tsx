@@ -156,7 +156,7 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
     new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
 
   return (
-    <div className="animate-fade-in pt-40 pb-20 px-6 max-w-7xl mx-auto">
+    <div className="animate-fade-in pt-40 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
       <div className="relative flex items-center justify-center mb-6">
         <button
           onClick={() => onNavigate('tools')}

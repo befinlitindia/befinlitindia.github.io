@@ -11,7 +11,7 @@ const Tools: React.FC<ToolsProps> = ({ onNavigate }) => {
 
 
   return (
-    <div className="animate-fade-in pt-48 pb-20 px-6 max-w-7xl mx-auto">
+    <div className="animate-fade-in pt-48 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
       <header className="mb-16 border-b border-befinlit-navy/10 pb-12">
         <div className="flex items-center gap-2 mb-4">
           <Wrench className="text-befinlit-gold" size={24} />

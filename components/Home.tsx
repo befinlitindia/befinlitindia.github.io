@@ -42,7 +42,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
 
       <div className="relative z-10 animate-fade-in">
         {/* Hero Section */}
-        <section className="pt-48 pb-24 px-6 max-w-screen-xl mx-auto text-center">
+        <section className="pt-48 pb-24 px-4 md:px-8 max-w-[1400px] mx-auto text-center">
           <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy mb-8 bg-white/50 backdrop-blur-sm">
             Your Finance Experts
           </span>
@@ -75,7 +75,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
         </section>
 
         {/* What are our goals? */}
-        <section className="py-24 px-6 max-w-screen-xl mx-auto border-t border-befinlit-navy/5 relative overflow-hidden">
+        <section className="py-24 px-4 md:px-8 max-w-[1400px] mx-auto border-t border-befinlit-navy/5 relative overflow-hidden">
           {/* Watermark */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[120px] md:text-[180px] font-bold text-befinlit-navy/[0.03] pointer-events-none select-none whitespace-nowrap leading-none z-0 font-serif">
             OUR GOALS
@@ -122,7 +122,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
         {/* Featured Content Card */}
         <section className="bg-white/60 backdrop-blur-md pt-12 pb-20 border-y border-befinlit-navy/5 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-befinlit-gold/20 to-transparent"></div>
-          <div className="max-w-screen-xl mx-auto px-6 relative z-10">
+          <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
             <h2 className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-befinlit-gold mb-10 text-center shadow-sm">Featured Playbook</h2>
             <div
               onClick={() => onNavigate('playbook')}
@@ -142,7 +142,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
                   <span className="block text-lg font-medium opacity-80 mb-1">The Moonlighter's Playbook</span>
                   How to Side-Hustle Without Getting into Trouble
                 </h3>
-                <p className="text-sm text-befinlit-navy/60 mb-6 leading-relaxed">
+                <p className="text-sm text-befinlit-navy/60 mb-6 leading-relaxed text-justify">
                   {MOONLIGHTER_PLAYBOOK_DESCRIPTION}
                 </p>
                 <div className="flex items-center gap-2 text-befinlit-navy font-bold text-sm group/btn">
@@ -155,7 +155,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
 
         {/* Featured Toolkit Section */}
         <section className="pt-12 pb-20 bg-transparent relative">
-          <div className="max-w-screen-xl mx-auto px-6 relative z-10">
+          <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
             <h2 className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-befinlit-gold mb-10 text-center shadow-sm">Featured Toolkit</h2>
             <div
               onClick={() => onNavigate('salary-calculator')}

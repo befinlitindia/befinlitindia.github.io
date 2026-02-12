@@ -11,7 +11,7 @@ const Playbooks: React.FC<PlaybooksProps> = ({ onNavigate }) => {
 
 
   return (
-    <div className="animate-fade-in pt-48 pb-20 px-6 max-w-7xl mx-auto">
+    <div className="animate-fade-in pt-48 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
       <header className="mb-16 border-b border-befinlit-navy/10 pb-12">
         <div className="flex items-center gap-3 mb-4">
           <BookOpen className="text-befinlit-gold" size={20} />
@@ -46,7 +46,7 @@ const Playbooks: React.FC<PlaybooksProps> = ({ onNavigate }) => {
                 <span className="block text-lg font-medium opacity-80 mb-1">{item.title}</span>
                 {item.subtitle}
               </h3>
-              <p className="text-befinlit-navy/70 text-sm mb-6 leading-relaxed">
+              <p className="text-befinlit-navy/70 text-sm mb-6 leading-relaxed text-justify">
                 {item.description}
               </p>
               <div className="flex items-center gap-2 text-befinlit-navy font-bold text-sm">

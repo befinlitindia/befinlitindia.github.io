@@ -9,7 +9,7 @@ interface AboutUsProps {
 const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onOpenConsultation }) => {
   return (
     <div className="animate-fade-in">
-      <section className="pt-48 pb-20 px-6 max-w-screen-xl mx-auto">
+      <section className="pt-48 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy mb-8 bg-white/50 backdrop-blur-sm">
             Our Story
@@ -85,7 +85,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onOpenConsultation }) => 
       </section>
 
       <section className="bg-befinlit-navy text-befinlit-cream py-20 px-6">
-        <div className="max-w-screen-xl mx-auto text-center">
+        <div className="max-w-[1400px] mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Be the master of your own money.</h2>
           <p className="text-white/60 mb-10 max-w-xl mx-auto">
             Join thousands of professionals who rely on BeFinLit India to keep their finances compliant and their wealth growing.

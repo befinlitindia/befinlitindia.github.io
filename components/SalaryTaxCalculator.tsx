@@ -74,7 +74,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
     return (
         <div className="min-h-screen bg-[#fdfbf7] font-sans selection:bg-[#000a2e]/10">
 
-            <main className="max-w-6xl mx-auto px-6 pt-48 pb-24">
+            <main className="max-w-[1400px] mx-auto px-4 md:px-8 pt-48 pb-24">
 
                 {/* Back Button */}
                 {/* Back Button & Pill Container */}

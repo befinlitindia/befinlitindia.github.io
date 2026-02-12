@@ -749,7 +749,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
   const [showHelpModal, setShowHelpModal] = useState(false);
 
   return (
-    <article className="max-w-6xl mx-auto px-6 pt-48 pb-12">
+    <article className="max-w-[1400px] mx-auto px-4 md:px-8 pt-48 pb-12">
       <div className="relative flex items-center justify-center mb-6">
         {onNavigate && (
           <button

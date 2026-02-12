@@ -69,14 +69,39 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
             </div>
 
             {/* Internal Navigation */}
-            <nav className="bg-white/80 backdrop-blur-md rounded-sm border border-befinlit-navy/10 p-4 sticky top-24 z-10 mb-12 shadow-sm print:hidden">
-                <ul className="flex items-center justify-center flex-wrap gap-4 sm:gap-6 md:gap-8 text-sm font-bold uppercase tracking-wider">
-                    <li><a href="#income-tax" className="text-befinlit-navy/60 hover:text-befinlit-gold transition-colors">Income Tax</a></li>
-                    <li><a href="#withholding-tax" className="text-befinlit-navy/60 hover:text-befinlit-gold transition-colors">Withholding Tax</a></li>
-                    <li><a href="#books-of-accounts" className="text-befinlit-navy/60 hover:text-befinlit-gold transition-colors">Books</a></li>
-                    <li><a href="#gst" className="text-befinlit-navy/60 hover:text-befinlit-gold transition-colors">GST</a></li>
-                    <li><a href="#fema" className="text-befinlit-navy/60 hover:text-befinlit-gold transition-colors">FEMA/RBI</a></li>
-                    <li><a href="#payments" className="text-befinlit-navy/60 hover:text-befinlit-gold transition-colors">Payments</a></li>
+            {/* Internal Navigation */}
+            <nav className="bg-befinlit-navy/95 backdrop-blur-md rounded-sm border border-befinlit-navy/10 sticky top-[138px] z-40 mb-12 shadow-sm print:hidden w-full transition-all duration-300">
+                <ul className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:justify-between w-full text-xs md:text-sm font-bold tracking-wider divide-y md:divide-y-0 md:divide-x divide-white/10">
+                    <li className="flex-1">
+                        <a href="#income-tax" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            Income Tax
+                        </a>
+                    </li>
+                    <li className="flex-1">
+                        <a href="#withholding-tax" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            Withholding Tax
+                        </a>
+                    </li>
+                    <li className="flex-1">
+                        <a href="#books-of-accounts" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            Books
+                        </a>
+                    </li>
+                    <li className="flex-1">
+                        <a href="#gst" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            GST
+                        </a>
+                    </li>
+                    <li className="flex-1">
+                        <a href="#fema" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            FEMA/RBI
+                        </a>
+                    </li>
+                    <li className="flex-1">
+                        <a href="#payments" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            Payments
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
@@ -86,39 +111,85 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                 {/* Section 1: Income Tax Act, 1961 */}
                 <section id="income-tax" className="scroll-mt-32">
                     <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5 mb-8">
-                        <h3 className="text-xl font-serif font-bold text-center text-befinlit-navy mb-2">Who is a Professional?</h3>
-                        <p className="text-center text-befinlit-navy/70 leading-relaxed">A professional includes an individual or partnership firm engaged in a vocation requiring intellectual skill or manual skill controlled by the operator's intellectual skill.</p>
+                        <h3 className="text-3xl font-serif font-bold text-left text-befinlit-navy mb-4">Who is a Professional?</h3>
+                        <p className="text-left text-befinlit-navy/70 leading-relaxed">A professional is someone who earns money by selling their specialized skill, knowledge, or intellectual talent rather than selling a physical product. Instead of selling goods, they help people solve problems using their specialized training—like a software developer writing code, a designer creating a logo, or a doctor treating a patient.</p>
                     </div>
 
-                    <h2 className="text-3xl font-bold font-serif text-center mb-8 text-befinlit-navy flex items-center justify-center gap-3">
+                    <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5 mb-12">
+                        <p className="text-left text-befinlit-navy/80 leading-relaxed font-serif">
+                            While different Acts (like GST) might have their own rules, we will use the <b className="font-bold text-befinlit-navy">Income Tax Act, 2025</b> as our primary guide. According to the Act, a professional can operate their work in different business structures like <b className="font-bold text-befinlit-navy">Sole Proprietorship (Individual), Partnership, LLP, and Pvt Ltd</b>. To understand the differences between these business structures and compare their pros and cons,{' '}
+                            <button onClick={() => onNavigate && onNavigate('playbook')} className="text-befinlit-gold font-bold underline hover:text-befinlit-navy transition-colors inline-block">
+                                refer to the Moonlighter's Playbook.
+                            </button>
+                        </p>
+                    </div>
+
+                    <h2 className="text-3xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
                         <FileText className="text-befinlit-gold" /> Income Tax Act 2025
                     </h2>
 
-                    <div className="flex flex-col md:flex-row gap-8">
-                        <div className="w-full md:w-2/3 space-y-8">
-                            <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5 h-full flex flex-col">
-                                <div className="flex-grow">
-                                    <h3 className="text-2xl font-serif font-bold mb-4 text-befinlit-navy">Section 58<sup>*</sup>: Presumptive Taxation</h3>
-                                    <p className="text-befinlit-navy/70 mb-8 leading-relaxed">A simplified taxation scheme for Resident Individuals and Partnership Firms (not LLPs) who are specified professionals.</p>
-                                    <h4 className="font-bold text-xs uppercase tracking-widest text-befinlit-navy/50 mb-4">Turnover Criteria (FY 2024-25 / AY 2025-26)</h4>
-                                    <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                                        <div className="flex-1 text-center bg-befinlit-navy/5 p-6 rounded-sm border border-befinlit-navy/10">
-                                            <p className="font-serif font-bold text-2xl text-befinlit-navy mb-1">≤ ₹50 Lakh</p>
-                                            <p className="text-xs uppercase tracking-wider text-befinlit-navy/60">Standard Gross Receipts Limit</p>
+                    <div className="flex flex-col gap-8">
+                        {/* General Rule - Full Width */}
+                        <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
+                            <h3 className="text-2xl font-serif font-bold mb-4 text-befinlit-navy">General Rule: Income Tax for All Professionals</h3>
+                            <p className="text-befinlit-navy/70 leading-relaxed mb-6">
+                                By default, <b className="font-bold text-befinlit-navy">ALL</b> professionals in <b className="font-bold text-befinlit-navy">ALL</b> business structures (Sole Proprietorship, Partnership, LLP, Pvt Ltd) are required to:
+                            </p>
+                            <ul className="list-disc list-inside space-y-2 text-befinlit-navy/80 mb-6 pl-4">
+                                <li>Maintain <b className="font-bold">detailed books of accounts</b> (Profit & Loss, Balance Sheet, etc.).</li>
+                                <li>File <b className="font-bold">ITR-3</b> (or applicable corporate return), declaring actual income and expenses.</li>
+                                <li>Keep proof of every expense claimed.</li>
+                            </ul>
+                            <p className="text-sm text-befinlit-navy/60 italic border-t border-befinlit-navy/10 pt-4">This is the "heavier foundation" required for most businesses.</p>
+                        </div>
+
+                        {/* Simplified Scheme - Split Layout */}
+                        <div className="flex flex-col md:flex-row gap-8">
+                            <div className="w-full md:w-2/3 space-y-8">
+                                <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5 h-full flex flex-col relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 bg-befinlit-gold text-befinlit-navy text-[10px] font-bold px-3 py-1 uppercase tracking-widest">
+                                        Optimization Hack
+                                    </div>
+                                    <div className="flex-grow">
+                                        <h3 className="text-2xl font-serif font-bold mb-4 text-befinlit-navy">Section 58<sup>*</sup>: The Simplified Exception</h3>
+                                        <p className="text-befinlit-navy/70 mb-6 leading-relaxed">
+                                            Usage of this section is <b className="font-bold text-befinlit-navy">RESTRICTED</b>. It is available ONLY if you meet BOTH conditions:
+                                        </p>
+                                        <ul className="space-y-3 mb-8 text-sm">
+                                            <li className="flex items-start gap-3">
+                                                <span className="bg-befinlit-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+                                                <span className="text-befinlit-navy/80">You are a <b className="font-bold text-befinlit-navy">Specified Professional</b> (see list →).</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <span className="bg-befinlit-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+                                                <span className="text-befinlit-navy/80">Your structure is a <b className="font-bold text-befinlit-navy">Sole Proprietorship</b> or <b className="font-bold text-befinlit-navy">Partnership</b> (LLPs & Pvt Ltd cannot use this).</span>
+                                            </li>
+                                        </ul>
+
+                                        <div className="bg-befinlit-navy/5 p-6 rounded-sm border border-befinlit-navy/10 mb-6">
+                                            <h4 className="font-bold text-lg text-befinlit-navy mb-2">The Benefit: Pay Tax on Half</h4>
+                                            <p className="text-sm text-befinlit-navy/70 leading-relaxed">If eligible, you can declare just 50% of your gross receipts as profit and pay tax on that. No detailed books required!</p>
                                         </div>
-                                        <div className="flex-1 text-center bg-green-50 p-6 rounded-sm border border-green-200">
-                                            <p className="font-serif font-bold text-2xl text-green-700 mb-1">≤ ₹75 Lakh</p>
-                                            <p className="text-xs uppercase tracking-wider text-green-800/60">If ≥95% receipts via non-cash</p>
+
+                                        <h4 className="font-bold text-xs uppercase tracking-widest text-befinlit-navy/50 mb-4">Who is Eligible? (Income Limit)</h4>
+                                        <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                                            <div className="flex-1 text-center bg-white border border-befinlit-navy/20 p-4 rounded-sm">
+                                                <p className="font-serif font-bold text-xl text-befinlit-navy mb-1">≤ ₹50 Lakh</p>
+                                                <p className="text-[10px] uppercase tracking-wider text-befinlit-navy/60">Standard Limit</p>
+                                            </div>
+                                            <div className="flex-1 text-center bg-green-50 border border-green-200 p-4 rounded-sm">
+                                                <p className="font-serif font-bold text-xl text-green-700 mb-1">≤ ₹75 Lakh</p>
+                                                <p className="text-[10px] uppercase tracking-wider text-green-800/60">If 95% Digital</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <p className="mt-6 text-befinlit-navy/80 text-sm leading-relaxed border-t border-befinlit-navy/10 pt-6">Under this scheme, a <b className="font-bold text-befinlit-navy">minimum of 50%</b> of your total gross receipts is considered your profit. Income tax is calculated based on the profits disclosed. The advance tax liability rises on the last quarter of the Financial Year (15th of March).</p>
                             </div>
-                        </div>
-                        <div className="w-full md:w-1/3">
                             <div className="bg-befinlit-navy text-befinlit-cream p-8 rounded-sm h-full flex flex-col justify-center">
-                                <h3 className="text-xl font-bold mb-4 text-befinlit-gold text-center font-serif">Professionals Notified u/s 62<sup>*</sup></h3>
-                                <p className="text-xs text-white/60 mb-8 text-center uppercase tracking-widest">Eligible for Section 58<sup>*</sup></p>
+                                <h3 className="text-xl font-bold mb-4 text-befinlit-gold text-center font-serif">Specified Professionals</h3>
+                                <p className="text-xs text-white/60 mb-8 text-center uppercase tracking-widest leading-relaxed">
+                                    Only these professions are eligible for the simplified Section 58<sup>*</sup> scheme
+                                </p>
                                 <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm font-medium">
                                     <span>✓ Legal</span>
                                     <span>✓ Medical</span>
@@ -140,13 +211,13 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
                 {/* Withholding Tax Flowchart */}
                 <section id="withholding-tax" className="scroll-mt-32">
-                    <h2 className="text-3xl font-bold font-serif text-center mb-8 text-befinlit-navy flex items-center justify-center gap-3">
+                    <h2 className="text-3xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
                         <Globe className="text-befinlit-gold" /> Taxes Paid Abroad (Withholding Tax)
                     </h2>
                     <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
-                        <div className="text-center mb-10">
-                            <h3 className="text-xl font-bold text-befinlit-navy mb-3">What is DTAA?</h3>
-                            <p className="text-befinlit-navy/70 max-w-2xl mx-auto leading-relaxed">A <b className="font-bold text-befinlit-navy">D</b>ouble <b className="font-bold text-befinlit-navy">T</b>axation <b className="font-bold text-befinlit-navy">A</b>voidance <b className="font-bold text-befinlit-navy">A</b>greement (DTAA) is a tax treaty between India and another country. It ensures that you don't pay tax on the same income in both countries. By using the DTAA, your foreign client can deduct tax at a lower rate (e.g., 10%) instead of their country's default rate.</p>
+                        <div className="text-left mb-10">
+                            <h3 className="text-3xl font-bold text-befinlit-navy mb-3">What is DTAA?</h3>
+                            <p className="text-befinlit-navy/70 max-w-2xl leading-relaxed">A <b className="font-bold text-befinlit-navy">D</b>ouble <b className="font-bold text-befinlit-navy">T</b>axation <b className="font-bold text-befinlit-navy">A</b>voidance <b className="font-bold text-befinlit-navy">A</b>greement (DTAA) is a tax treaty between India and another country. It ensures that you don't pay tax on the same income in both countries. By using the DTAA, your foreign client can deduct tax at a lower rate (e.g., 10%) instead of their country's default rate.</p>
                         </div>
                         <div className="space-y-6 max-w-4xl mx-auto">
                             <div className="grid md:grid-cols-2 gap-6 items-start">
@@ -177,7 +248,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
                 {/* Books of Accounts Section */}
                 <section id="books-of-accounts" className="scroll-mt-32">
-                    <h2 className="text-3xl font-bold font-serif text-center mb-8 text-befinlit-navy flex items-center justify-center gap-3">
+                    <h2 className="text-3xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
                         <BookOpen className="text-befinlit-gold" /> Books of Accounts & Presumptive Scheme
                     </h2>
                     <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
@@ -186,11 +257,11 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-6">
                                 <div className="w-full md:w-2/5">
                                     <div className="p-6 rounded-sm border border-befinlit-gold/30 bg-befinlit-gold/5 h-full">
-                                        <h4 className="font-bold text-center text-befinlit-navy mb-4 font-serif">Basic Books for Section 58<sup>*</sup></h4>
+                                        <h4 className="font-bold text-center text-befinlit-navy mb-4 font-serif">Simple Records You Need</h4>
                                         <ul className="text-sm text-befinlit-navy/80 space-y-2 list-disc list-inside">
-                                            <li>Capital Account</li>
-                                            <li>Sundry Creditors</li>
-                                            <li>Sundry Debtors</li>
+                                            <li>Business Expenses</li>
+                                            <li>Money you owe</li>
+                                            <li>Money owed to you</li>
                                             <li>Cash & Bank Balances</li>
                                         </ul>
                                     </div>
@@ -200,8 +271,8 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                                 </div>
                                 <div className="w-full md:w-2/5">
                                     <div className="p-6 rounded-sm bg-gray-50 border border-gray-200 h-full flex flex-col justify-center text-center">
-                                        <h4 className="font-bold text-lg text-befinlit-navy mb-2">The Best Part of Section 58<sup>*</sup></h4>
-                                        <p className="text-sm text-befinlit-navy/70 leading-relaxed">You are <b className="font-bold text-befinlit-navy">not required to maintain detailed books</b> of accounts. Only basic records are needed to fill your ITR.</p>
+                                        <h4 className="font-bold text-lg text-befinlit-navy mb-2">The Best Part</h4>
+                                        <p className="text-sm text-befinlit-navy/70 leading-relaxed">You do <b className="font-bold text-befinlit-navy">NOT</b> need complex accounting. Just keep basic records of what comes in and what goes out.</p>
                                     </div>
                                 </div>
                             </div>
@@ -241,15 +312,15 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
                 {/* Section 2: GST Provisions */}
                 <section id="gst" className="scroll-mt-32">
-                    <h2 className="text-3xl font-bold font-serif text-center mb-8 text-befinlit-navy flex items-center justify-center gap-3">
+                    <h2 className="text-3xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
                         <ShieldCheck className="text-befinlit-gold" /> GST for Service Providers
                     </h2>
                     <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
-                        <h3 className="text-2xl font-bold font-serif text-center mb-6 text-befinlit-navy">When to get GST Registration?</h3>
+                        <h3 className="text-3xl font-bold font-serif text-left mb-6 text-befinlit-navy">When to get GST Registration?</h3>
                         <div className="grid md:grid-cols-2 gap-6 text-center mb-10">
                             <div className="bg-red-50 p-6 rounded-sm border border-red-200">
-                                <h4 className="font-bold text-lg mb-2 text-red-800">Compulsory Registration</h4>
-                                <p className="text-red-700/80 text-sm leading-relaxed">You <b className="font-bold">must</b> register for GST if your aggregate turnover from export of services or domestic services or both exceeds <b className="font-bold">₹20 lakh (₹10 lakh for special category states)</b> in a financial year.</p>
+                                <h4 className="font-bold text-lg mb-2 text-red-800">Mandatory Registration</h4>
+                                <p className="text-red-700/80 text-sm leading-relaxed">You <b className="font-bold">must</b> register for GST if your total income from services (India + Abroad) crosses <b className="font-bold">₹20 Lakh</b> in a year.</p>
                             </div>
                             <div className="bg-green-50 p-6 rounded-sm border border-green-200">
                                 <h4 className="font-bold text-lg mb-2 text-green-800">Voluntary Registration</h4>
@@ -257,7 +328,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                             </div>
                         </div>
 
-                        <h3 className="text-2xl font-bold font-serif text-center mt-12 mb-8 text-befinlit-navy">Compliance after Registration (for exporters)</h3>
+                        <h3 className="text-3xl font-bold font-serif text-left mt-12 mb-8 text-befinlit-navy">Compliance after Registration (for exporters)</h3>
                         <div className="space-y-6 max-w-4xl mx-auto">
                             <div className="grid md:grid-cols-2 gap-6 items-start">
                                 <div className="bg-gray-50 border border-gray-200 p-6 rounded-sm h-full">
@@ -287,27 +358,27 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
                 {/* Section 3: FEMA & RBI Guidelines */}
                 <section id="fema" className="scroll-mt-32">
-                    <h2 className="text-3xl font-bold font-serif text-center mb-8 text-befinlit-navy flex items-center justify-center gap-3">
+                    <h2 className="text-3xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
                         <Globe className="text-befinlit-gold" /> FEMA & RBI Guidelines for Forex
                     </h2>
                     <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
-                        <h3 className="text-2xl font-bold font-serif text-center mb-8 text-befinlit-navy">Receiving Foreign Payments Correctly</h3>
+                        <h3 className="text-3xl font-bold font-serif text-left mb-8 text-befinlit-navy">Receiving Foreign Payments Correctly</h3>
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="bg-befinlit-cream p-6 rounded-sm border border-befinlit-navy/10">
-                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">FIRC is Crucial</h4>
-                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">Obtain a <b className="text-befinlit-gold">Foreign Inward Remittance Certificate (FIRC)</b> from your bank/payment platform. It's essential proof for tax, GST, and audit purposes.</p>
+                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">FIRC (Your Proof)</h4>
+                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">Always get a <b className="text-befinlit-gold">FIRC</b> (Foreign Inward Remittance Certificate). It is your official proof of foreign income for tax and audits.</p>
                             </div>
                             <div className="bg-befinlit-cream p-6 rounded-sm border border-befinlit-navy/10">
-                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">Correct Purpose Codes</h4>
-                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">Use the correct RBI purpose code for every transaction (e.g., <b className="font-bold text-befinlit-navy">P0802</b> for software consultancy, <b className="font-bold text-befinlit-navy">P0806</b> for other business services).</p>
+                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">Use Right Codes</h4>
+                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">Tell the bank why you got paid using the right RBI purpose code (e.g., <b className="font-bold text-befinlit-navy">P0802</b> for software, <b className="font-bold text-befinlit-navy">P0806</b> for other services).</p>
                             </div>
                             <div className="bg-befinlit-cream p-6 rounded-sm border border-befinlit-navy/10">
-                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">Timely Repatriation</h4>
-                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">Bring export proceeds to India within <b className="font-bold text-befinlit-navy">9 months</b> from the export date. Track this via the EDPMS system at your bank. Failure can lead to penalties.</p>
+                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">Bring Money Home Fast</h4>
+                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">Foreign income must hit your Indian bank account within <b className="font-bold text-befinlit-navy">9 months</b> of invoicing.</p>
                             </div>
                             <div className="bg-befinlit-cream p-6 rounded-sm border border-befinlit-navy/10">
-                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">Softex Compliance</h4>
-                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">For export of <b className="font-bold text-befinlit-navy">software products</b> not exported as goods, Softex filing is mandatory. For IT-enabled services (ITeS), Softex filing does not apply.</p>
+                                <h4 className="font-bold text-lg mb-2 text-befinlit-navy">Softex Form</h4>
+                                <p className="text-sm text-befinlit-navy/70 leading-relaxed">If you export <b className="font-bold text-befinlit-navy">software code/products</b>, you must file a Softex form. For pure IT services, you might not need it.</p>
                             </div>
                         </div>
 
@@ -316,7 +387,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
                 {/* Section 4: Payment Options */}
                 <section id="payments" className="scroll-mt-32">
-                    <h2 className="text-3xl font-bold font-serif text-center mb-8 text-befinlit-navy flex items-center justify-center gap-3">
+                    <h2 className="text-3xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
                         <IndianRupee className="text-befinlit-gold" /> Choosing a Payment Platform (2025)
                     </h2>
                     <div className="bg-white p-6 rounded-sm shadow-sm border border-befinlit-navy/5 overflow-x-auto">
@@ -324,9 +395,9 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                             <thead className="bg-befinlit-navy text-white text-xs uppercase tracking-widest">
                                 <tr>
                                     <th className="p-4 rounded-tl-sm">Method</th>
-                                    <th className="p-4">Fees & Forex Markup</th>
-                                    <th className="p-4">FIRA/FIRC</th>
-                                    <th className="p-4">Speed</th>
+                                    <th className="p-4">Cost (Fees + Forex Markup)</th>
+                                    <th className="p-4">Proof of Payment (FIRC)</th>
+                                    <th className="p-4">How Fast?</th>
                                     <th className="p-4 rounded-tr-sm">Best For</th>
                                 </tr>
                             </thead>
@@ -409,7 +480,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
 
             </main>
-        </article>
+        </article >
     );
 };
 

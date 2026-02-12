@@ -43,7 +43,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                         onClick={() => onNavigate('playbooks')}
                         className="absolute left-0 flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
                     >
-                        <ArrowLeft size={16} /> Back to Playbooks
+                        <ArrowLeft size={16} /> Back
                     </button>
                 )}
                 <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
@@ -54,10 +54,10 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
             {/* Header */}
             <header className="text-center mb-16 border-b border-befinlit-navy/10 pb-12">
                 <h1 className="text-3xl md:text-5xl font-bold font-serif text-befinlit-navy leading-tight mb-6">
-                    The Freelancer's Financial Playbook
+                    The Freelancer's and Professional's Playbook
                 </h1>
                 <p className="text-lg md:text-xl text-befinlit-navy/70 italic font-serif leading-relaxed max-w-2xl mx-auto">
-                    The Ultimate Playbook for all Indian Freelancers & Professionals.
+                    The Ultimate Playbook for all Indian Freelancers & Professionals to build a compliant, tax-efficient and audit-proof professional practice in India.
                 </p>
             </header>
 

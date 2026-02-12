@@ -251,7 +251,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                 onClick={handleBack}
                 className="text-befinlit-navy/60 text-sm hover:text-befinlit-navy flex items-center gap-1 mx-auto mt-4"
             >
-                <ArrowLeft size={14} /> Back to Query
+                <ArrowLeft size={14} /> Back
             </button>
         </div>
     );
@@ -386,7 +386,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                 onClick={handleBack}
                 className="text-befinlit-navy/60 text-sm hover:text-befinlit-navy flex items-center gap-1 mx-auto mt-4"
             >
-                <ArrowLeft size={14} /> Back to Query
+                <ArrowLeft size={14} /> Back
             </button>
         </div>
     );

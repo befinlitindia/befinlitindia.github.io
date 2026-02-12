@@ -162,7 +162,7 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
           onClick={() => onNavigate('tools')}
           className="absolute left-0 flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
         >
-          <ArrowLeft size={16} /> Back to Toolkits
+          <ArrowLeft size={16} /> Back
         </button>
         <div className="inline-block px-4 py-1.5 rounded-full border border-slate-200 text-[10px] font-bold text-slate-500 tracking-[0.15em]">
           Surcharge Reality Check

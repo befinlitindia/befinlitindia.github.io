@@ -25,9 +25,9 @@ export const playbooksList: ResourceItem[] = [
     },
     {
         id: 'financial-guide',
-        title: "The Freelancer's Financial Playbook",
-        subtitle: "For Indian Freelancers & Professionals",
-        description: "A comprehensive guide covering Income Tax, GST, FEMA/RBI compliance, and Payment options for Indian freelancers.",
+        title: "The Freelancer's and Professional's Playbook",
+        subtitle: "Navigate through all the compliances in one place.",
+        description: "A master blueprint covering Income Tax Act 2025, Withholding Taxes, GST for exporters, Foreign Exchange Management Act (FEMA) and RBI guidelines for the professionals and freelancers.",
         tag: "Finance 101",
         readTime: "15 min read",
         type: 'playbook',

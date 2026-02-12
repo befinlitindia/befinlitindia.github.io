@@ -83,7 +83,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                         onClick={() => onNavigate('tools')}
                         className="absolute left-0 flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
                     >
-                        <ArrowLeft size={16} /> Back to Toolkits
+                        <ArrowLeft size={16} /> Back
                     </button>
                     <div className="inline-block px-3 py-1 rounded-full border border-befinlit-navy/20 text-[10px] uppercase tracking-widest font-bold text-befinlit-navy bg-white/50 backdrop-blur-sm">
                         Tax Efficiency Engine

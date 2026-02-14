@@ -33,17 +33,17 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, onOpenConsulta
     >
       <div className="max-w-screen-2xl mx-auto px-2 md:px-6 flex justify-between items-center">
         <div
-          className="flex flex-row items-center gap-1.5 md:gap-4 cursor-pointer group"
+          className="flex flex-row items-center gap-2 md:gap-4 cursor-pointer group"
           onClick={() => handleLinkClick('home')}
         >
           {/* Brand Logo - Image */}
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="BeFinLit India" className="h-10 md:h-28 w-auto object-contain" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="BeFinLit India" className="h-14 md:h-28 w-auto object-contain" />
 
           {/* Divider */}
-          <div className="h-4 md:h-8 w-px bg-befinlit-navy/20"></div>
+          <div className="h-6 md:h-8 w-px bg-befinlit-navy/20"></div>
 
           {/* Tagline - Beside logo */}
-          <p className="text-[9px] md:text-sm font-medium text-befinlit-gold tracking-tighter md:tracking-wide">
+          <p className="text-xs md:text-sm font-medium text-befinlit-gold tracking-tight md:tracking-wide">
             #BecomeFinanciallyLiterate
           </p>
         </div>

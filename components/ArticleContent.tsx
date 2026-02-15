@@ -607,7 +607,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
               onClick={() => onNavigate('playbooks')}
               className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
             >
-              <ArrowLeft size={16} /> Back
+              <ArrowLeft size={16} /> Back to Playbooks
             </button>
           </div>
         )}

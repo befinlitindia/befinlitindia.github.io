@@ -473,9 +473,11 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                     <h3 className="text-xl font-bold font-serif text-befinlit-navy mb-4">Glossary of Changes (Income Tax Act 2025)</h3>
                     <div className="bg-gray-50 p-6 rounded-sm border border-gray-200">
                         <ul className="space-y-2 text-sm text-befinlit-navy/70">
-                            <li><b className="text-befinlit-navy">Section 58<sup>*</sup>:</b> Corresponds to Section 44ADA of the Income Tax Act, 1961 (Presumptive Taxation).</li>
+                            <li><b className="text-befinlit-navy">Section 58<sup>*</sup>:</b> Corresponds to Section 44AD & 44ADA of the Income Tax Act, 1961 (Presumptive Taxation).</li>
                             <li><b className="text-befinlit-navy">Section 62<sup>*</sup>:</b> Corresponds to Section 44AA of the Income Tax Act, 1961 (Maintenance of Accounts).</li>
-                            <li><b className="text-befinlit-navy">Section 393<sup>*</sup>:</b> Corresponds to Section 195 of the Income Tax Act, 1961 (TDS on Non-Residents).</li>
+                            <li><b className="text-befinlit-navy">Section 156<sup>*</sup>:</b> Corresponds to Section 87A of the Income Tax Act, 1961 (Tax Rebate).</li>
+                            <li><b className="text-befinlit-navy">Section 202<sup>*</sup>:</b> Corresponds to Section 115BAC of the Income Tax Act, 1961 (Simplified/New Tax Regime).</li>
+                            <li><b className="text-befinlit-navy">Section 393<sup>*</sup>:</b> Corresponds to Section 194J & 195 of the Income Tax Act, 1961 (TDS).</li>
                         </ul>
                     </div>
                 </section>

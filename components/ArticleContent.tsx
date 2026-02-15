@@ -647,7 +647,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
           The Moonlighter’s Playbook: How to Side-Hustle Without Getting into Trouble
         </h1>
         <p className="text-lg md:text-xl text-befinlit-navy/70 italic font-serif leading-relaxed max-w-2xl mx-auto">
-          The side-hustle is the new startup. But while moonlighting isn't technically illegal in India, it is definitely frowned upon. Here is the playbook to navigating the grey.
+          The side-hustle is the new normal. But while moonlighting isn't technically illegal in India, it is definitely frowned upon. Here is the playbook to navigating the grey.
         </p>
       </header>
 

@@ -47,10 +47,25 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
     let surcharge = 0;
     if (netIncome > 5000000) {
       let rate = 0;
-      if (netIncome > 20000000) rate = 0.25;
-      else if (netIncome > 10000000) rate = 0.15;
-      else rate = 0.10;
+      let threshold = 5000000;
+      let taxAtThreshold = 1080000; // Calculated base tax at 50L (sum of slabs: 300k + (26L * 0.3 = 780k))
+      let surchargeAtThreshold = 0;
+
+      if (netIncome > 20000000) {
+        rate = 0.25; threshold = 20000000; taxAtThreshold = 5580000; surchargeAtThreshold = 837000; // 15% surcharge at 2Cr
+      } else if (netIncome > 10000000) {
+        rate = 0.15; threshold = 10000000; taxAtThreshold = 2580000; surchargeAtThreshold = 258000; // 10% surcharge at 1Cr
+      } else {
+        rate = 0.10; threshold = 5000000; taxAtThreshold = 1080000; surchargeAtThreshold = 0;
+      }
+
       surcharge = baseTax * rate;
+      const totalTaxWithSurcharge = baseTax + surcharge;
+      const cap = (taxAtThreshold + surchargeAtThreshold) + (netIncome - threshold);
+
+      if (totalTaxWithSurcharge > cap) {
+        surcharge = Math.max(0, cap - baseTax);
+      }
     }
 
     return Math.round(((baseTax + surcharge) * 1.04) / 10) * 10;
@@ -67,7 +82,7 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
     const calcResult = {
       sTax,
       combinedTax,
-      diff: combinedTax - sTax,
+      diff: Math.max(0, combinedTax - sTax),
       fRaw: f,
       fTaxable: freelanceTaxable,
       totalIncome: s + freelanceTaxable

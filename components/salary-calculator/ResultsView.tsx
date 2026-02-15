@@ -26,7 +26,7 @@ const ResultsView: React.FC<{ result: ComparisonResult }> = ({ result }) => {
                 {regime.totalDeductions > regime.standardDeduction && (
                     <div className="flex justify-between text-[11px] font-bold text-slate-500">
                         <span>Other Deductions/Exemptions</span>
-                        <span className="text-red-500">- ₹{formatINR(regime.totalDeductions - regime.standardDeduction)}</span>
+                        <span className="text-red-500">- ₹{formatINR(Math.max(0, regime.totalDeductions - regime.standardDeduction))}</span>
                     </div>
                 )}
                 <div className="flex justify-between text-[11px] font-black text-[#000a2e] pt-1 border-t border-slate-100 mt-1">

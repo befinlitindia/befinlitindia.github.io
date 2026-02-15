@@ -51,10 +51,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }) => {
             <div>
               <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Browse by Topic</h4>
               <ul className="space-y-2 text-sm text-white/60">
-                <li><button onClick={() => onNavigate('playbook')} className="hover:text-white transition-colors text-left">Moonlighter's Playbook</button></li>
-                <li><button onClick={() => onNavigate('salary-calculator')} className="hover:text-white transition-colors text-left">Salary Tax Calculator</button></li>
-                <li><button onClick={() => onNavigate('side-hustle-estimator')} className="hover:text-white transition-colors text-left">Side-hustle Surcharge Estimator</button></li>
-                <li><button onClick={() => onNavigate('financial-guide')} className="hover:text-white transition-colors text-left">Freelancer's & Professional's Playbook</button></li>
+                <li><button onClick={() => onNavigate('topic', 'Freelance 101')} className="hover:text-white transition-colors text-left">Freelance 101</button></li>
+                <li><button onClick={() => onNavigate('topic', 'Calculator')} className="hover:text-white transition-colors text-left">Tax Tools</button></li>
               </ul>
             </div>
             <div>

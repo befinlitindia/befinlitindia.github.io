@@ -15,10 +15,10 @@ const Tools: React.FC<ToolsProps> = ({ onNavigate }) => {
       <header className="mb-16 border-b border-befinlit-navy/10 pb-12">
         <div className="flex items-center gap-2 mb-4">
           <Wrench className="text-befinlit-gold" size={24} />
-          <span className="text-xs uppercase tracking-[0.3em] font-bold text-befinlit-gold">The Audit-Proof Toolkit</span>
+          <span className="text-xs uppercase tracking-[0.3em] font-bold text-befinlit-gold">Calculators and Tools</span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-befinlit-navy mb-6 font-serif">The Audit-Proof Toolkit.</h1>
-        <p className="text-lg text-befinlit-navy/60 max-w-2xl leading-relaxed italic">
+        <h1 className="text-4xl md:text-5xl font-bold text-befinlit-navy mb-6 font-serif">The Toolkits</h1>
+        <p className="text-lg text-befinlit-navy/60 leading-relaxed italic">
           Witty calculators and compliance-checkers designed to keep the taxman happy and your bank balance healthy.
         </p>
       </header>

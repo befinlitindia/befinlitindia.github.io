@@ -106,13 +106,13 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
           </button>
         </div>
         <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
-          Calculator
+          Freelance 101
         </span>
       </div>
 
       <header className="text-center mb-16 border-b border-befinlit-navy/10 pb-12">
         <h1 className="text-3xl md:text-5xl font-bold font-serif text-befinlit-navy leading-tight mb-6">
-          The Side-Hustle Surcharge Estimator
+          The Side-Hustle Tax Realizer
         </h1>
         <p className="text-lg md:text-xl text-befinlit-navy/70 italic font-serif leading-relaxed max-w-2xl mx-auto">
           Side-hustles are taxed at your highest marginal rate because they sit "on top" of your salary. This tool calculates the exact tax impact of adding freelance revenue to your income.

@@ -635,7 +635,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
           </div>
         )}
         <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
-          Freelancer 101
+          Freelance 101
         </span>
       </div>
 
@@ -647,19 +647,22 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
           The Moonlighter’s Playbook: How to Side-Hustle Without Getting into Trouble
         </h1>
         <p className="text-lg md:text-xl text-befinlit-navy/70 italic font-serif leading-relaxed max-w-2xl mx-auto">
-          The side-hustle is the new normal. But while moonlighting isn't technically illegal in India, it is definitely frowned upon. Here is the playbook to navigating the grey.
+          The side-hustle is the new normal. While moonlighting is legal in India, many employers aren't fans. Here is the playbook for working your side gig without the stress.
         </p>
       </header>
 
       {/* Intro */}
       <div className="prose prose-lg prose-slate font-serif mx-auto text-befinlit-navy/80 mb-16">
         <p>
-          The remote work boom has blurred the lines between the 9-to-5 and the 5-to-9. Platforms like Upwork have democratized access to global capital. But distinguishing between what you <em>can</em> do and what you <em>should</em> do is where the taxman comes in.
+          Remote work has turned the 9-to-5 into a 24/7 opportunity. With digital freelance platforms, anyone can earn in Dollars or Euros from their bedroom. But just because you can take that extra project doesn't mean you've figured out the tax bill that comes with it.
+        </p>
+        <p>
+          In this playbook, we’re breaking down exactly how to manage your double income, stay on the right side of the law, and keep more of what you earn.
         </p>
         <div className="bg-white p-6 border-l-4 border-befinlit-navy shadow-sm mt-10">
-          <h4 className="font-bold text-befinlit-navy mb-2">The Reality Check</h4>
+          <h4 className="font-bold text-befinlit-navy mb-2">The New Transparency</h4>
           <p className="text-sm italic">
-            The Indian tax ecosystem is quieter than ever, but it watches everything. The days of "cash under the table" are dead. The system is silent, but it never forgets.
+            The Indian tax system has gone digital-first. Between the Annual Information Statement (AIS) and seamless data-sharing, your financial footprint is clearer than ever. The old days of 'hiding' side income are over—today, the smartest move is to be visible, compliant, and tax-efficient from day one.
           </p>
         </div>
       </div>

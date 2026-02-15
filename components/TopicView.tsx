@@ -18,7 +18,7 @@ const TopicView: React.FC<TopicViewProps> = ({ topic, onNavigate }) => {
                     <span className="text-befinlit-gold font-bold tracking-[0.2em] uppercase text-xs">Topic</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold text-befinlit-navy mb-6 font-serif">{topic}</h1>
-                <p className="text-lg text-befinlit-navy/60 max-w-2xl leading-relaxed">
+                <p className="text-lg text-befinlit-navy/60 leading-relaxed italic">
                     Curated resources, playbooks, and tools related to {topic}.
                 </p>
             </header>

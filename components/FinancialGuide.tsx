@@ -49,7 +49,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                     </div>
                 )}
                 <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
-                    Freelancer 101
+                    Freelance 101
                 </span>
             </div>
 

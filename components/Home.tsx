@@ -163,12 +163,13 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
                   <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#0F172A 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
                   <Calculator size={80} className="text-befinlit-navy opacity-20 absolute -bottom-4 -left-4 -rotate-12" />
                   <div className="text-befinlit-navy text-center z-10">
-                    <h3 className="text-3xl font-bold leading-tight">The Side-Hustle<br />Surcharge Estimator</h3>
+                    <h3 className="text-3xl font-bold leading-tight">The Side-Hustle<br />Tax Realizer</h3>
                   </div>
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">The Success Penalty Calculator</h3>
+                <h3 className="text-2xl font-bold text-befinlit-navy mb-2 group-hover:text-befinlit-gold transition-colors">The Side-Hustle Tax Realizer</h3>
+                <p className="text-befinlit-navy/40 text-sm mb-4 font-medium italic">The Success Penalty Calculator</p>
                 <p className="text-sm text-befinlit-navy/60 mb-6 leading-relaxed">
                   {SUCCESS_PENALTY_CALCULATOR_DESCRIPTION}
                 </p>

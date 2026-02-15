@@ -18,7 +18,7 @@ export const playbooksList: ResourceItem[] = [
         title: "The Moonlighter's Playbook",
         subtitle: "How to Side-Hustle Without Getting into Trouble",
         description: MOONLIGHTER_PLAYBOOK_DESCRIPTION,
-        tag: "Freelancer 101",
+        tag: "Freelance 101",
         readTime: "12 min read",
         type: 'playbook',
         linkText: 'Read Playbook'
@@ -28,7 +28,7 @@ export const playbooksList: ResourceItem[] = [
         title: "The Freelancer's and Professional's Playbook",
         subtitle: "Navigate through all the compliances in one place.",
         description: "A master blueprint covering Income Tax Act 2025, Withholding Taxes, GST for exporters, Foreign Exchange Management Act (FEMA) and RBI guidelines for the professionals and freelancers.",
-        tag: "Freelancer 101",
+        tag: "Freelance 101",
         readTime: "15 min read",
         type: 'playbook',
         linkText: 'Read Playbook'
@@ -48,10 +48,10 @@ export const toolsList: ResourceItem[] = [
     },
     {
         id: 'side-hustle-estimator',
-        title: "The Side-Hustle Surcharge Estimator",
+        title: "The Side-Hustle Tax Realizer",
         subtitle: "The Success Penalty Calculator",
         description: SUCCESS_PENALTY_CALCULATOR_DESCRIPTION,
-        tag: "Calculator",
+        tag: "Freelance 101",
         status: "Ready",
         type: 'tool',
         linkText: 'Launch Tool'

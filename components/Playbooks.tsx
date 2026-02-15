@@ -15,10 +15,10 @@ const Playbooks: React.FC<PlaybooksProps> = ({ onNavigate }) => {
       <header className="mb-16 border-b border-befinlit-navy/10 pb-12">
         <div className="flex items-center gap-3 mb-4">
           <BookOpen className="text-befinlit-gold" size={20} />
-          <span className="text-befinlit-gold font-bold tracking-[0.2em] uppercase text-xs">The Playbooks</span>
+          <span className="text-befinlit-gold font-bold tracking-[0.2em] uppercase text-xs">Articles and Content</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-befinlit-navy mb-6 font-serif">The Playbooks</h1>
-        <p className="text-lg text-befinlit-navy/60 max-w-2xl leading-relaxed italic">
+        <p className="text-lg text-befinlit-navy/60 leading-relaxed italic">
           In-depth technical guides and strategic blueprints for the modern Indian professional.
         </p>
       </header>

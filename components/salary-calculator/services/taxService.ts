@@ -9,11 +9,9 @@ const round = (val: number) => Math.round(val);
 
 // Helper to round to nearest 10 (Section 288A/288B)
 const roundTo10 = (val: number) => {
-    const rounded = Math.round(val);
-    const remainder = rounded % 10;
-    if (remainder <= 4 && remainder >= 0) return rounded - remainder; // Round down (e.g., 52 -> 50)
-    if (remainder >= 5) return rounded + (10 - remainder); // Round up (e.g., 55 -> 60)
-    return rounded; // Should not happen for positive integers but safe
+    // Standard Income Tax rounding: Round to the nearest 10.
+    // If last digit is 5 or more, round up. Else round down.
+    return Math.round(val / 10) * 10;
 };
 
 /**
@@ -259,7 +257,7 @@ export const calculateTax = (input: UserInput): ComparisonResult => {
             slabBreakdown: newBaseRes.slabs
         },
         recommendation: newTotal <= oldTotal ? 'NEW' : 'OLD',
-        savings: Math.abs(newTotal - oldTotal),
+        savings: Math.max(0, Math.abs(newTotal - oldTotal)),
         hraBreakdown: { received: input.hraReceived, limit1: round(l1HRA), limit2: round(l2HRA), exemption: hraEx },
         ltaExemption: ltaEx,
         section80G_Breakdown: { ati: round(ati80G), ql: round(ql80G), reliefBlock1: round(r1), reliefBlock2: round(r2), reliefBlock3: round(r3), reliefBlock4: round(r4), total: total80G },

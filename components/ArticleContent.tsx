@@ -108,7 +108,7 @@ const IncomeImpactCalculator = () => {
     setResult({
       salaryTax,
       combinedTax,
-      taxDiff: combinedTax - salaryTax,
+      taxDiff: Math.max(0, combinedTax - salaryTax),
       salaryIncome: s,
       combinedIncome: s + freelanceTaxableIncome,
       freelanceRaw: f

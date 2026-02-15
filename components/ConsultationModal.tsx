@@ -66,12 +66,19 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
         // Use the environment variable or fallback to the provided URL directly
         const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 
+        if (!GOOGLE_SCRIPT_URL) {
+            console.error("VITE_GOOGLE_SCRIPT_URL is not defined in environment variables.");
+            alert('Service configuration missing. Please try again later or contact befinlitindia@gmail.com');
+            setIsSubmitting(false);
+            return;
+        }
+
         try {
-            await fetch(GOOGLE_SCRIPT_URL, {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: "POST",
-                mode: "no-cors", // Important: 'no-cors' prevents CORS errors but returns an opaque response
+                mode: "no-cors",
                 headers: {
-                    'Content-Type': 'text/plain;charset=utf-8', // Avoids CORS preflight options
+                    'Content-Type': 'text/plain;charset=utf-8',
                 },
                 body: JSON.stringify({
                     name: formData.name,
@@ -84,7 +91,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
                 })
             });
 
-            // With 'no-cors', we can't check response.ok, so we assume success if no error was thrown.
+            // With 'no-cors', we can't check response.ok, but we assume success if no error was thrown.
             alert('Thank you! Your request has been received. We will contact you shortly.');
             onClose();
             // Reset form
@@ -101,7 +108,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
             }, 500);
 
         } catch (error) {
-            console.error(error);
+            console.error("Submission error:", error);
             alert('Something went wrong. Please try again later or contact us directly at befinlitindia@gmail.com');
         } finally {
             setIsSubmitting(false);

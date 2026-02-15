@@ -600,14 +600,16 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
   return (
     <article className="max-w-[1400px] mx-auto px-4 md:px-8 pt-32 md:pt-48 pb-12">
-      <div className="relative flex items-center justify-center mb-6">
+      <div className="relative flex flex-col md:flex-row items-center justify-center mb-6 gap-4 md:gap-0">
         {onNavigate && (
-          <button
-            onClick={() => onNavigate('playbooks')}
-            className="absolute left-0 flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
-          >
-            <ArrowLeft size={16} /> Back to Playbooks
-          </button>
+          <div className="md:absolute md:left-0">
+            <button
+              onClick={() => onNavigate('playbooks')}
+              className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
+            >
+              <ArrowLeft size={16} /> Back to Playbooks
+            </button>
+          </div>
         )}
         <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
           Finance 101

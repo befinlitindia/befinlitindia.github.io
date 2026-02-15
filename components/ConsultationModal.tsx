@@ -63,8 +63,8 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
     const handleSubmit = async (payLater: boolean) => {
         setIsSubmitting(true);
 
-        // Use the environment variable or fallback to the provided URL directly
-        const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+        // Hardcoded fallback URL for convenience, allows form to work without secrets
+        const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxRt3I-INKoUp-kZftQS8nzMoQBkWr9dTytIpOBXhdYWrQzyDIegFdgYtP1Rd8t58qkBA/exec";
 
         if (!GOOGLE_SCRIPT_URL) {
             console.error("VITE_GOOGLE_SCRIPT_URL is not defined in environment variables.");

@@ -26,9 +26,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
         <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-befinlit-gold/5 rounded-full blur-3xl"></div>
 
         {/* Floating Icons - Visible mostly on larger screens */}
-        <div className="hidden 2xl:block absolute top-40 left-12 opacity-10 rotate-12 text-befinlit-navy animate-pulse" style={{ animationDuration: '4s' }}>
-          <TrendingUp size={120} />
-        </div>
         <div className="hidden 2xl:block absolute bottom-1/3 right-12 opacity-10 -rotate-12 text-befinlit-navy animate-pulse" style={{ animationDuration: '5s' }}>
           <ShieldCheck size={140} />
         </div>

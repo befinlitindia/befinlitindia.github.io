@@ -52,7 +52,7 @@ const IncomeImpactCalculator = () => {
       baseTax += (netIncome - 2400000) * 0.30;
     }
 
-    // Step 3: Rebate & Marginal Relief (u/s 87A)
+    // Step 3: Rebate & Marginal Relief (u/s 87A<sup>*</sup>)
     // If Net_Income <= 12L, Base_Tax = 0.
     // If Net_Income > 12L, Marginal Relief caps tax at (Net_Income - 12L).
     if (netIncome <= 1200000) {
@@ -159,7 +159,7 @@ const IncomeImpactCalculator = () => {
           Based on New Tax Regime rules.
         </p>
         <p className="text-[11px] text-white/50 mb-6 italic leading-relaxed">
-          Note: We apply 50% presumptive rate (u/s 44ADA) on freelance revenue and follow the new tax regime by default.
+          Note: We apply 50% presumptive rate (u/s 44ADA<sup>*</sup>) on freelance revenue and follow the new tax regime by default.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -724,18 +724,18 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
       <section className="mb-16">
         <h2 className="text-2xl font-bold text-befinlit-navy mb-6 flex items-center gap-3">
           <ShieldAlert className="text-befinlit-gold" />
-          The 44AD vs 44ADA "Grey Area"
+          The 44AD<sup>*</sup> vs 44ADA<sup>*</sup> "Grey Area"
         </h2>
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <p className="text-befinlit-navy/80 mb-4 text-sm leading-relaxed">
-              Many freelancers file under 44AD (declaring 6%/8% profit) because it's cheaper than 44ADA (50% profit).
+              Many freelancers file under 44AD<sup>*</sup> (declaring 6%/8% profit) because it's cheaper than 44ADA<sup>*</sup> (50% profit).
             </p>
             <p className="text-befinlit-navy/80 mb-4 text-sm leading-relaxed font-bold">
               Is it wrong? Technically, no. Is it safe? Absolutely not.
             </p>
             <p className="text-befinlit-navy/70 text-xs leading-relaxed">
-              If your TDS is deducted under 194J (Technical / Professional Services), claiming to be a "trader" under 44AD invites the officer to ask you to prove you <em>don't</em> fall under the notified professional list. That is a litigation battle you want to avoid.
+              If your TDS is deducted under 194J<sup>*</sup> (Technical / Professional Services), claiming to be a "trader" under 44AD<sup>*</sup> invites the officer to ask you to prove you <em>don't</em> fall under the notified professional list. That is a litigation battle you want to avoid.
             </p>
           </div>
           <div className="bg-befinlit-navy text-white p-6 rounded-sm text-center">
@@ -746,15 +746,57 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
       {/* Glossary */}
       <section className="mb-16 border-t border-befinlit-navy/10 pt-12 print:hidden">
-        <h3 className="text-xl font-bold font-serif text-befinlit-navy mb-4">Glossary of Changes (Income Tax Act 2025)</h3>
-        <div className="bg-gray-50 p-6 rounded-sm border border-gray-200">
-          <ul className="space-y-2 text-sm text-befinlit-navy/70">
-            <li><b className="text-befinlit-navy">Section 58<sup>*</sup>:</b> Corresponds to Section 44AD & 44ADA of the Income Tax Act, 1961 (Presumptive Taxation).</li>
-            <li><b className="text-befinlit-navy">Section 62<sup>*</sup>:</b> Corresponds to Section 44AA of the Income Tax Act, 1961 (Maintenance of Accounts).</li>
-            <li><b className="text-befinlit-navy">Section 156<sup>*</sup>:</b> Corresponds to Section 87A of the Income Tax Act, 1961 (Tax Rebate).</li>
-            <li><b className="text-befinlit-navy">Section 202<sup>*</sup>:</b> Corresponds to Section 115BAC of the Income Tax Act, 1961 (Simplified/New Tax Regime).</li>
-            <li><b className="text-befinlit-navy">Section 393<sup>*</sup>:</b> Corresponds to Section 194J & 195 of the Income Tax Act, 1961 (TDS).</li>
-          </ul>
+        <h2 className="text-2xl font-bold text-befinlit-navy mb-6 flex items-center gap-3 font-serif">
+          <BookOpen className="text-befinlit-gold" />
+          Glossary of Changes
+        </h2>
+        <p className="text-sm text-befinlit-navy/70 mb-8 leading-relaxed italic font-serif">
+          The above sections are in line with the Income Tax Act, 1961. However, the Income Tax Act, 2025 will come into effect from 1 April 2026. The relevant sections and the content changes have been updated below:
+        </p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse bg-white border border-befinlit-navy/10 rounded-sm overflow-hidden shadow-sm">
+            <thead className="bg-befinlit-navy text-white text-xs uppercase tracking-widest font-bold">
+              <tr>
+                <th className="p-4 border-b border-white/10">Sr No</th>
+                <th className="p-4 border-b border-white/10">Particulars</th>
+                <th className="p-4 border-b border-white/10">Section in 1961</th>
+                <th className="p-4 border-b border-white/10">Section in 2025</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm text-befinlit-navy/80">
+              <tr className="hover:bg-befinlit-gold/5 transition-colors">
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold">1</td>
+                <td className="p-4 border-b border-befinlit-navy/5">Presumptive Taxation (Business & Professionals)</td>
+                <td className="p-4 border-b border-befinlit-navy/5">44AD<sup>*</sup> & 44ADA<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy">58</td>
+              </tr>
+              <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold">2</td>
+                <td className="p-4 border-b border-befinlit-navy/5">Maintenance of Accounts</td>
+                <td className="p-4 border-b border-befinlit-navy/5">44AA<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy">62</td>
+              </tr>
+              <tr className="hover:bg-befinlit-gold/5 transition-colors">
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold">3</td>
+                <td className="p-4 border-b border-befinlit-navy/5">Tax Rebate</td>
+                <td className="p-4 border-b border-befinlit-navy/5">87A<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy">156</td>
+              </tr>
+              <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold">4</td>
+                <td className="p-4 border-b border-befinlit-navy/5">Simplified/New Tax Regime</td>
+                <td className="p-4 border-b border-befinlit-navy/5">115BAC<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy">202</td>
+              </tr>
+              <tr className="hover:bg-befinlit-gold/5 transition-colors">
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold">5</td>
+                <td className="p-4 border-b border-befinlit-navy/5">TDS (Professional Services & Non-Residents)</td>
+                <td className="p-4 border-b border-befinlit-navy/5">194J<sup>*</sup> & 195<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy">393</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 

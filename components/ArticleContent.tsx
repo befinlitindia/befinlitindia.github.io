@@ -746,10 +746,9 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
 
       {/* Glossary */}
       <section className="mb-16 border-t border-befinlit-navy/10 pt-12 print:hidden">
-        <h3 className="text-xl font-bold text-befinlit-navy mb-6 flex items-center gap-3 font-serif">
-          <BookOpen className="text-befinlit-gold" />
-          Glossary of Changes
-        </h3>
+        <h2 className="text-2xl font-bold text-befinlit-navy mb-6 flex items-center gap-2 font-serif">
+          * Glossary of Changes
+        </h2>
         <p className="text-sm text-befinlit-navy/70 mb-8 leading-relaxed italic font-serif text-center md:text-left">
           The above sections are in line with the Income Tax Act, 1961. However, the Income Tax Act, 2025 will come into effect from 1 April 2026. The relevant sections and the content changes have been updated below:
         </p>
@@ -758,30 +757,30 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
           <table className="w-full text-left border-collapse bg-white border border-befinlit-navy/10 rounded-sm overflow-hidden shadow-sm">
             <thead className="bg-befinlit-navy text-white text-xs tracking-widest font-bold">
               <tr>
-                <th className="p-4 border-b border-white/10">Particulars</th>
-                <th className="p-4 border-b border-white/10">Section in 1961</th>
-                <th className="p-4 border-b border-white/10">Section in 2025</th>
+                <th className="p-4 border-b border-white/10 text-center">Particulars</th>
+                <th className="p-4 border-b border-white/10 text-center">Section in 1961</th>
+                <th className="p-4 border-b border-white/10 text-center">Section in 2025</th>
               </tr>
             </thead>
             <tbody className="text-sm text-befinlit-navy/80">
               <tr className="hover:bg-befinlit-gold/5 transition-colors">
                 <td className="p-4 border-b border-befinlit-navy/5">Presumptive Taxation (Business & Professionals)</td>
-                <td className="p-4 border-b border-befinlit-navy/5">44AD<sup>*</sup> & 44ADA<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 text-center">44AD & 44ADA</td>
                 <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">58</td>
               </tr>
               <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
                 <td className="p-4 border-b border-befinlit-navy/5">Tax Rebate</td>
-                <td className="p-4 border-b border-befinlit-navy/5">87A<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 text-center">87A</td>
                 <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">156</td>
               </tr>
               <tr className="hover:bg-befinlit-gold/5 transition-colors">
                 <td className="p-4 border-b border-befinlit-navy/5">Simplified/New Tax Regime</td>
-                <td className="p-4 border-b border-befinlit-navy/5">115BAC<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 text-center">115BAC</td>
                 <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">202</td>
               </tr>
               <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
                 <td className="p-4 border-b border-befinlit-navy/5">TDS (Professional Services & Non-Residents)</td>
-                <td className="p-4 border-b border-befinlit-navy/5">194J<sup>*</sup> & 195<sup>*</sup></td>
+                <td className="p-4 border-b border-befinlit-navy/5 text-center">194J & 195</td>
                 <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">393</td>
               </tr>
             </tbody>

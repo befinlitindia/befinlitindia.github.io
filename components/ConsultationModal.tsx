@@ -37,7 +37,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
         const newErrors: Partial<Record<keyof FormData, string>> = {};
         if (!formData.name.trim()) newErrors.name = 'Name is required';
         if (!formData.email.trim()) newErrors.email = 'Email is required';
-        else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+        else if (!/@/.test(formData.email)) newErrors.email = 'Email is invalid (must contain @)';
 
         if (!formData.whatsapp.trim()) newErrors.whatsapp = 'Whatsapp number is required';
         else if (!/^\d{10}$/.test(formData.whatsapp)) newErrors.whatsapp = 'Must be exactly 10 digits';
@@ -132,7 +132,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
             <div>
                 <label className="block text-sm font-bold text-befinlit-navy mb-1">Email ID</label>
                 <input
-                    type="email"
+                    type="text"
                     className={`w-full p-3 bg-white border ${errors.email ? 'border-red-500' : 'border-befinlit-navy/20'} rounded-sm focus:outline-none focus:border-befinlit-gold transition-colors`}
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}

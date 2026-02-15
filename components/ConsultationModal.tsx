@@ -64,7 +64,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
         setIsSubmitting(true);
 
         // Use the environment variable or fallback to the provided URL directly
-        const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbwx--cduqiqfNzyCqLmueajGibCsHr6EASzEdur4yy9jsLo7RavSJ9IgliX5gWm9LeHJw/exec";
+        const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 
         try {
             await fetch(GOOGLE_SCRIPT_URL, {

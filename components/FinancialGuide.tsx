@@ -471,7 +471,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                 {/* Glossary */}
                 <section className="mb-16 border-t border-befinlit-navy/10 pt-12 print:hidden">
                     <h2 className="text-2xl font-bold text-befinlit-navy mb-6 flex items-center gap-2 font-serif">
-                        * Glossary of Changes
+                        <span className="text-befinlit-gold">*</span> Glossary of Changes
                     </h2>
                     <p className="text-sm text-befinlit-navy/70 mb-8 leading-relaxed italic font-serif text-center md:text-left">
                         The above sections are in line with the Income Tax Act, 1961. However, the Income Tax Act, 2025 will come into effect from 1 April 2026. The relevant sections and the content changes have been updated below:

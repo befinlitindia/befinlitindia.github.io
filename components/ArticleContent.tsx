@@ -328,6 +328,7 @@ const StructureExplorer = () => {
       cons: [
         'Mandatory Statutory Audit',
         'High compliance costs for a solo founder',
+        'Tax on dividend',
         'Ease of exit - Difficult',
         'Maximum Turnover limit is ₹2Cr'
       ],
@@ -343,6 +344,7 @@ const StructureExplorer = () => {
       cons: [
         'Mandatory Statutory Audit',
         'Minimum 2 directors required',
+        'Tax on dividend',
         'Ease of exit - Difficult'
       ],
     },
@@ -409,7 +411,7 @@ const StructureExplorer = () => {
       huf: { val: '', type: 'huf' }
     },
     {
-      label: 'Deemed Dividend',
+      label: 'Tax on Dividend',
       prop: { val: 'N/A', type: 'pro' },
       part: { val: 'N/A', type: 'pro' },
       llp: { val: 'N/A', type: 'pro' },
@@ -457,7 +459,7 @@ const StructureExplorer = () => {
               <XCircle size={64} className="text-red-500 mb-4" />
               <h4 className="text-2xl font-bold text-red-800 mb-2">Not Recommended for Freelancers</h4>
               <p className="text-red-700 max-w-lg">
-                Using an HUF for professional income is aggressively litigated. Unless you have independent employees and physical infrastructure, this income is often clubbed with your personal salary.
+                Using an HUF for professional income is aggressively litigated. Unless you have independent employees and business structure, rather than professional structure, this income is often clubbed with your personal salary.
               </p>
             </div>
           )}
@@ -508,7 +510,7 @@ const StructureExplorer = () => {
       <div className="border border-gray-200 rounded-sm shadow-sm bg-white overflow-hidden">
         <div className="bg-befinlit-navy p-6 text-white">
           <h3 className="text-xl font-bold">Overall Entity Comparison</h3>
-          <p className="text-xs text-white/60 uppercase tracking-widest mt-1">Cross-Functional Matrix</p>
+          <p className="text-xs text-white/60 mt-1">Cross-Functional Matrix</p>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[950px]">
@@ -702,6 +704,15 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                 </p>
               </div>
             </div>
+            <div className="flex items-start gap-3">
+              <AlertCircle className="text-red-700 shrink-0 mt-1" size={18} />
+              <div className="text-sm text-red-800">
+                <p className="font-bold mb-1">Legal Unenforceability</p>
+                <p>
+                  In case of family dispute (god forbid), and the money is not transferred to you, you cannot petition before any court for your money. Since the income is officially billed in another person’s name, you have no legal standing to recover funds that are technically and legally yours.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -729,7 +740,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <p className="text-befinlit-navy/80 mb-4 text-sm leading-relaxed">
-              Many freelancers file under 44AD<sup>*</sup> (declaring 6%/8% profit) because it's cheaper than 44ADA<sup>*</sup> (50% profit).
+              Many freelancers file under 44AD<sup>*</sup> (declaring 6%/8% profit) because it's more beneficial than 44ADA<sup>*</sup> (50% profit).
             </p>
             <p className="text-befinlit-navy/80 mb-4 text-sm leading-relaxed font-bold">
               Is it wrong? Technically, no. Is it safe? Absolutely not.
@@ -747,7 +758,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
       {/* Glossary */}
       <section className="mb-16 border-t border-befinlit-navy/10 pt-12 print:hidden">
         <h2 className="text-2xl font-bold text-befinlit-navy mb-6 flex items-center gap-2 font-serif">
-          * Glossary of Changes
+          <span className="text-befinlit-gold">*</span> Glossary of Changes
         </h2>
         <p className="text-sm text-befinlit-navy/70 mb-8 leading-relaxed italic font-serif text-center md:text-left">
           The above sections are in line with the Income Tax Act, 1961. However, the Income Tax Act, 2025 will come into effect from 1 April 2026. The relevant sections and the content changes have been updated below:

@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }) => {
               <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Browse by Topic</h4>
               <ul className="space-y-2 text-sm text-white/60">
                 <li><button onClick={() => onNavigate('topic', 'Freelance 101')} className="hover:text-white transition-colors text-left">Freelance 101</button></li>
-                <li><button onClick={() => onNavigate('topic', 'Calculator')} className="hover:text-white transition-colors text-left">Tax Tools</button></li>
+
               </ul>
             </div>
             <div>

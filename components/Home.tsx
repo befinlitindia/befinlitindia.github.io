@@ -131,7 +131,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
                   <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#C5A059 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
                   <BookOpen size={80} className="text-befinlit-gold opacity-20 absolute -bottom-4 -right-4 rotate-12" />
                   <div className="text-white text-center z-10">
-                    <h3 className="text-3xl font-bold leading-tight">The Moonlighter's<br />Playbook</h3>
+                    <h3 className="text-lg md:text-3xl font-bold leading-tight">The Moonlighter's<br />Playbook</h3>
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
                   <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#0F172A 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
                   <Calculator size={80} className="text-befinlit-navy opacity-20 absolute -bottom-4 -left-4 -rotate-12" />
                   <div className="text-befinlit-navy text-center z-10">
-                    <h3 className="text-3xl font-bold leading-tight">The Side-Hustle<br />Tax Realizer</h3>
+                    <h3 className="text-lg md:text-3xl font-bold leading-tight">The Side-Hustle<br />Tax Realizer</h3>
                   </div>
                 </div>
               </div>

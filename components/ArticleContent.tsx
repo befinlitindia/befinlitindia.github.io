@@ -293,7 +293,7 @@ const StructureExplorer = () => {
     cons?: string[];
   }> = {
     prop: {
-      name: 'Individually',
+      name: 'Proprietorship',
       description: 'Single individual owner, no separate legal entity.',
       pros: [
         'Lowest compliance cost',
@@ -540,7 +540,7 @@ const StructureExplorer = () => {
               <tr className="bg-gray-50">
                 <th className="p-4 border font-bold text-befinlit-navy w-40">Organisation</th>
                 <th className="p-4 border text-center">
-                  <div className="font-bold">Individually</div>
+                  <div className="font-bold">Proprietorship</div>
                   <div className="text-[10px] text-gray-400 font-normal mt-1 leading-tight">Solo owner, no legal separate identity.</div>
                 </th>
                 <th className="p-4 border text-center">
@@ -678,7 +678,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
             Most journeys start with confusion. You get a gig, you give your PAN, and you get paid. You think no one notices because it's "just a small amount."
           </p>
           <ul className="list-disc pl-5 space-y-3 text-befinlit-navy/70 text-sm">
-            <li><strong>26AS & AIS:</strong> This is your financial horoscope. Every time a client deducts TDS, it hits this ledger. Employers doing background checks don't need a detective; they just need access to your AIS.</li>
+            <li><strong>26AS<sup className="text-befinlit-gold">*</sup> & AIS:</strong> This is your financial horoscope. Every time a client deducts TDS, it hits this ledger. Employers doing background checks don't need a detective; they just need access to your AIS.</li>
             <li><strong>The GST-PAN Link:</strong> GST is legally linked to your PAN. Since the GST portal is public, anyone with access to your PAN can easily verify if you have an active GST registration. Companies frequently use this during background checks (BGV) to identify side-hustles that may not have been disclosed.</li>
           </ul>
         </div>
@@ -773,7 +773,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
           <span className="text-befinlit-gold">*</span> Glossary of Changes
         </h2>
         <p className="text-sm text-befinlit-navy/70 mb-8 leading-relaxed italic font-serif text-center md:text-left">
-          The above sections are in line with the Income Tax Act, 1961. However, the Income Tax Act, 2025 will come into effect from 1 April 2026. The relevant sections and the content changes have been updated below:
+          The above sections and forms are in line with the Income Tax Act, 1961. However, the Income Tax Act, 2025 will come into effect from 1 April 2026. The relevant sections and the content changes have been updated below:
         </p>
 
         <div className="overflow-x-auto">
@@ -792,19 +792,9 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                 <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">58</td>
               </tr>
               <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
-                <td className="p-4 border-b border-befinlit-navy/5">Tax Rebate</td>
-                <td className="p-4 border-b border-befinlit-navy/5 text-center">87A</td>
-                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">156</td>
-              </tr>
-              <tr className="hover:bg-befinlit-gold/5 transition-colors">
-                <td className="p-4 border-b border-befinlit-navy/5">Simplified/New Tax Regime</td>
-                <td className="p-4 border-b border-befinlit-navy/5 text-center">115BAC</td>
-                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">202</td>
-              </tr>
-              <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
-                <td className="p-4 border-b border-befinlit-navy/5">TDS (Professional Services & Non-Residents)</td>
-                <td className="p-4 border-b border-befinlit-navy/5 text-center">194J & 195</td>
-                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">393</td>
+                <td className="p-4 border-b border-befinlit-navy/5">Annual Tax Statement</td>
+                <td className="p-4 border-b border-befinlit-navy/5 text-center">Form 26AS</td>
+                <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">Form 168</td>
               </tr>
             </tbody>
           </table>

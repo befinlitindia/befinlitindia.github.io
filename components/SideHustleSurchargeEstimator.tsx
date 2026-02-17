@@ -252,7 +252,7 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
                     setFreelance('');
                     setResult(null);
                   }}
-                  className="text-white/20 hover:text-red-400 transition-colors text-[10px]"
+                  className="px-6 py-3 border border-white/20 rounded-sm text-xs font-bold text-white/60 hover:text-white hover:border-white transition-all uppercase tracking-widest"
                 >
                   Reset All Fields
                 </button>

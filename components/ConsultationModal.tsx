@@ -199,6 +199,9 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
             >
                 Continue to Details <ArrowRight size={18} />
             </button>
+            <p className="text-[10px] text-center text-befinlit-navy/40 mt-4 leading-relaxed">
+                <span className="font-bold flex items-center justify-center gap-1"><CheckCircle size={10} /> Data Privacy:</span> Information provided is intended solely for connecting with you. No data sharing will be done with any third party.
+            </p>
         </div>
     );
 

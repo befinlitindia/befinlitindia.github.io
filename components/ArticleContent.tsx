@@ -274,7 +274,7 @@ const IncomeImpactCalculator = () => {
             <div className="flex flex-col items-center gap-4 mt-8">
               <button
                 onClick={handleStartOver}
-                className="text-white/20 hover:text-red-400 transition-colors text-[10px]"
+                className="px-6 py-3 border border-white/20 rounded-sm text-xs font-bold text-white/60 hover:text-white hover:border-white transition-all uppercase tracking-widest"
               >
                 Reset All Fields
               </button>
@@ -684,7 +684,7 @@ const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
           </p>
           <ul className="list-disc pl-5 space-y-3 text-befinlit-navy/70 text-sm">
             <li><strong>26AS<sup className="text-befinlit-gold">*</sup> & AIS:</strong> This is your financial horoscope. Every time a client deducts TDS, it hits this ledger. Employers doing background checks don't need a detective; they just need access to your AIS.</li>
-            <li><strong>The GST-PAN Link:</strong> GST is legally linked to your PAN. Since the GST portal is public, anyone with access to your PAN can easily verify if you have an active GST registration. Companies frequently use this during background checks (BGV) to identify side-hustles that may not have been disclosed.</li>
+            <li><strong>The GST-PAN Link:</strong> GST is legally linked to your PAN. Since the GST portal is public, anyone with access to your PAN can easily verify if you have an active GST registration. Companies frequently use this during background verification to identify side-hustles that may not have been disclosed.</li>
           </ul>
         </div>
       </section>

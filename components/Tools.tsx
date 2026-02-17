@@ -48,8 +48,10 @@ const Tools: React.FC<ToolsProps> = ({ onNavigate }) => {
                   • {tool.status}
                 </span>
               </div>
-              <div className="text-sm text-befinlit-gold font-bold tracking-wider mb-2">{tool.title}</div>
-              <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">{tool.subtitle}</h3>
+              <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">
+                <span className="block text-lg font-medium opacity-80 mb-1 text-befinlit-navy group-hover:text-befinlit-gold transition-colors">{tool.title}</span>
+                {tool.subtitle}
+              </h3>
               <p className="text-befinlit-navy/70 text-sm mb-6 leading-relaxed">
                 {tool.description}
               </p>

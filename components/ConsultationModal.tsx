@@ -62,6 +62,7 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
     const handleSubmit = async () => {
         setIsSubmitting(true);
+        console.log("Starting form submission...");
 
         // Hardcoded fallback URL for convenience, allows form to work without secrets
         const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxRt3I-INKoUp-kZftQS8nzMoQBkWr9dTytIpOBXhdYWrQzyDIegFdgYtP1Rd8t58qkBA/exec";
@@ -74,24 +75,29 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
         }
 
         try {
+            const payload = {
+                name: formData.name,
+                email: formData.email,
+                whatsapp: formData.whatsapp,
+                query: formData.query,
+                consultation_type: formData.consultationType === 'email' ? 'Email Reply' : 'Audio/Video Call',
+                payment_preference: 'Pay Now',
+                created_at: new Date().toISOString()
+            };
+            console.log("Payload:", payload);
+
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: "POST",
-                mode: "no-cors",
+                mode: "no-cors", // Response will be opaque
                 headers: {
                     'Content-Type': 'text/plain;charset=utf-8',
                 },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    whatsapp: formData.whatsapp,
-                    query: formData.query,
-                    consultation_type: formData.consultationType === 'email' ? 'Email Reply' : 'Audio/Video Call',
-                    payment_preference: 'Pay Now',
-                    created_at: new Date().toISOString()
-                })
+                body: JSON.stringify(payload)
             });
 
-            // With 'no-cors', we can't check response.ok, but we assume success if no error was thrown.
+            console.log("Fetch response received. Mode: no-cors (opaque). Status check skipped.");
+
+            // With 'no-cors', we can't check response.ok, but we assume success if no network error was thrown.
             alert('Thank you! Your request has been received. We will contact you shortly.');
             onClose();
             // Reset form
@@ -109,7 +115,11 @@ const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }
 
         } catch (error) {
             console.error("Submission error:", error);
-            alert('Something went wrong. Please try again later or contact us directly at befinlitindia@gmail.com');
+            if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+                alert('Network error: Request failed. Please check your internet connection or ad blocker.');
+            } else {
+                alert('Something went wrong. Please try again later or contact us directly at befinlitindia@gmail.com');
+            }
         } finally {
             setIsSubmitting(false);
         }

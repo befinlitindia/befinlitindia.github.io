@@ -169,9 +169,15 @@ export const calculateTax = (input: UserInput): ComparisonResult => {
     const dedTTA_TTB = input.userAge >= 60 ? Math.min(totalInterest, 50000) : Math.min(input.interestSavings || 0, 10000);
     const ded80C = Math.min(input.section80C, 150000);
     let customDeds = 0; input.customDeductions.forEach(d => customDeds += d.value);
+    let customExs = 0; input.customExemptions.forEach(e => customExs += e.value);
+
+    // Entertainment Allowance Deduction (Section 16(ii)) - Govt. Employees Only
+    const entAllowanceDed = input.isGovtEmployee
+        ? Math.min(input.entertainmentAllowance, 5000, 0.2 * input.basicSalary)
+        : 0;
 
     // baseDedsATI is used for Old Regime specific calculations (like 80GG)
-    const baseDedsATI = stdOld + input.professionalTax + ded80C + ded80D + ded80CCD1B + ded80CCD2_Old + dedTTA_TTB + input.section80E + hraEx + ltaEx + customDeds;
+    const baseDedsATI = stdOld + input.professionalTax + entAllowanceDed + ded80C + ded80D + ded80CCD1B + ded80CCD2_Old + dedTTA_TTB + input.section80E + hraEx + ltaEx + customDeds + customExs;
 
     let ded80GG = 0;
     let ggBreakdown = { ati: 0, limit1: 0, limit2: 0, limit3: 0, eligibleDeduction: 0 };

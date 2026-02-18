@@ -61,17 +61,17 @@ const Section80GGCalculator: React.FC<Section80GGCalculatorProps> = ({ inputs, b
                             <span className="text-[#000a2e]">₹{formatINR(breakdown.ati)}</span>
                         </div>
 
-                        <div className={`flex justify-between items-center text-xs font-semibold border-b border-slate-200 pb-2 ${breakdown.eligibleDeduction === breakdown.limit1 ? 'text-green-600' : ''}`}>
-                            <span className={breakdown.eligibleDeduction === breakdown.limit1 ? 'text-green-600' : 'text-slate-500'}>1. ₹5,000 per month (Max 60k)</span>
-                            <span className={breakdown.eligibleDeduction === breakdown.limit1 ? 'text-green-600' : 'text-[#000a2e]'}>₹{formatINR(breakdown.limit1)}</span>
+                        <div className={`flex justify-between items-center text-xs font-semibold border-b border-slate-200 pb-2 ${(breakdown.eligibleDeduction === breakdown.limit1 && displayRent > 0) ? 'text-green-600' : ''}`}>
+                            <span className={(breakdown.eligibleDeduction === breakdown.limit1 && displayRent > 0) ? 'text-green-600' : 'text-slate-500'}>1. ₹5,000 per month (Max 60k)</span>
+                            <span className={(breakdown.eligibleDeduction === breakdown.limit1 && displayRent > 0) ? 'text-green-600' : 'text-[#000a2e]'}>₹{formatINR(breakdown.limit1)}</span>
                         </div>
-                        <div className={`flex justify-between items-center text-xs font-semibold border-b border-slate-200 pb-2 ${breakdown.eligibleDeduction === breakdown.limit2 ? 'text-green-600' : ''}`}>
-                            <span className={breakdown.eligibleDeduction === breakdown.limit2 ? 'text-green-600' : 'text-slate-500'}>2. 25% of ATI</span>
-                            <span className={breakdown.eligibleDeduction === breakdown.limit2 ? 'text-green-600' : 'text-[#000a2e]'}>₹{formatINR(breakdown.limit2)}</span>
+                        <div className={`flex justify-between items-center text-xs font-semibold border-b border-slate-200 pb-2 ${(breakdown.eligibleDeduction === breakdown.limit2 && displayRent > 0) ? 'text-green-600' : ''}`}>
+                            <span className={(breakdown.eligibleDeduction === breakdown.limit2 && displayRent > 0) ? 'text-green-600' : 'text-slate-500'}>2. 25% of ATI</span>
+                            <span className={(breakdown.eligibleDeduction === breakdown.limit2 && displayRent > 0) ? 'text-green-600' : 'text-[#000a2e]'}>₹{formatINR(breakdown.limit2)}</span>
                         </div>
-                        <div className={`flex justify-between items-center text-xs font-semibold pt-1 ${breakdown.eligibleDeduction === breakdown.limit3 ? 'text-green-600' : ''}`}>
-                            <span className={breakdown.eligibleDeduction === breakdown.limit3 ? 'text-green-600' : 'text-slate-500'}>3. Rent Paid minus 10% of ATI</span>
-                            <span className={breakdown.eligibleDeduction === breakdown.limit3 ? 'text-green-600' : 'text-[#000a2e]'}>₹{formatINR(breakdown.limit3)}</span>
+                        <div className={`flex justify-between items-center text-xs font-semibold pt-1 ${(breakdown.eligibleDeduction === breakdown.limit3 && displayRent > 0) ? 'text-green-600' : ''}`}>
+                            <span className={(breakdown.eligibleDeduction === breakdown.limit3 && displayRent > 0) ? 'text-green-600' : 'text-slate-500'}>3. Rent Paid minus 10% of ATI</span>
+                            <span className={(breakdown.eligibleDeduction === breakdown.limit3 && displayRent > 0) ? 'text-green-600' : 'text-[#000a2e]'}>₹{formatINR(breakdown.limit3)}</span>
                         </div>
                     </div>
 

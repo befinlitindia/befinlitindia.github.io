@@ -21,7 +21,7 @@ const LTACalculator: React.FC<LTACalculatorProps> = ({
     return (
         <div className="bg-white p-6 rounded-sm border border-slate-200 shadow-sm col-span-full">
             <h4 className="text-sm font-bold text-[#000a2e] mb-5 flex items-center gap-2">
-                Leave Travel Allowance (LTA) Module
+                Leave Travel Allowance (LTA)
                 <div className="group/tooltip relative">
                     <HelpCircle className="w-3 h-3 text-slate-300 cursor-help" />
                     <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 p-2 bg-[#000a2e] text-white text-[10px] rounded-sm opacity-0 group-hover/tooltip:opacity-100 transition-opacity pointer-events-none z-10 font-normal shadow-lg leading-relaxed">

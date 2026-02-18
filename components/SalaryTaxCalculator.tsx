@@ -28,7 +28,8 @@ const initialInput: UserInput = {
     section80D_SelfInsurance: 0, section80D_ParentsInsurance: 0, section80D_PreventiveCheckup: 0,
     section80D_Self: 0, section80D_Parents: 0,
     section80E: 0, section80GG: 0, section80G: 0, donationsList: [],
-    customDeductions: []
+    customDeductions: [],
+    customExemptions: []
 };
 
 interface Props {
@@ -48,16 +49,16 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
         setInputs(prev => ({ ...prev, [name]: value }));
     };
 
-    const addCustomItem = (key: 'customAllowances' | 'customDeductions') => {
+    const addCustomItem = (key: 'customAllowances' | 'customDeductions' | 'customExemptions') => {
         const newItem: CustomComponent = { id: Date.now().toString(), name: '', value: 0 };
         setInputs(prev => ({ ...prev, [key]: [newItem, ...prev[key]] }));
     };
 
-    const removeCustomItem = (key: 'customAllowances' | 'customDeductions', id: string) => {
+    const removeCustomItem = (key: 'customAllowances' | 'customDeductions' | 'customExemptions', id: string) => {
         setInputs(prev => ({ ...prev, [key]: prev[key].filter(x => x.id !== id) }));
     };
 
-    const updateCustomItem = (key: 'customAllowances' | 'customDeductions', id: string, field: 'name' | 'value', value: any) => {
+    const updateCustomItem = (key: 'customAllowances' | 'customDeductions' | 'customExemptions', id: string, field: 'name' | 'value', value: any) => {
         setInputs(prev => ({
             ...prev,
             [key]: prev[key].map(item => item.id === id ? { ...item, [field]: value } : item)
@@ -143,6 +144,28 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                     onRemove={(id) => removeCustomItem('customAllowances', id)}
                                     onChange={(id, field, val) => updateCustomItem('customAllowances', id, field, val)}
                                 />
+
+                                <div className="col-span-full mt-10">
+                                    <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-2">
+                                        <span className="text-sm font-black text-[#000a2e] tracking-tight">Basic Deductions</span>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                        <InputField
+                                            label="Professional Tax"
+                                            name="professionalTax"
+                                            value={inputs.professionalTax}
+                                            onChange={handleInputChange}
+                                            tooltip="Section 16(iii) deduction. Check the salary slip to know the amount deducted as Professional tax, if any."
+                                        />
+                                        <InputField
+                                            label="Entertainment Allowance"
+                                            name="entertainmentAllowance"
+                                            value={inputs.entertainmentAllowance}
+                                            onChange={handleInputChange}
+                                            tooltip="Section 16(ii) deduction. Available only for Govt Employees. Limited to ₹5,000 or 20% of basic."
+                                        />
+                                    </div>
+                                </div>
                             </Section>
 
                             {/* BLOCK 2: PARTIALLY EXEMPTED PARTICULARS */}
@@ -165,33 +188,25 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                     ltaSpent={inputs.ltaSpent}
                                     onChange={handleInputChange}
                                 />
+
+                                <DynamicRow
+                                    title="Other Exemptions"
+                                    items={inputs.customExemptions}
+                                    onAdd={() => addCustomItem('customExemptions')}
+                                    onRemove={(id) => removeCustomItem('customExemptions', id)}
+                                    onChange={(id, field, val) => updateCustomItem('customExemptions', id, field, val)}
+                                />
                             </Section>
 
-                            {/* BLOCK 3: DEDUCTIONS & STATUTORY ITEMS */}
+                            {/* BLOCK 3: DEDUCTIONS UNDER CHAPTER VI-A */}
                             <Section
-                                title="Block 3: Deductions & Statutory Items"
+                                title="Block 3: Deductions under Chapter VI-A"
                                 description="Final tax-saving investments and statutory deductions from gross income."
                                 delay={250}
                             >
-                                <div className="col-span-full mb-4">
-                                    <InputField
-                                        label="Professional Tax"
-                                        name="professionalTax"
-                                        value={inputs.professionalTax}
-                                        onChange={handleInputChange}
-                                        tooltip="Section 16(iii) deduction. Check the salary slip to know the amount deducted as Professional tax, if any."
-                                    />
-                                </div>
 
-                                <DynamicRow
-                                    title="Other exemptions / deductions"
-                                    items={inputs.customDeductions}
-                                    onAdd={() => addCustomItem('customDeductions')}
-                                    onRemove={(id) => removeCustomItem('customDeductions', id)}
-                                    onChange={(id, field, val) => updateCustomItem('customDeductions', id, field, val)}
-                                />
 
-                                <div className="col-span-full mt-10 space-y-12">
+                                <div className="col-span-full space-y-12">
                                     <InputField
                                         label="Section 80C: Investments"
                                         name="section80C"
@@ -249,6 +264,14 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                             )}
                                         </div>
                                     </div>
+
+                                    <DynamicRow
+                                        title="Other Deductions"
+                                        items={inputs.customDeductions}
+                                        onAdd={() => addCustomItem('customDeductions')}
+                                        onRemove={(id) => removeCustomItem('customDeductions', id)}
+                                        onChange={(id, field, val) => updateCustomItem('customDeductions', id, field, val)}
+                                    />
                                 </div>
                             </Section>
                         </div>

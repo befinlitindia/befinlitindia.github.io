@@ -33,6 +33,7 @@ export interface UserInput {
     rentFrequency: 'monthly' | 'annual';
     ltaReceived: number;
     ltaSpent: number;
+    customExemptions: CustomComponent[];
 
     // --- Block 3: Deductions & Statutory Items ---
     professionalTax: number;

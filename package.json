@@ -9,11 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/genai": "^1.39.0",
+    "@sentry/react": "^10.39.0",
+    "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "lucide-react": "^0.563.0",
+    "react-helmet-async": "^2.0.5",
+    "react-is": "^19.2.4",
     "recharts": "^3.7.0",
-    "@google/genai": "^1.39.0"
+    "sharp": "^0.34.5",
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "vite-plugin-sitemap": "^0.8.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

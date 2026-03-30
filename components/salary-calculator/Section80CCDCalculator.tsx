@@ -1,7 +1,29 @@
 import React from 'react';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, Check, AlertTriangle } from 'lucide-react';
 import { UserInput, ComparisonResult } from './types';
 import { preventNonNumericInput } from '../utils';
+
+/* Progress bar for 80CCD(1B) */
+const CCDProgressBar: React.FC<{ value: number; max: number }> = ({ value, max }) => {
+    const pct = Math.min(100, (value / max) * 100);
+    const isApproaching = pct >= 80 && pct < 100;
+    const isMaxed = pct >= 100;
+    const barColor = isMaxed ? 'bg-green-500' : isApproaching ? 'bg-amber-500' : 'bg-slate-300';
+    const fmt = (v: number) => `₹${Math.round(v).toLocaleString('en-IN')}`;
+
+    return (
+        <div className="mt-2 space-y-1">
+            <div className="w-full h-[3px] bg-slate-100 rounded-full overflow-hidden">
+                <div className={`h-full rounded-full transition-all duration-500 ease-out ${barColor}`} style={{ width: `${pct}%` }} />
+            </div>
+            <div className="flex items-center justify-between">
+                <span className="text-[9px] font-bold text-slate-400 tabular-nums">{fmt(Math.min(value, max))} / {fmt(max)}</span>
+                {isMaxed && <span className="text-[9px] font-bold text-green-600 flex items-center gap-1 animate-in fade-in slide-in-from-bottom-1 duration-300"><Check className="w-3 h-3" /> Max limit reached!</span>}
+                {isApproaching && !isMaxed && <span className="text-[9px] font-bold text-amber-600 flex items-center gap-1 animate-in fade-in slide-in-from-bottom-1 duration-300"><AlertTriangle className="w-3 h-3" /> Limit approaching</span>}
+            </div>
+        </div>
+    );
+};
 
 interface Section80CCDCalculatorProps {
     inputs: UserInput;
@@ -42,7 +64,11 @@ const Section80CCDCalculator: React.FC<Section80CCDCalculatorProps> = ({ inputs,
                                 placeholder="0"
                             />
                         </div>
-                        <p className="text-[9px] text-slate-400 mt-1 font-bold">Max deduction: ₹50,000 over Section 80C.</p>
+                        {inputs.section80CCD1B > 0 ? (
+                            <CCDProgressBar value={inputs.section80CCD1B} max={50000} />
+                        ) : (
+                            <p className="text-[9px] text-slate-400 mt-1 font-bold">Max deduction: ₹50,000 over Section 80C.</p>
+                        )}
                     </div>
 
                     <div className="relative">

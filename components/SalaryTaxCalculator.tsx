@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ArrowLeft, User, Wallet, RotateCcw } from 'lucide-react';
-import { Section, InputField, ToggleField, DynamicRow } from './salary-calculator/FormSections';
+import { AccordionSection, InputField, ToggleField, DynamicRow } from './salary-calculator/FormSections';
 import ResultsView from './salary-calculator/ResultsView';
 import Compliances from './salary-calculator/Compliances';
 import LeadForm from './salary-calculator/LeadForm';
@@ -14,6 +14,7 @@ import Section80CCDCalculator from './salary-calculator/Section80CCDCalculator';
 import Section80GCalculator from './salary-calculator/Section80GCalculator';
 import Section80GGCalculator from './salary-calculator/Section80GGCalculator';
 import { TaxSavingSuggestions } from './salary-calculator/TaxSavingSuggestions';
+import StickyTaxSummary from './salary-calculator/StickyTaxSummary';
 
 const initialInput: UserInput = {
     userAge: 0, fatherAge: 0, motherAge: 0, isMetro: true, isGovtEmployee: false,
@@ -123,13 +124,13 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                     <RotateCcw size={12} /> Reset Calculator
                                 </button>
                             </div>
-                            <Section title="Demographic Details" description="Foundational details required to determine tax slab eligibility." delay={100}>
+                            <AccordionSection title="Demographic Details" description="Foundational details required to determine tax slab eligibility." defaultOpen={true} delay={100}>
                                 <InputField label="Current Age" name="userAge" value={inputs.userAge} onChange={handleInputChange} showCurrency={false} tooltip="Determines tax slab limits in Old Regime." />
                                 <ToggleField label="Residence Location" name="isMetro" value={inputs.isMetro} onChange={handleInputChange} leftLabel="Metro City" rightLabel="Non-Metro" subText="Metro: Mumbai, Delhi, Kolkata, Chennai." />
                                 <ToggleField label="Employment Type" name="isGovtEmployee" value={inputs.isGovtEmployee} onChange={handleInputChange} leftLabel="Govt. Employee" rightLabel="Non-Govt." tooltip="Affects 80CCD(2) deduction limits (14% vs 10%)." />
                                 <InputField label="Father's Age" name="fatherAge" value={inputs.fatherAge || 0} onChange={handleInputChange} showCurrency={false} tooltip="Determines deduction limit under section 80D in Old Regime." warning={(inputs.fatherAge || 0) > 0 && (inputs.fatherAge || 0) < 18 ? "Please fill actual age or keep it 0" : undefined} />
                                 <InputField label="Mother's Age" name="motherAge" value={inputs.motherAge || 0} onChange={handleInputChange} showCurrency={false} tooltip="Determines deduction limit under section 80D in Old Regime." warning={(inputs.motherAge || 0) > 0 && (inputs.motherAge || 0) < 18 ? "Please fill actual age or keep it 0" : undefined} />
-                            </Section>
+                            </AccordionSection>
                         </div>
 
                         {/* SECTION B: SALARY COMPONENTS */}
@@ -140,7 +141,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                             </h2>
 
                             {/* BLOCK 1: FIXED TAXABLE COMPONENTS */}
-                            <Section
+                            <AccordionSection
                                 title="Block 1: Fixed Taxable Components"
                                 description="For details on each particulars, do check your Form 16 or CTC."
                                 delay={150}
@@ -180,10 +181,10 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                         />
                                     </div>
                                 </div>
-                            </Section>
+                            </AccordionSection>
 
                             {/* BLOCK 2: PARTIALLY EXEMPTED PARTICULARS */}
-                            <Section
+                            <AccordionSection
                                 title="Block 2: Partially Exempted Particulars"
                                 description="This is the place where you can optimise your tax liability. Note: Only the most commonly used partially exempt allowances are included here."
                                 delay={200}
@@ -210,10 +211,10 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                     onRemove={(id) => removeCustomItem('customExemptions', id)}
                                     onChange={(id, field, val) => updateCustomItem('customExemptions', id, field, val)}
                                 />
-                            </Section>
+                            </AccordionSection>
 
                             {/* BLOCK 3: DEDUCTIONS UNDER CHAPTER VI-A */}
-                            <Section
+                            <AccordionSection
                                 title="Block 3: Deductions under Chapter VI-A"
                                 description="Final tax-saving investments and statutory deductions from gross income."
                                 delay={250}
@@ -227,6 +228,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                         value={inputs.section80C}
                                         onChange={handleInputChange}
                                         tooltip="Includes contributions to EPF, LIC premium, PPF, ELSS, School fees, Principal repayment of home loan, etc. Max limit ₹1.5 Lakh."
+                                        maxLimit={150000}
                                     />
 
                                     <Section80CCDCalculator inputs={inputs} onChange={handleInputChange} breakdown={results.section80CCD_Breakdown} />
@@ -287,7 +289,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                                         onChange={(id, field, val) => updateCustomItem('customDeductions', id, field, val)}
                                     />
                                 </div>
-                            </Section>
+                            </AccordionSection>
                         </div>
                     </div>
 
@@ -360,6 +362,7 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
             </main>
 
             <AIAdvisor taxDetails={inputs} taxResult={results} />
+            <StickyTaxSummary result={results} />
         </div>
     );
 };

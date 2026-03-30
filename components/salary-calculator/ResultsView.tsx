@@ -141,9 +141,18 @@ const ResultsView: React.FC<{ result: ComparisonResult }> = ({ result }) => {
                 </div>
             </div>
 
-            <div className="flex justify-between items-center text-sm font-black text-white bg-[#000a2e] -mx-8 -mb-8 p-8 mt-8 rounded-b-sm">
-                <span>Total Tax Payable</span>
-                <span className="text-3xl text-yellow-400 tabular-nums">₹{formatINR(regime.totalTax)}</span>
+            <div className="flex flex-col items-stretch text-sm font-black text-white bg-[#000a2e] -mx-8 -mb-8 p-8 mt-8 rounded-b-sm">
+                <div className="flex justify-between items-center">
+                    <span>Total Tax Payable</span>
+                    <span className="text-3xl text-yellow-400 tabular-nums">₹{formatINR(regime.totalTax)}</span>
+                </div>
+                {regime.grossTotalIncome > 0 && (
+                    <div className="mt-3 flex justify-end">
+                        <span className="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full text-[10px] font-black tracking-wide">
+                            Effective Tax Rate: {regime.effectiveRate.toFixed(1)}%
+                        </span>
+                    </div>
+                )}
             </div>
         </div>
     );

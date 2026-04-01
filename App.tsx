@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { isDraftMode } from './components/data';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -80,18 +81,22 @@ const App: React.FC = () => {
               <SideHustleSurchargeEstimator />
             </>
           } />
-          <Route path="/glossary" element={
-            <>
-              <SEO title="The Glossary" description="Comprehensive index of Indian financial terms, regulatory updates, and compliance changes. Your reference guide to the financial landscape." path="/glossary" />
-              <Glossary />
-            </>
-          } />
-          <Route path="/glossary/changes" element={
-            <>
-              <SEO title="Glossary of Changes 2025" description="Mapping of essential sections from the Income Tax Act 1961 to the new Income Tax Act 2025. Essential reference for the transition." path="/glossary/changes" />
-              <GlossaryOfChanges onOpenConsultation={openConsultation} highlightId={highlightId} />
-            </>
-          } />
+          {isDraftMode && (
+            <Route path="/glossary" element={
+              <>
+                <SEO title="The Glossary" description="Comprehensive index of Indian financial terms, regulatory updates, and compliance changes. Your reference guide to the financial landscape." path="/glossary" />
+                <Glossary />
+              </>
+            } />
+          )}
+          {isDraftMode && (
+            <Route path="/glossary/changes" element={
+              <>
+                <SEO title="Glossary of Changes 2025" description="Mapping of essential sections from the Income Tax Act 1961 to the new Income Tax Act 2025. Essential reference for the transition." path="/glossary/changes" />
+                <GlossaryOfChanges onOpenConsultation={openConsultation} highlightId={highlightId} />
+              </>
+            } />
+          )}
           <Route path="/topic/:topicSlug" element={
             <>
               <TopicView />

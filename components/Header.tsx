@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { ROUTES } from './routes';
+import { isDraftMode } from './data';
 
 interface HeaderProps {
   onOpenConsultation: () => void;
@@ -65,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
           <Link to="/about" className={linkClass('/about')}>About</Link>
           <Link to="/playbooks" className={linkClass('/playbooks')}>The Playbooks</Link>
           <Link to="/tools" className={linkClass('/tools')}>The Toolkits</Link>
-          <Link to="/glossary" className={linkClass('/glossary')}>The Glossary</Link>
+          {isDraftMode && <Link to="/glossary" className={linkClass('/glossary')}>The Glossary</Link>}
           <button
             onClick={onOpenConsultation}
             className="bg-befinlit-navy text-befinlit-cream px-5 py-2.5 rounded-sm hover:bg-befinlit-lightNavy transition-colors text-xs font-bold tracking-tight shadow-sm"
@@ -90,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
           <Link to="/about" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">About</Link>
           <Link to="/playbooks" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Playbooks</Link>
           <Link to="/tools" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Toolkits</Link>
-          <Link to="/glossary" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Glossary</Link>
+          {isDraftMode && <Link to="/glossary" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Glossary</Link>}
           <button
             onClick={() => {
               onOpenConsultation();

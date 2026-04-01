@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Linkedin, Mail } from 'lucide-react';
+import { isDraftMode } from './data';
 
 interface FooterProps {
   onOpenConsultation?: () => void;
@@ -42,7 +43,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
                 <li><Link to="/playbooks" className="hover:text-white transition-colors text-left">The Playbooks</Link></li>
                 <li><Link to="/tools" className="hover:text-white transition-colors text-left">The Toolkits</Link></li>
-                <li><Link to="/glossary" className="hover:text-white transition-colors text-left">The Glossary</Link></li>
+                {isDraftMode && <li><Link to="/glossary" className="hover:text-white transition-colors text-left">The Glossary</Link></li>}
                 <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
               </ul>
             </div>

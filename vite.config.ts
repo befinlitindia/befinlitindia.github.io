@@ -23,8 +23,6 @@ export default defineConfig(({ mode }) => {
           '/playbook/moonlighters-playbook',
           '/tools',
           '/tools/side-hustle-estimator',
-          '/glossary',
-          '/glossary/changes',
           '/topic/freelance-101',
         ],
       }),

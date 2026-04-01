@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { TrendingUp, AlertCircle, Info, ArrowLeft, BookOpen, Calculator, Landmark } from 'lucide-react';
 import { preventNonNumericInput } from './utils';
 
-interface Props {
-  onNavigate: (page: any) => void;
-}
-
-const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
+const SideHustleSurchargeEstimator: React.FC = () => {
   const [salary, setSalary] = useState('');
   const [freelance, setFreelance] = useState('');
   const [result, setResult] = useState<null | any>(null);
@@ -99,12 +96,12 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
     <div className="animate-fade-in pt-48 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
       <div className="relative flex flex-col md:flex-row items-center justify-center mb-6 gap-4 md:gap-0">
         <div className="md:absolute md:left-0">
-          <button
-            onClick={() => onNavigate('tools')}
+          <Link
+            to="/tools"
             className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
           >
             <ArrowLeft size={16} /> Back to Toolkits
-          </button>
+          </Link>
         </div>
         <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
           Freelance 101
@@ -237,12 +234,12 @@ const SideHustleSurchargeEstimator: React.FC<Props> = ({ onNavigate }) => {
                     <p className="text-xs text-white/50">Learn how to structure your entity to reduce this penalty.</p>
                   </div>
                 </div>
-                <button
-                  onClick={() => onNavigate('playbook')}
-                  className="bg-befinlit-gold text-befinlit-navy text-xs font-bold px-6 py-3 rounded-sm hover:bg-white transition-colors shrink-0"
+                <Link
+                  to="/playbook/moonlighters-playbook"
+                  className="bg-befinlit-gold text-befinlit-navy text-xs font-bold px-6 py-3 rounded-sm hover:bg-white transition-colors shrink-0 inline-block"
                 >
                   Read Moonlighter's Playbook
-                </button>
+                </Link>
               </div>
 
               <div className="flex flex-col items-center gap-4">

@@ -1,13 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Clock, Tag } from 'lucide-react';
 import { MOONLIGHTER_PLAYBOOK_DESCRIPTION } from './content';
 import { getVisiblePlaybooks } from './data';
+import { getRoutePath } from './routes';
 
-interface PlaybooksProps {
-  onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'financial-guide') => void;
-}
-
-const Playbooks: React.FC<PlaybooksProps> = ({ onNavigate }) => {
+const Playbooks: React.FC = () => {
   const visiblePlaybooks = getVisiblePlaybooks();
 
   return (
@@ -25,10 +23,10 @@ const Playbooks: React.FC<PlaybooksProps> = ({ onNavigate }) => {
 
       <div className="space-y-12">
         {visiblePlaybooks.map((item) => (
-          <div
+          <Link
             key={item.id}
-            onClick={() => onNavigate(item.id as any)}
-            className="group cursor-pointer bg-white border border-befinlit-navy/5 p-8 rounded-sm hover:border-befinlit-gold transition-all shadow-sm hover:shadow-md flex flex-col md:flex-row gap-8"
+            to={getRoutePath(item.id)}
+            className="group cursor-pointer bg-white border border-befinlit-navy/5 p-8 rounded-sm hover:border-befinlit-gold transition-all shadow-sm hover:shadow-md flex flex-col md:flex-row gap-8 block"
           >
             <div className="w-full md:w-1/3 aspect-[4/3] bg-befinlit-navy rounded-sm flex items-center justify-center p-6 relative overflow-hidden shrink-0">
               <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#C5A059 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
@@ -53,7 +51,7 @@ const Playbooks: React.FC<PlaybooksProps> = ({ onNavigate }) => {
                 Read Playbook <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

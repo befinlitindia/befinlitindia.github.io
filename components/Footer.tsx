@@ -1,23 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, Linkedin, Mail } from 'lucide-react';
 
 interface FooterProps {
-  onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator' | 'financial-guide' | 'topic' | 'glossary' | 'glossary-changes', topic?: string) => void;
   onOpenConsultation?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }) => {
+const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
   return (
     <footer className="bg-befinlit-navy text-befinlit-cream py-16 mt-20 border-t-4 border-befinlit-gold">
       <div className="max-w-screen-2xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 mb-12">
           <div>
-            <h2
-              className="text-2xl font-black tracking-tighter mb-4 cursor-pointer"
-              onClick={() => onNavigate('home')}
-            >
+            <Link to="/" className="text-2xl font-black tracking-tighter mb-4 block">
               BeFinLit India
-            </h2>
+            </Link>
             <p className="text-white/60 text-sm leading-relaxed max-sm">
               Empowering Indian professionals to master their finances. From tax saving to wealth creation, we simplify the complex world of money.
             </p>
@@ -42,17 +39,17 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation }) => {
             <div>
               <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Explore</h4>
               <ul className="space-y-2 text-sm text-white/60">
-                <li><button onClick={() => onNavigate('home')} className="hover:text-white transition-colors">Home</button></li>
-                <li><button onClick={() => onNavigate('playbooks')} className="hover:text-white transition-colors text-left">The Playbooks</button></li>
-                <li><button onClick={() => onNavigate('tools')} className="hover:text-white transition-colors text-left">The Toolkits</button></li>
-                <li><button onClick={() => onNavigate('glossary')} className="hover:text-white transition-colors text-left">The Glossary</button></li>
-                <li><button onClick={() => onNavigate('about')} className="hover:text-white transition-colors">About Us</button></li>
+                <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/playbooks" className="hover:text-white transition-colors text-left">The Playbooks</Link></li>
+                <li><Link to="/tools" className="hover:text-white transition-colors text-left">The Toolkits</Link></li>
+                <li><Link to="/glossary" className="hover:text-white transition-colors text-left">The Glossary</Link></li>
+                <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="text-befinlit-gold text-xs uppercase tracking-widest font-semibold mb-4">Browse by Topic</h4>
               <ul className="space-y-2 text-sm text-white/60">
-                <li><button onClick={() => onNavigate('topic', 'Freelance 101')} className="hover:text-white transition-colors text-left">Freelance 101</button></li>
+                <li><Link to="/topic/freelance-101" className="hover:text-white transition-colors text-left">Freelance 101</Link></li>
 
               </ul>
             </div>

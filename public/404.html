@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BeFinLit India</title>
+  <script type="text/javascript">
+    // GitHub Pages SPA redirect hack
+    // This script takes the current 404 URL and redirects to the root
+    // with the path stored in a session variable, which index.html will use 
+    // to restore the correct route via React Router.
+    var pathSegmentsToKeep = 0; // For root-level GitHub Pages hosting
+
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+</body>
+</html>

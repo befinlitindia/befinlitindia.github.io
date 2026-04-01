@@ -1,13 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, TrendingUp, BookOpen, Wrench, Calculator, Calendar } from 'lucide-react';
 import { MOONLIGHTER_PLAYBOOK_DESCRIPTION, SALARY_TAX_CALCULATOR_DESCRIPTION, SUCCESS_PENALTY_CALCULATOR_DESCRIPTION } from './content';
 
 interface HomeProps {
-  onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
   onOpenConsultation?: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
+const Home: React.FC<HomeProps> = ({ onOpenConsultation }) => {
   return (
     <div className="relative overflow-hidden w-full">
       {/* Background Decor */}
@@ -50,18 +50,18 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
             Empowering you over the financial jargons. Master the complexities of Indian taxation, wealth creation, and compliance.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-stretch items-center justify-center gap-4">
-            <button
-              onClick={() => onNavigate('playbooks')}
+            <Link
+              to="/playbooks"
               className="bg-befinlit-navy text-befinlit-cream px-6 py-4 rounded-sm font-bold flex items-center justify-center gap-2 hover:bg-befinlit-gold hover:text-befinlit-navy transition-all w-full hover:shadow-lg hover:-translate-y-0.5 text-sm"
             >
               Explore our Playbooks <BookOpen size={18} />
-            </button>
-            <button
-              onClick={() => onNavigate('tools')}
+            </Link>
+            <Link
+              to="/tools"
               className="bg-befinlit-gold text-befinlit-navy px-6 py-4 rounded-sm font-bold flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all w-full hover:shadow-lg hover:-translate-y-0.5 text-sm"
             >
               Use our Toolkits <Wrench size={18} />
-            </button>
+            </Link>
             <button
               onClick={onOpenConsultation}
               className="border border-befinlit-navy text-befinlit-navy px-6 py-4 rounded-sm font-bold flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-0.5 transition-all w-full bg-white/30 backdrop-blur-sm text-sm"
@@ -122,9 +122,9 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-befinlit-gold/20 to-transparent"></div>
           <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
             <h2 className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-befinlit-gold mb-10 text-center shadow-sm">Featured Playbook</h2>
-            <div
-              onClick={() => onNavigate('playbook')}
-              className="group cursor-pointer bg-befinlit-cream border border-befinlit-navy/10 p-8 md:p-12 rounded-sm flex flex-col md:flex-row gap-8 items-center hover:border-befinlit-gold transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1"
+            <Link
+              to="/playbook/moonlighters-playbook"
+              className="group cursor-pointer bg-befinlit-cream border border-befinlit-navy/10 p-8 md:p-12 rounded-sm flex flex-col md:flex-row gap-8 items-center hover:border-befinlit-gold transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 block"
             >
               <div className="w-full md:w-1/2 overflow-hidden rounded-sm shadow-inner">
                 <div className="aspect-[4/3] bg-befinlit-navy flex items-center justify-center p-12 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-700">
@@ -147,7 +147,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
                   Read Playbook <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -155,9 +155,9 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
         <section className="pt-12 pb-20 bg-transparent relative">
           <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
             <h2 className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-befinlit-gold mb-10 text-center shadow-sm">Featured Toolkit</h2>
-            <div
-              onClick={() => onNavigate('side-hustle-estimator')}
-              className="group cursor-pointer bg-white border border-befinlit-navy/10 p-8 md:p-12 rounded-sm flex flex-col md:flex-row-reverse gap-8 items-center hover:border-befinlit-gold transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1"
+            <Link
+              to="/tools/side-hustle-estimator"
+              className="group cursor-pointer bg-white border border-befinlit-navy/10 p-8 md:p-12 rounded-sm flex flex-col md:flex-row-reverse gap-8 items-center hover:border-befinlit-gold transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 block"
             >
               <div className="w-full md:w-1/2 overflow-hidden rounded-sm shadow-inner">
                 <div className="aspect-[4/3] bg-befinlit-gold flex items-center justify-center p-12 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-700">
@@ -180,7 +180,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onOpenConsultation }) => {
                   Launch Toolkit <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, User, Wallet, RotateCcw } from 'lucide-react';
 import { AccordionSection, InputField, ToggleField, DynamicRow } from './salary-calculator/FormSections';
 import ResultsView from './salary-calculator/ResultsView';
@@ -33,11 +34,7 @@ const initialInput: UserInput = {
     customExemptions: []
 };
 
-interface Props {
-    onNavigate: (page: any) => void;
-}
-
-const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
+const SalaryTaxCalculator: React.FC = () => {
     const [inputs, setInputs] = useState<UserInput>(initialInput);
     const [showTips, setShowTips] = useState(false);
     const [wantsSuggestions, setWantsSuggestions] = useState<'none' | 'yes' | 'no'>('none');
@@ -81,12 +78,12 @@ const SalaryTaxCalculator: React.FC<Props> = ({ onNavigate }) => {
                 {/* Back Button & Pill Container */}
                 <div className="relative flex flex-col md:flex-row items-center justify-center mb-6 gap-4 md:gap-0">
                     <div className="md:absolute md:left-0">
-                        <button
-                            onClick={() => onNavigate('tools')}
+                        <Link
+                            to="/tools"
                             className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
                         >
                             <ArrowLeft size={16} /> Back to Toolkits
-                        </button>
+                        </Link>
                     </div>
                     <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
                         Calculator

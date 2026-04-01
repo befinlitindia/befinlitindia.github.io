@@ -1,13 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Calculator, Wrench, Landmark, Tag } from 'lucide-react';
 import { SALARY_TAX_CALCULATOR_DESCRIPTION, SUCCESS_PENALTY_CALCULATOR_DESCRIPTION } from './content';
 import { getVisibleTools } from './data';
+import { getRoutePath } from './routes';
 
-interface ToolsProps {
-  onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
-}
-
-const Tools: React.FC<ToolsProps> = ({ onNavigate }) => {
+const Tools: React.FC = () => {
   const visibleTools = getVisibleTools();
 
   return (
@@ -24,45 +22,62 @@ const Tools: React.FC<ToolsProps> = ({ onNavigate }) => {
       </header>
 
       <div className="grid gap-8">
-        {visibleTools.map((tool) => (
-          <div
-            key={tool.id}
-            onClick={() => tool.status === "Ready" && onNavigate(tool.id as any)}
-            className={`group p-8 rounded-sm border transition-all duration-300 flex flex-col md:flex-row gap-8 shadow-sm ${tool.status === "Ready"
-              ? 'cursor-pointer bg-white border-befinlit-navy/5 hover:border-befinlit-gold hover:shadow-md'
-              : 'bg-gray-50 border-gray-100 opacity-60 cursor-not-allowed'
-              }`}
-          >
-            <div className={`w-full md:w-1/3 aspect-[4/3] rounded-sm flex items-center justify-center p-6 relative overflow-hidden shrink-0 ${tool.status === "Ready" ? 'bg-befinlit-gold' : 'bg-gray-300'
-              }`}>
-              <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#1e3a8a 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
-              <Calculator size={40} className="text-befinlit-navy opacity-10 absolute -bottom-2 -left-2" />
-              <div className="text-befinlit-navy text-center font-bold font-serif leading-tight z-10">
-                <p className="text-lg">{tool.title}</p>
-              </div>
-            </div>
-            <div className="flex-grow">
-              <div className="flex items-center gap-4 mb-3 text-[10px] uppercase tracking-widest font-bold">
-                <span className="text-befinlit-gold flex items-center gap-1"><Tag size={12} /> {tool.tag}</span>
-                <span className={tool.status === "Ready" ? "text-green-600" : "text-gray-400"}>
-                  • {tool.status}
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">
-                <span className="block text-lg font-medium opacity-80 mb-1 text-befinlit-navy group-hover:text-befinlit-gold transition-colors">{tool.title}</span>
-                {tool.subtitle}
-              </h3>
-              <p className="text-befinlit-navy/70 text-sm mb-6 leading-relaxed">
-                {tool.description}
-              </p>
-              {tool.status === "Ready" && (
-                <div className="flex items-center gap-2 text-befinlit-navy font-bold text-sm">
-                  Launch Tool <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+        {visibleTools.map((tool) => {
+          const isReady = tool.status === "Ready";
+          const content = (
+            <>
+              <div className={`w-full md:w-1/3 aspect-[4/3] rounded-sm flex items-center justify-center p-6 relative overflow-hidden shrink-0 ${isReady ? 'bg-befinlit-gold' : 'bg-gray-300'
+                }`}>
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#1e3a8a 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
+                <Calculator size={40} className="text-befinlit-navy opacity-10 absolute -bottom-2 -left-2" />
+                <div className="text-befinlit-navy text-center font-bold font-serif leading-tight z-10">
+                  <p className="text-lg">{tool.title}</p>
                 </div>
-              )}
+              </div>
+              <div className="flex-grow">
+                <div className="flex items-center gap-4 mb-3 text-[10px] uppercase tracking-widest font-bold">
+                  <span className="text-befinlit-gold flex items-center gap-1"><Tag size={12} /> {tool.tag}</span>
+                  <span className={isReady ? "text-green-600" : "text-gray-400"}>
+                    • {tool.status}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-befinlit-navy mb-4 group-hover:text-befinlit-gold transition-colors">
+                  <span className="block text-lg font-medium opacity-80 mb-1 text-befinlit-navy group-hover:text-befinlit-gold transition-colors">{tool.title}</span>
+                  {tool.subtitle}
+                </h3>
+                <p className="text-befinlit-navy/70 text-sm mb-6 leading-relaxed">
+                  {tool.description}
+                </p>
+                {isReady && (
+                  <div className="flex items-center gap-2 text-befinlit-navy font-bold text-sm">
+                    Launch Tool <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                )}
+              </div>
+            </>
+          );
+
+          if (isReady) {
+            return (
+              <Link
+                key={tool.id}
+                to={getRoutePath(tool.id)}
+                className="group p-8 rounded-sm border transition-all duration-300 flex flex-col md:flex-row gap-8 shadow-sm cursor-pointer bg-white border-befinlit-navy/5 hover:border-befinlit-gold hover:shadow-md block"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          return (
+            <div
+              key={tool.id}
+              className="group p-8 rounded-sm border transition-all duration-300 flex flex-col md:flex-row gap-8 shadow-sm bg-gray-50 border-gray-100 opacity-60 cursor-not-allowed"
+            >
+              {content}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div >
   );

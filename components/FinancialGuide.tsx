@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, BookOpen, FileText, Globe, IndianRupee, ShieldCheck, ShieldAlert } from 'lucide-react';
 
 interface Props {
-    onNavigate?: (page: any) => void;
     onOpenConsultation?: () => void;
 }
 
-const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => {
+const FinancialGuide: React.FC<Props> = ({ onOpenConsultation }) => {
 
     // Handle smooth scrolling for internal links
     useEffect(() => {
@@ -38,14 +38,14 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
     return (
         <article className="max-w-[1400px] mx-auto px-4 md:px-8 pt-32 md:pt-48 pb-12">
             <div className="relative flex flex-col md:flex-row items-center justify-center mb-6 gap-4 md:gap-0">
-                {onNavigate && (
+                {(
                     <div className="md:absolute md:left-0">
-                        <button
-                            onClick={() => onNavigate('playbooks')}
+                        <Link
+                            to="/playbooks"
                             className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
                         >
                             <ArrowLeft size={16} /> Back to Playbooks
-                        </button>
+                        </Link>
                     </div>
                 )}
                 <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
@@ -79,11 +79,10 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                     </p>
                 </div>
                 <div className="pt-6 border-t border-befinlit-navy/10">
-                    <p className="text-left text-sm text-befinlit-navy/80 leading-relaxed font-serif">
-                        We will use the <b className="font-bold text-befinlit-navy">Income Tax Act, 1961<sup>*</sup></b> as our primary guide for understanding how to navigate this maze. According to the <b className="font-bold text-befinlit-navy">Income Tax Act, 1961<sup>*</sup></b>, a professional can operate their work in different business structures like <b className="font-bold text-befinlit-navy">Sole Proprietorship (Individual), Partnership, Limited Liability Partnership (LLP), One Person Company (OPC) and Private Limited Company (Pvt Ltd)</b>. To understand the differences between these business structures and compare their pros and cons,{' '}
-                        <button onClick={() => onNavigate && onNavigate('playbook')} className="text-befinlit-gold font-bold underline hover:text-befinlit-navy transition-colors inline-block">
+                    <p className="text-left text-sm text-befinlit-navy/80 leading-relaxed font-serif">We will use the <b className="font-bold text-befinlit-navy">Income Tax Act, 1961<sup>*</sup></b> as our primary guide for understanding how to navigate this maze. According to the <b className="font-bold text-befinlit-navy">Income Tax Act, 1961<sup>*</sup></b>, a professional can operate their work in different business structures like <b className="font-bold text-befinlit-navy">Sole Proprietorship (Individual), Partnership, Limited Liability Partnership (LLP), One Person Company (OPC) and Private Limited Company (Pvt Ltd)</b>. To understand the differences between these business structures and compare their pros and cons,{' '}
+                        <Link to="/playbook/moonlighters-playbook" className="text-befinlit-gold font-bold underline hover:text-befinlit-navy transition-colors inline-block">
                             refer to the Moonlighter's Playbook.
-                        </button>
+                        </Link>
                     </p>
                 </div>
             </div>
@@ -168,7 +167,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                                         Optimization Hack
                                     </div>
                                     <div className="flex-grow flex flex-col">
-                                        <h3 className="text-2xl font-serif font-bold mb-4 text-befinlit-navy"><span>Section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span>: The Presumptive Taxation Scheme</span></h3>
+                                        <h3 className="text-2xl font-serif font-bold mb-4 text-befinlit-navy"><span>Section <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link>: The Presumptive Taxation Scheme</span></h3>
 
                                         <div className="bg-befinlit-navy/5 p-6 rounded-sm border border-befinlit-navy/10 flex-grow flex flex-col justify-center mb-8">
                                             <h4 className="font-bold text-lg text-befinlit-navy mb-3">How is this simplified?</h4>
@@ -213,10 +212,10 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                                             <div id="debate-section" className="mt-8 bg-befinlit-navy/5 p-6 rounded-sm border border-befinlit-navy/10 flex-grow">
                                                 <h4 className="font-bold text-lg text-befinlit-navy mb-3">Debate: Not in the <a href="#specified-prof-list" className="text-befinlit-gold underline hover:text-befinlit-navy transition-colors">specified professional list</a>?</h4>
                                                 <p className="text-sm text-befinlit-navy/70 leading-relaxed mb-3">
-                                                    In case you do not fall directly in the list of specified professionals, you can choose to opt for the alternate scheme of <b>Section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44AD')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></span> of the Act</b> wherein your taxable profit is calculated at 6% (or 8%) or actual profit, whichever is higher. However, the basic logic of this scheme is meant for businesses which are trading in goods, and therefore, purchases become a major expense for such entities, leading to a profit margin close to 6-8%. For professionals, it is recommended to conservatively file under <b>section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span> of the Act</b> only.
+                                                    In case you do not fall directly in the list of specified professionals, you can choose to opt for the alternate scheme of <b>Section <Link to="/glossary/changes?highlight=44AD" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></Link> of the Act</b> wherein your taxable profit is calculated at 6% (or 8%) or actual profit, whichever is higher. However, the basic logic of this scheme is meant for businesses which are trading in goods, and therefore, purchases become a major expense for such entities, leading to a profit margin close to 6-8%. For professionals, it is recommended to conservatively file under <b>section <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link> of the Act</b> only.
                                                 </p>
                                                 <p className="text-sm text-befinlit-navy/70 leading-relaxed">
-                                                    <b className="font-bold text-red-600">Caution:</b> If your clients deduct your TDS under <b>Section <span onClick={() => onNavigate && onNavigate('glossary-changes', '194J')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">194J<sup>*</sup></span> of the Act</b> (Fees for technical or professional services), but you declare your income as a non-professional business under <b>Section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44AD')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></span> of the Act</b>, this may trigger <b className="font-bold text-befinlit-navy">red flags</b> and inquiries from the Income Tax Department.
+                                                    <b className="font-bold text-red-600">Caution:</b> If your clients deduct your TDS under <b>Section <Link to="/glossary/changes?highlight=194J" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">194J<sup>*</sup></Link> of the Act</b> (Fees for technical or professional services), but you declare your income as a non-professional business under <b>Section <Link to="/glossary/changes?highlight=44AD" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></Link> of the Act</b>, this may trigger <b className="font-bold text-befinlit-navy">red flags</b> and inquiries from the Income Tax Department.
                                                 </p>
                                             </div>
                                         </div>
@@ -225,7 +224,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                             </div>
                             <div id="specified-prof-list" className="bg-befinlit-navy text-befinlit-cream p-8 rounded-sm h-full flex flex-col w-full md:w-1/3">
                                 <h3 className="text-xl font-bold mb-1 text-befinlit-gold text-center font-serif">Specified Professions</h3>
-                                <p className="text-[10px] text-white/50 mb-6 text-center italic tracking-wider">as provided in Section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44AA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AA*</span> of the Act</p>
+                                <p className="text-[10px] text-white/50 mb-6 text-center italic tracking-wider">as provided in Section <Link to="/glossary/changes?highlight=44AA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AA*</Link> of the Act</p>
                                 <p className="text-[11px] text-white/70 mb-2 text-left leading-relaxed font-bold">
                                     You can be eligible, if the nature of your profession (examples provided) is specified below:
                                 </p>
@@ -306,7 +305,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                                         Recently, a dedicated professional code was specified for social media influencers ('SMI'). However, they have not been added to this above mentioned list in the Income Tax Act. This has led to a confusion amongst SMI.
                                     </p>
                                     <p className="text-xs text-white/80 leading-relaxed">
-                                        If an SMI works as a film artist, consultant, etc from the above mentioned fields, they fall under the purview of the specified professionals. For other SMIs, <a href="#debate-section" className="text-befinlit-gold underline hover:text-white transition-colors">as mentioned</a>, scheme under <b>section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44AD')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></span> of the Act</b> can be chosen. However, as a conservative approach, opt for <b><span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span> of the Act</b> as a professional.
+                                        If an SMI works as a film artist, consultant, etc from the above mentioned fields, they fall under the purview of the specified professionals. For other SMIs, <a href="#debate-section" className="text-befinlit-gold underline hover:text-white transition-colors">as mentioned</a>, scheme under <b>section <Link to="/glossary/changes?highlight=44AD" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></Link> of the Act</b> can be chosen. However, as a conservative approach, opt for <b><Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link> of the Act</b> as a professional.
                                     </p>
                                 </div>
                             </div>
@@ -403,7 +402,7 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                                 <div className="w-full md:w-2/5">
                                     <div className="p-6 rounded-sm bg-red-50 border border-red-100 h-full text-center">
                                         <h4 className="font-bold text-lg text-red-800 mb-2">When Tax Audit is Required</h4>
-                                        <p className="text-sm text-red-700/80 mb-3">You must opt out of Section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span> and get a tax audit if either of these conditions apply:</p>
+                                        <p className="text-sm text-red-700/80 mb-3">You must opt out of Section <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link> and get a tax audit if either of these conditions apply:</p>
                                         <ul className="text-sm text-red-700/80 list-disc list-inside space-y-1 text-left inline-block">
                                             <li>Your profits are <b className="font-bold">&lt; 50%</b> of gross receipts.</li>
                                             <li>Your gross receipts exceed the presumptive limits (<b className="font-bold">₹50 lakh or ₹75 lakh</b>).</li>
@@ -417,18 +416,18 @@ const FinancialGuide: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => 
                     <div className="mt-16">
                         <h3 className="text-2xl font-bold text-befinlit-navy mb-6 flex items-center gap-3">
                             <ShieldAlert className="text-befinlit-gold" />
-                            <span>The <span onClick={() => onNavigate && onNavigate('glossary-changes', '44AD')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></span> vs <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span> "Grey Area"</span>
+                            <span>The <Link to="/glossary/changes?highlight=44AD" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></Link> vs <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link> "Grey Area"</span>
                         </h3>
                         <div className="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
                             <div>
                                 <p className="text-befinlit-navy/80 mb-4 text-sm leading-relaxed">
-                                    Many freelancers file under <span onClick={() => onNavigate && onNavigate('glossary-changes', '44AD')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></span> (declaring 6%/8% profit) because it's more beneficial than <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span> (50% profit).
+                                    Many freelancers file under <Link to="/glossary/changes?highlight=44AD" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></Link> (declaring 6%/8% profit) because it's more beneficial than <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link> (50% profit).
                                 </p>
                                 <p className="text-befinlit-navy/80 mb-4 text-sm leading-relaxed font-bold">
                                     Is it wrong? Technically, no. Is it safe? Absolutely not.
                                 </p>
                                 <p className="text-befinlit-navy/70 text-xs leading-relaxed">
-                                    If your TDS is deducted under *<span onClick={() => onNavigate && onNavigate('glossary-changes', '194J')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">194J<sup>*</sup></span> (Technical / Professional Services), claiming to be a "trader" under <span onClick={() => onNavigate && onNavigate('glossary-changes', '44AD')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></span> invites the officer to ask you to prove you <em>don't</em> fall under the notified professional list. That is a litigation battle you want to avoid.
+                                    If your TDS is deducted under *<Link to="/glossary/changes?highlight=194J" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">194J<sup>*</sup></Link> (Technical / Professional Services), claiming to be a "trader" under <Link to="/glossary/changes?highlight=44AD" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44AD<sup>*</sup></Link> invites the officer to ask you to prove you <em>don't</em> fall under the notified professional list. That is a litigation battle you want to avoid.
                                 </p>
                             </div>
                             <div className="bg-befinlit-navy text-white p-6 rounded-sm text-center">

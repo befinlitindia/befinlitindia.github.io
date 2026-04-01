@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, ShieldCheck, Award, BookOpen, Wrench, Calendar } from 'lucide-react';
 
 interface AboutUsProps {
-  onNavigate?: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator') => void;
   onOpenConsultation?: () => void;
 }
 
-const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onOpenConsultation }) => {
+const AboutUs: React.FC<AboutUsProps> = ({ onOpenConsultation }) => {
   return (
     <div className="animate-fade-in">
       <section className="pt-32 md:pt-48 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
@@ -91,18 +91,18 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onOpenConsultation }) => 
             Join thousands of professionals who rely on BeFinLit India to keep their finances compliant and their wealth growing.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-stretch items-center justify-center gap-4">
-            <button
-              onClick={() => onNavigate && onNavigate('playbooks')}
+            <Link
+              to="/playbooks"
               className="bg-befinlit-gold text-befinlit-navy px-6 py-4 rounded-sm font-bold hover:bg-white transition-colors flex items-center justify-center gap-2 w-full sm:w-80"
             >
               Explore our Playbooks <BookOpen size={18} />
-            </button>
-            <button
-              onClick={() => onNavigate && onNavigate('tools')}
+            </Link>
+            <Link
+              to="/tools"
               className="bg-befinlit-gold text-befinlit-navy px-6 py-4 rounded-sm font-bold hover:bg-white transition-colors flex items-center justify-center gap-2 w-full sm:w-80"
             >
               Use our Toolkits <Wrench size={18} />
-            </button>
+            </Link>
             <button
               onClick={onOpenConsultation}
               className="bg-befinlit-gold text-befinlit-navy px-6 py-4 rounded-sm font-bold hover:bg-white transition-all flex items-center justify-center gap-2 w-full sm:w-80"

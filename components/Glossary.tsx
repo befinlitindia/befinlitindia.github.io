@@ -1,11 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BookOpen, Tag, ArrowRight } from 'lucide-react';
 
-interface GlossaryProps {
-    onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator' | 'glossary' | 'glossary-changes') => void;
-}
-
-const Glossary: React.FC<GlossaryProps> = ({ onNavigate }) => {
+const Glossary: React.FC = () => {
     return (
         <div className="animate-fade-in pt-32 md:pt-48 pb-20 px-4 md:px-8 max-w-[1400px] mx-auto">
             <header className="mb-16 border-b border-befinlit-navy/10 pb-12">
@@ -21,9 +18,9 @@ const Glossary: React.FC<GlossaryProps> = ({ onNavigate }) => {
 
             <div className="space-y-12">
                 {/* Glossary of Changes Card */}
-                <div
-                    onClick={() => onNavigate('glossary-changes')}
-                    className="group cursor-pointer bg-white border border-befinlit-navy/5 p-8 rounded-sm hover:border-befinlit-gold transition-all shadow-sm hover:shadow-md flex flex-col md:flex-row gap-8"
+                <Link
+                    to="/glossary/changes"
+                    className="group cursor-pointer bg-white border border-befinlit-navy/5 p-8 rounded-sm hover:border-befinlit-gold transition-all shadow-sm hover:shadow-md flex flex-col md:flex-row gap-8 block"
                 >
                     {/* Distinct color styling for Glossary: navy/gold gradient */}
                     <div className="w-full md:w-1/3 aspect-[4/3] bg-gradient-to-br from-befinlit-navy via-befinlit-navy/90 to-befinlit-gold/80 rounded-sm flex items-center justify-center p-6 relative overflow-hidden shrink-0">
@@ -48,7 +45,7 @@ const Glossary: React.FC<GlossaryProps> = ({ onNavigate }) => {
                             View Glossary <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     );

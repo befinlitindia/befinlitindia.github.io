@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 interface Props {
-    onNavigate?: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator' | 'glossary' | 'glossary-changes', topic?: string) => void;
     onOpenConsultation?: () => void;
     highlightId?: string;
 }
 
-const GlossaryOfChanges: React.FC<Props> = ({ onNavigate, onOpenConsultation, highlightId }) => {
+const GlossaryOfChanges: React.FC<Props> = ({ onOpenConsultation, highlightId }) => {
 
     // Handle smooth scrolling for internal links
     useEffect(() => {
@@ -27,16 +27,14 @@ const GlossaryOfChanges: React.FC<Props> = ({ onNavigate, onOpenConsultation, hi
     return (
         <article className="max-w-[1400px] mx-auto px-4 md:px-8 pt-32 md:pt-48 pb-32">
             <div className="relative flex flex-col md:flex-row items-center justify-center mb-6 gap-4 md:gap-0">
-                {onNavigate && (
-                    <div className="md:absolute md:left-0">
-                        <button
-                            onClick={() => onNavigate('glossary')}
-                            className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
-                        >
-                            <ArrowLeft size={16} /> Back to Glossary
-                        </button>
-                    </div>
-                )}
+                <div className="md:absolute md:left-0">
+                    <Link
+                        to="/glossary"
+                        className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
+                    >
+                        <ArrowLeft size={16} /> Back to Glossary
+                    </Link>
+                </div>
                 <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">
                     Regulatory Updates
                 </span>

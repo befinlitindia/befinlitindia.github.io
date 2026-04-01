@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { preventNonNumericInput } from './utils';
 import { FileSearch, TrendingUp, BookOpen, Mail, ChevronRight, X, Check, XCircle, AlertCircle, ArrowLeft, Info, ShieldAlert } from 'lucide-react';
 
@@ -136,7 +137,7 @@ const IncomeImpactCalculator = () => {
       notes.push(<span>With revenue above ₹50 Lakhs, if any part of your freelance income is received in cash (exceeding 5% threshold), a Tax Audit becomes mandatory.</span>);
     }
     if (f >= 7500000) {
-      notes.push(<span>Revenue has crossed ₹75 Lakhs: You can no longer opt for Section <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span>. You must undergo a mandatory Tax Audit, and your taxable base is now calculated at 80% of revenue by default for this estimation.</span>);
+      notes.push(<span>Revenue has crossed ₹75 Lakhs: You can no longer opt for Section <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link>. You must undergo a mandatory Tax Audit, and your taxable base is now calculated at 80% of revenue by default for this estimation.</span>);
     }
     return notes;
   };
@@ -160,7 +161,7 @@ const IncomeImpactCalculator = () => {
           Based on New Tax Regime rules.
         </p>
         <p className="text-[11px] text-white/50 mb-6 italic leading-relaxed">
-          Note: We apply 50% presumptive rate (u/s <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span>) on freelance revenue and follow the new tax regime by default.
+          Note: We apply 50% presumptive rate (u/s <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link>) on freelance revenue and follow the new tax regime by default.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -224,7 +225,7 @@ const IncomeImpactCalculator = () => {
               </h3>
               <div className="space-y-4 text-sm text-white/70 leading-relaxed">
                 <div className="flex justify-between border-b border-white/5 pb-2">
-                  <span>Taxable Base {result.freelanceRaw < 7500000 && <>(u/s <span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span>)</>}</span>
+                  <span>Taxable Base {result.freelanceRaw < 7500000 && <>(u/s <Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link>)</>}</span>
                   <span className="font-bold text-white">{formatINR(result.combinedIncome - result.salaryIncome)}</span>
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-2">
@@ -233,7 +234,7 @@ const IncomeImpactCalculator = () => {
                 </div>
                 {result.freelanceRaw >= 7500000 && (
                   <p className="text-[11px] italic pt-2 text-white/40">
-                    Note: For revenue above ₹75L, we have applied an approx. 80% default margin for this estimation as Presumptive Taxation (<span onClick={() => onNavigate && onNavigate('glossary-changes', '44ADA')} className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></span>) ceases to apply.
+                    Note: For revenue above ₹75L, we have applied an approx. 80% default margin for this estimation as Presumptive Taxation (<Link to="/glossary/changes?highlight=44ADA" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">44ADA<sup>*</sup></Link>) ceases to apply.
                   </p>
                 )}
               </div>
@@ -620,23 +621,22 @@ const EntityTaxEstimator: React.FC<EntityTaxEstimatorProps> = ({ onOpenConsultat
 // --- Main Article Content ---
 
 interface Props {
-  onNavigate?: (page: any) => void;
   onOpenConsultation?: () => void;
 }
 
-const ArticleContent: React.FC<Props> = ({ onNavigate, onOpenConsultation }) => {
+const ArticleContent: React.FC<Props> = ({ onOpenConsultation }) => {
 
   return (
     <article className="max-w-[1400px] mx-auto px-4 md:px-8 pt-32 md:pt-48 pb-12">
       <div className="relative flex flex-col md:flex-row items-center justify-center mb-6 gap-4 md:gap-0">
-        {onNavigate && (
+        {(
           <div className="md:absolute md:left-0">
-            <button
-              onClick={() => onNavigate('playbooks')}
+            <Link
+              to="/playbooks"
               className="flex items-center gap-2 text-befinlit-navy/40 hover:text-befinlit-navy transition-colors font-bold text-xs uppercase tracking-widest"
             >
               <ArrowLeft size={16} /> Back to Playbooks
-            </button>
+            </Link>
           </div>
         )}
         <span className="inline-block py-1 px-3 border border-befinlit-navy/20 rounded-full text-[10px] uppercase tracking-widest font-bold text-befinlit-navy">

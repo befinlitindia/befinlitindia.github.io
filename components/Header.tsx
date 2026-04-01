@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { ROUTES } from './routes';
 
 interface HeaderProps {
-  onNavigate: (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator' | 'glossary' | 'glossary-changes') => void;
-  currentPage: string;
   onOpenConsultation: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, onOpenConsultation }) => {
+const Header: React.FC<HeaderProps> = ({ onOpenConsultation }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,10 +21,19 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, onOpenConsulta
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (page: 'home' | 'about' | 'playbooks' | 'playbook' | 'tools' | 'salary-calculator' | 'side-hustle-estimator' | 'glossary' | 'glossary-changes') => {
-    onNavigate(page);
+  // Close mobile menu on route change
+  useEffect(() => {
     setIsMenuOpen(false);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const isActive = (path: string) => {
+    if (path === '/') return currentPath === '/';
+    return currentPath.startsWith(path);
   };
+
+  const linkClass = (path: string) =>
+    `hover:text-befinlit-gold transition-colors relative py-1 ${isActive(path) ? 'text-befinlit-gold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-befinlit-gold' : ''}`;
 
   return (
     <header
@@ -32,9 +43,9 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, onOpenConsulta
         }`}
     >
       <div className="max-w-screen-2xl mx-auto px-2 md:px-6 flex justify-between items-center">
-        <div
+        <Link
+          to="/"
           className="flex flex-row items-center gap-2 md:gap-4 cursor-pointer group"
-          onClick={() => handleLinkClick('home')}
         >
           {/* Brand Logo - Image */}
           <img src={`${import.meta.env.BASE_URL}logo.png`} alt="BeFinLit India" className="h-14 md:h-28 w-auto object-contain" />
@@ -46,40 +57,15 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, onOpenConsulta
           <p className="text-xs md:text-sm font-medium text-befinlit-gold tracking-tight md:tracking-wide">
             #BecomeFinanciallyLiterate
           </p>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-befinlit-navy">
-          <button
-            onClick={() => handleLinkClick('home')}
-            className={`hover:text-befinlit-gold transition-colors relative py-1 ${currentPage === 'home' ? 'text-befinlit-gold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-befinlit-gold' : ''}`}
-          >
-            Home
-          </button>
-          <button
-            onClick={() => handleLinkClick('about')}
-            className={`hover:text-befinlit-gold transition-colors relative py-1 ${currentPage === 'about' ? 'text-befinlit-gold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-befinlit-gold' : ''}`}
-          >
-            About
-          </button>
-          <button
-            onClick={() => handleLinkClick('playbooks')}
-            className={`hover:text-befinlit-gold transition-colors relative py-1 ${currentPage === 'playbooks' ? 'text-befinlit-gold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-befinlit-gold' : ''}`}
-          >
-            The Playbooks
-          </button>
-          <button
-            onClick={() => handleLinkClick('tools')}
-            className={`hover:text-befinlit-gold transition-colors relative py-1 ${currentPage === 'tools' ? 'text-befinlit-gold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-befinlit-gold' : ''}`}
-          >
-            The Toolkits
-          </button>
-          <button
-            onClick={() => handleLinkClick('glossary')}
-            className={`hover:text-befinlit-gold transition-colors relative py-1 ${(currentPage === 'glossary' || currentPage === 'glossary-changes') ? 'text-befinlit-gold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-befinlit-gold' : ''}`}
-          >
-            The Glossary
-          </button>
+          <Link to="/" className={linkClass('/')}>Home</Link>
+          <Link to="/about" className={linkClass('/about')}>About</Link>
+          <Link to="/playbooks" className={linkClass('/playbooks')}>The Playbooks</Link>
+          <Link to="/tools" className={linkClass('/tools')}>The Toolkits</Link>
+          <Link to="/glossary" className={linkClass('/glossary')}>The Glossary</Link>
           <button
             onClick={onOpenConsultation}
             className="bg-befinlit-navy text-befinlit-cream px-5 py-2.5 rounded-sm hover:bg-befinlit-lightNavy transition-colors text-xs font-bold tracking-tight shadow-sm"
@@ -100,11 +86,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage, onOpenConsulta
       {/* Mobile Nav */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-befinlit-cream border-b border-befinlit-navy/10 p-6 flex flex-col gap-4 shadow-lg animate-fade-in">
-          <button onClick={() => handleLinkClick('home')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">Home</button>
-          <button onClick={() => handleLinkClick('about')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">About</button>
-          <button onClick={() => handleLinkClick('playbooks')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Playbooks</button>
-          <button onClick={() => handleLinkClick('tools')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Toolkits</button>
-          <button onClick={() => handleLinkClick('glossary')} className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Glossary</button>
+          <Link to="/" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">Home</Link>
+          <Link to="/about" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">About</Link>
+          <Link to="/playbooks" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Playbooks</Link>
+          <Link to="/tools" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Toolkits</Link>
+          <Link to="/glossary" className="text-left text-befinlit-navy font-bold hover:text-befinlit-gold py-3 border-b border-befinlit-navy/5">The Glossary</Link>
           <button
             onClick={() => {
               onOpenConsultation();

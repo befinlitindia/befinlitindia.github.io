@@ -14,7 +14,20 @@ export default defineConfig(({ mode }) => {
     base: '/',
     plugins: [
       react(),
-      Sitemap({ hostname: 'https://befinlit.in' }), // Replace with actual domain if known, or keeps as placeholder
+      Sitemap({
+        hostname: 'https://befinlit.in',
+        dynamicRoutes: [
+          '/',
+          '/about',
+          '/playbooks',
+          '/playbook/moonlighters-playbook',
+          '/tools',
+          '/tools/side-hustle-estimator',
+          '/glossary',
+          '/glossary/changes',
+          '/topic/freelance-101',
+        ],
+      }),
       ViteImageOptimizer({
         /* pass your config */
       }),

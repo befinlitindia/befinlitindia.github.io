@@ -68,12 +68,12 @@ const GlossaryOfChanges: React.FC<Props> = ({ onOpenConsultation, highlightId })
                                 </tr>
                             </thead>
                             <tbody className="text-sm text-befinlit-navy/80">
-                                <tr id="row-44AA" className={`transition-all duration-700 ${highlightId === '44AA' ? 'bg-befinlit-gold/20 scale-[1.01] shadow-sm relative z-10 border-l-4 border-befinlit-gold' : 'hover:bg-befinlit-gold/5'}`}>
+                                <tr id="row-62" className={`transition-all duration-700 ${highlightId === '44AA' || highlightId === '62' ? 'bg-befinlit-gold/20 scale-[1.01] shadow-sm relative z-10 border-l-4 border-befinlit-gold' : 'hover:bg-befinlit-gold/5'}`}>
                                     <td className="p-4 border-b border-befinlit-navy/5">Maintenance of Accounts</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 text-center">44AA</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">62</td>
                                 </tr>
-                                <tr id="row-44ADA" className={`transition-all duration-700 ${highlightId === '44ADA' || highlightId === '44AD' ? 'bg-befinlit-gold/20 scale-[1.01] shadow-sm relative z-10 border-l-4 border-befinlit-gold' : 'hover:bg-befinlit-gold/5 bg-gray-50/30'}`}>
+                                <tr id="row-58" className={`transition-all duration-700 ${highlightId === '44ADA' || highlightId === '44AD' || highlightId === '58' ? 'bg-befinlit-gold/20 scale-[1.01] shadow-sm relative z-10 border-l-4 border-befinlit-gold' : 'hover:bg-befinlit-gold/5 bg-gray-50/30'}`}>
                                     <td className="p-4 border-b border-befinlit-navy/5">Presumptive Taxation (Business & Professionals)</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 text-center">44AD & 44ADA</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">58</td>
@@ -88,7 +88,7 @@ const GlossaryOfChanges: React.FC<Props> = ({ onOpenConsultation, highlightId })
                                     <td className="p-4 border-b border-befinlit-navy/5 text-center">115BAC</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">202</td>
                                 </tr>
-                                <tr id="row-194J" className={`transition-all duration-700 ${highlightId === '194J' || highlightId === '195' ? 'bg-befinlit-gold/20 scale-[1.01] shadow-sm relative z-10 border-l-4 border-befinlit-gold' : 'hover:bg-befinlit-gold/5'}`}>
+                                <tr id="row-393" className={`transition-all duration-700 ${highlightId === '194J' || highlightId === '195' || highlightId === '393' ? 'bg-befinlit-gold/20 scale-[1.01] shadow-sm relative z-10 border-l-4 border-befinlit-gold' : 'hover:bg-befinlit-gold/5'}`}>
                                     <td className="p-4 border-b border-befinlit-navy/5">TDS (Professional Services & Non-Residents)</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 text-center">194J & 195</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">393</td>

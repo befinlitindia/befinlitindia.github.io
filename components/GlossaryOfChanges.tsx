@@ -117,6 +117,11 @@ const GlossaryOfChanges: React.FC<Props> = ({ onOpenConsultation, highlightId })
                                     <td className="p-4 border-b border-befinlit-navy/5 text-center">26AS</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">168</td>
                                 </tr>
+                                <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
+                                    <td className="p-4 border-b border-befinlit-navy/5">Statement of income from a country outside India and Foreign Tax Credit</td>
+                                    <td className="p-4 border-b border-befinlit-navy/5 text-center">Form 67</td>
+                                    <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">Form 44</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

@@ -96,13 +96,13 @@ const FinancialGuide: React.FC<Props> = ({ onOpenConsultation }) => {
                         </a>
                     </li>
                     <li className="flex-1">
-                        <a href="#withholding-tax" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
-                            Withholding Tax
+                        <a href="#books-of-accounts" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            Books
                         </a>
                     </li>
                     <li className="flex-1">
-                        <a href="#books-of-accounts" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
-                            Books
+                        <a href="#withholding-tax" className="block py-4 px-2 text-center text-white/80 hover:text-befinlit-gold hover:bg-white/5 transition-all">
+                            Withholding Tax
                         </a>
                     </li>
                     <li className="flex-1">
@@ -313,49 +313,15 @@ const FinancialGuide: React.FC<Props> = ({ onOpenConsultation }) => {
                     </div>
                 </section>
 
-                {/* Withholding Tax Flowchart */}
-                <section id="withholding-tax" className="scroll-mt-32">
-                    <h2 className="text-2xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
-                        <Globe className="text-befinlit-gold" /> Taxes Paid Abroad (Withholding Tax)
-                    </h2>
-                    <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
-                        <div className="text-left mb-10">
-                            <h3 className="text-2xl font-bold text-befinlit-navy mb-3">What is DTAA?</h3>
-                            <p className="text-sm text-befinlit-navy/70 max-w-2xl leading-relaxed">A <b className="font-bold text-befinlit-navy">D</b>ouble <b className="font-bold text-befinlit-navy">T</b>axation <b className="font-bold text-befinlit-navy">A</b>voidance <b className="font-bold text-befinlit-navy">A</b>greement (DTAA) is a tax treaty between India and another country. It ensures that you don't pay tax on the same income in both countries. By using the DTAA, your foreign client can deduct tax at a lower rate (e.g., 10%) instead of their country's default rate.</p>
-                        </div>
-                        <div className="space-y-6 max-w-4xl mx-auto">
-                            <div className="grid md:grid-cols-2 gap-6 items-start">
-                                <div className="bg-gray-50 border border-gray-200 p-6 rounded-sm text-center h-full">
-                                    <h4 className="font-bold text-befinlit-navy mb-2">Step 1: Provide Documents to Client</h4>
-                                    <p className="text-sm text-befinlit-navy/70 mb-3">To get the benefit of a lower tax deduction rate under DTAA, your client will ask for:</p>
-                                    <p className="font-bold text-befinlit-navy text-sm bg-white py-2 px-3 inline-block rounded-sm border border-gray-200">PAN + Form 10F + TRC + No-PE Declaration</p>
-                                </div>
-                                <div className="bg-gray-50 border border-gray-200 p-6 rounded-sm text-center h-full">
-                                    <h4 className="font-bold text-befinlit-navy mb-2">Step 2: Obtain Proof of Tax Paid</h4>
-                                    <p className="text-sm text-befinlit-navy/70">The client will deduct tax at the DTAA rate. Afterwards, obtain proof of this tax payment (e.g., a tax certificate or return copy from their country).</p>
-                                </div>
-                            </div>
-                            <div className="text-center text-2xl text-befinlit-navy/20">↓</div>
-                            <div className="grid md:grid-cols-2 gap-6 items-start">
-                                <div className="bg-green-50 border border-green-200 p-6 rounded-sm text-center h-full">
-                                    <h4 className="font-bold text-green-800 mb-2">Step 3: Claim Foreign Tax Credit (FTC)</h4>
-                                    <p className="text-sm text-green-800/80">In your Income Tax Return (ITR), claim the credit for the foreign tax paid. This amount will offset your Indian tax liability.</p>
-                                </div>
-                                <div className="bg-gray-50 border border-gray-200 p-6 rounded-sm text-center h-full">
-                                    <h4 className="font-bold text-befinlit-navy mb-2">Step 4: File Form 67</h4>
-                                    <p className="text-sm text-befinlit-navy/70">To validate your FTC claim, you must file Form 67 on the Income Tax portal by the <b className="font-bold text-red-500">31st of March of the relevant Assessment Year</b>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 {/* Books of Accounts Section */}
                 < section id="books-of-accounts" className="scroll-mt-32" >
                     <h2 className="text-2xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
-                        <BookOpen className="text-befinlit-gold" /> Books of Accounts & Presumptive Scheme
+                        <BookOpen className="text-befinlit-gold" /> Books of Accounts & Presumptive Taxation Scheme
                     </h2>
                     <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5">
+                        <p className="text-sm text-befinlit-navy/80 leading-relaxed mb-8">
+                            Simple Accounting can be broken down in 4 parts: The first and often misunderstood part is to invoice your services. Meaning bill your client. Second, record your receipts. Third, distinguish between your invoice and bank receipt. Fourth, accounting is done on an <a href="#jargons" className="underline cursor-pointer hover:text-befinlit-gold transition-colors font-bold text-befinlit-navy">accrual basis</a>, not receipt basis.
+                        </p>
                         <div className="space-y-8">
                             {/* Row 1: Basic Books */}
                             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-6">
@@ -436,6 +402,79 @@ const FinancialGuide: React.FC<Props> = ({ onOpenConsultation }) => {
                         </div>
                     </div>
                 </section >
+
+                {/* Withholding Tax Flowchart */}
+                <section id="withholding-tax" className="scroll-mt-32">
+                    <h2 className="text-2xl font-bold font-serif text-left mb-8 text-befinlit-navy flex items-center gap-3">
+                        <Globe className="text-befinlit-gold" /> Taxes Paid Abroad (Withholding Tax)
+                    </h2>
+                    
+                    <div className="flex flex-col md:flex-row gap-8">
+                        <div className="w-full md:w-2/3 space-y-8">
+                            <div className="bg-white p-8 rounded-sm shadow-sm border border-befinlit-navy/5 h-full">
+                                <div className="text-left mb-10">
+                                    <h3 className="text-2xl font-bold text-befinlit-navy mb-3">What is DTAA?</h3>
+                                    <p className="text-sm text-befinlit-navy/70 leading-relaxed">
+                                        A <b className="font-bold text-befinlit-navy">D</b>ouble <b className="font-bold text-befinlit-navy">T</b>axation <b className="font-bold text-befinlit-navy">A</b>voidance <b className="font-bold text-befinlit-navy">A</b>greement (DTAA) is a tax treaty between India and another country. It ensures that you don't pay tax on the same income in both countries. By using the DTAA, your foreign client can deduct tax at a lower rate (e.g., 10%) instead of their country's default rate.
+                                    </p>
+                                    <p className="text-sm text-befinlit-navy/90 font-bold mt-4">
+                                        Below are the steps to be taken to ensure you receive this benefit:
+                                    </p>
+                                </div>
+                                <div className="space-y-6 max-w-4xl mx-auto">
+                                    <div className="grid md:grid-cols-2 gap-6 items-start">
+                                        <div className="bg-befinlit-navy border border-befinlit-navy/10 p-6 rounded-sm text-center h-full">
+                                            <h4 className="font-bold text-befinlit-gold mb-2">Step 1: Provide Documents to Client</h4>
+                                            <p className="text-sm text-white/80 mb-4">To get the benefit of a lower tax deduction rate under DTAA, your client will ask for:</p>
+                                            <p className="font-bold text-befinlit-navy text-[11px] bg-white py-2 px-3 inline-block rounded-sm">Invoice + PAN + TRC + No-PE Declaration</p>
+                                        </div>
+                                        <div className="bg-befinlit-navy/5 border border-befinlit-navy/10 p-6 rounded-sm text-center h-full">
+                                            <h4 className="font-bold text-befinlit-navy mb-2">Step 2: Obtain Proof of Tax Paid</h4>
+                                            <p className="text-sm text-befinlit-navy/70">The client will deduct tax at the DTAA rate. Afterwards, obtain proof of this tax payment (e.g., a tax certificate or return copy from their country).</p>
+                                        </div>
+                                    </div>
+                                    <div className="grid md:grid-cols-2 gap-6 items-start">
+                                        <div className="bg-white border-2 border-befinlit-gold/30 p-6 rounded-sm text-center h-full shadow-sm">
+                                            <h4 className="font-bold text-befinlit-navy mb-2">Step 3: File Form 44</h4>
+                                            <p className="text-sm text-befinlit-navy/70">To validate your FTC claim, you must file <Link to="/glossary/changes" className="text-befinlit-gold underline cursor-pointer hover:text-befinlit-navy transition-colors">Form 44<sup>*</sup></Link> on the Income Tax portal.</p>
+                                        </div>
+                                        <div className="bg-befinlit-cream border border-befinlit-navy/10 p-6 rounded-sm text-center h-full">
+                                            <h4 className="font-bold text-befinlit-navy mb-2">Step 4: Claim Foreign Tax Credit (FTC)</h4>
+                                            <p className="text-sm text-befinlit-navy/70">In your Income Tax Return (ITR), claim the credit for the foreign tax paid. This amount will offset your Indian tax liability.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Side Margin: Definitions */}
+                        <div id="jargons" className="bg-befinlit-navy text-befinlit-cream p-8 rounded-sm h-full flex flex-col w-full md:w-1/3 scroll-mt-32">
+                            <h3 className="text-xl font-bold mb-1 text-befinlit-gold text-center font-serif">Decoding jargons</h3>
+                            <p className="text-[11px] text-white/70 mb-6 text-center leading-relaxed font-bold">
+                                What do these terms & documents mean?
+                            </p>
+                            
+                            <div className="space-y-6 text-sm font-medium flex-1 pb-8 text-left">
+                                <div className="flex flex-col gap-1 items-start">
+                                    <span className="font-bold underline text-befinlit-gold">Accrual basis</span>
+                                    <span className="text-xs text-white/80 leading-relaxed font-normal">An accounting method where revenue or expenses are recorded when a transaction occurs rather than when payment is received or made. It accurately reflects business income for the period.</span>
+                                </div>
+                                <div className="flex flex-col gap-1 items-start">
+                                    <span className="font-bold underline text-befinlit-gold">Invoice</span>
+                                    <span className="text-xs text-white/80 leading-relaxed font-normal">A commercial document issued by you (the seller) to your client (the buyer, in this case, being a foreign buyer), detailing the services provided and the amount due.</span>
+                                </div>
+                                <div className="flex flex-col gap-1 items-start">
+                                    <span className="font-bold underline text-befinlit-gold">PE / No-PE</span>
+                                    <span className="text-xs text-white/80 leading-relaxed font-normal"><b className="text-white">Permanent Establishment.</b> A No-PE declaration states that you do not have a fixed place of business (like an office or branch) in the client's country.</span>
+                                </div>
+                                <div className="flex flex-col gap-1 items-start">
+                                    <span className="font-bold underline text-befinlit-gold">TRC</span>
+                                    <span className="text-xs text-white/80 leading-relaxed font-normal"><b className="text-white">Tax Residency Certificate.</b> An official document issued by the Indian Income Tax Department proving that you are a tax resident of India. It can be obtained vide Filing Form 42 and the AO will issue you the certificate vide Form 43. This is as per Rule 75 of the Income Tax Rules, 1962.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Section 2: GST Provisions */}
                 < section id="gst" className="scroll-mt-32" >
@@ -612,6 +651,11 @@ const FinancialGuide: React.FC<Props> = ({ onOpenConsultation }) => {
                                     <td className="p-4 border-b border-befinlit-navy/5">Maintenance of Accounts</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">62</td>
                                     <td className="p-4 border-b border-befinlit-navy/5 text-center">44AA</td>
+                                </tr>
+                                <tr className="hover:bg-befinlit-gold/5 transition-colors bg-gray-50/30">
+                                    <td className="p-4 border-b border-befinlit-navy/5">Statement of income from a country outside India and Foreign Tax Credit</td>
+                                    <td className="p-4 border-b border-befinlit-navy/5 font-bold text-befinlit-navy text-center">Form 44 (Income-tax Rules, 2026)</td>
+                                    <td className="p-4 border-b border-befinlit-navy/5 text-center">Form 67 (Income-tax Rules, 1962)</td>
                                 </tr>
                             </tbody>
                         </table>
